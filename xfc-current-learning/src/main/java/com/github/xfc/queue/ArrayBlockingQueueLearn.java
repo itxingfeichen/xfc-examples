@@ -14,6 +14,8 @@ public class ArrayBlockingQueueLearn {
      */
     private static final ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(5);
 
+
+
     /**
      * 新增元素
      * @param obj
