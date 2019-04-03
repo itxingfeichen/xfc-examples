@@ -1,6 +1,8 @@
 package com.github.xfc.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author : chenxingfei
@@ -8,7 +10,9 @@ import lombok.Data;
  * @description: 任务类
  */
 @Data
-public class Task implements Comparable {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Task implements Comparable,Runnable {
 
     /**
      * 任务id
@@ -29,5 +33,15 @@ public class Task implements Comparable {
     public int compareTo(Object o) {
         Task target = (Task) o;
         return -Long.compare(this.id, target.getId());
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(50000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("当前任务id="+this.id+" 当前任务名称="+name);
     }
 }
