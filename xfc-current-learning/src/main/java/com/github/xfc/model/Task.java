@@ -38,7 +38,7 @@ public class Task implements Comparable,Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(50000L);
+            Thread.sleep(500L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
