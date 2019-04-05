@@ -1,5 +1,5 @@
 
-## 通过wait方法和notify模拟队列的阻塞
+# 通过wait方法和notify模拟队列的阻塞
 
 ## 线程池的使用
 * submit方法和execute方法的区别
