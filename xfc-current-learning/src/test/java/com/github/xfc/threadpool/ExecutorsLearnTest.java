@@ -37,6 +37,7 @@ public class ExecutorsLearnTest {
 
     @Test
     public void getNewSingleThreadExecutor() {
+
         ExecutorService newFixedThreadPool = executorsLearn.getNewSingleThreadExecutor();
         newFixedThreadPool.execute(new Task(1L,"task1","aaa"));
         newFixedThreadPool.execute(new Task(2L,"task2","bbb"));
