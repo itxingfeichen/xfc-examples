@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>xfc-current-learning</module>
+        <module>springboot-learning</module>
     </modules>
 
     <properties>

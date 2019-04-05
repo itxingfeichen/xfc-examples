@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
  */
 public class SynchronousQueueLearnTest {
 
-    @Test
-    public void put() {
+//    @Test
+    public static void put() {
         SynchronousQueueLearn synchronousQueueLearn = new SynchronousQueueLearn();
 
         // 声明一个含有两个线程的线程池
@@ -24,6 +24,12 @@ public class SynchronousQueueLearnTest {
 
         executorService.execute(()->{
             synchronousQueueLearn.put("put a ele");
+
+            System.out.println("test  cas end....");
+        });
+
+        executorService.execute(()->{
+            synchronousQueueLearn.put("put other ele");
 
             System.out.println("test  cas end....");
         });
@@ -42,5 +48,9 @@ public class SynchronousQueueLearnTest {
         });
 
 
+    }
+
+    public static void main(String[] args) {
+        put();
     }
 }
