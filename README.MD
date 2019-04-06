@@ -51,6 +51,13 @@
         *   锁的分离
         *   尽量使用无锁的操作，如原子操作（Atomic系列类），volatile关键字
     *   分布式锁
+    *   信号量，回环栏栅，CountDownLatch
+        *   Semaphore(信号量)：
+        *   CyclicBarrier(回环栏栅)：线程间阻塞，必须等待所有的线程完成任务，然后一起释放线程
+            *   含两个构造器new CyclicBarrier(Integer count),new CyclicBarrier(Integer count,Runnable runnable)
+                *   count:代表需要阻塞的线程个数
+                *   Runnable:所有任务完成后，额外需要进行的操作任务
+        *   CountDownLatch(计数)：
 ## 并发框架Distruptor
 *   disruptor术语说明
     *   RingBuffer: 被看作是Disruptor最重要的组件，然而从3.0开始RingBuffer仅仅负责存储和更新在Disruptor中数据的流通
