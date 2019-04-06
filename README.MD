@@ -39,6 +39,7 @@
             *   getHoldCount() 获取当前lock的次数
             *   其他方法
     *   ReentrantReadWriteLock：读写分离的锁
+        *   重入锁说明，已经获得锁的线程去访问一个需要相同锁的方法，不需要再次获得锁。因此叫做可重入锁
         *   分ReadLock，WriteLock读写锁，根据ReentrantReadWriteLock实例的readLock()方法和writeLock()方法可以获取读写锁
         *   在高并发情况下，对于读多写少的情况下，性能远高于ReentrantLock
         *   读写锁的原理：本质分为读锁和写锁，读锁可以支持多线程并行读取，而写是必须一个一个线程进行读写，所以性能要好于ReentrantLock
