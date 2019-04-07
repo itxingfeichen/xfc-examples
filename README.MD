@@ -83,3 +83,4 @@
     *   所有访问者都记录自己的序号的实现方式，允许多个生产者与多个消费者共享相同的数据结构。
     *   在每个对象中都能跟踪序列号（ring buffer，claim Strategy，生产者和消费者），加上神奇的cache line padding，就意味着没有为伪共享和非预期的竞争。
 *   CAS算法（Compare And Swap）
+*   
