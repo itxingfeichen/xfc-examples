@@ -41,10 +41,16 @@ public class RingBufferLearn {
     /**
      * 定义消息处理器
      */
-    public static class MessageEventHandler implements EventHandler<MessageEvent> {
+    public static class MessageEventHandler implements EventHandler<MessageEvent>, WorkHandler<MessageEvent> {
 
         @Override
         public void onEvent(MessageEvent messageEvent, long l, boolean b) throws Exception {
+            this.onEvent(messageEvent);
+
+        }
+
+        @Override
+        public void onEvent(MessageEvent messageEvent) throws Exception {
             System.out.println(messageEvent);
         }
     }
@@ -56,6 +62,73 @@ public class RingBufferLearn {
      */
     public static void main(String[] args) {
 
+//        createRingbuffer();
+
+        createRingBufferByWorkPool();
+
+
+    }
+
+    /**
+     * 通过创建WorkerPool方式
+     */
+    private static void createRingBufferByWorkPool() {
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+
+        //YieldingWaitStrategy 的性能是最好的，适合用于低延迟的系统。在要求极高性能且事件处理线数小于CPU逻辑核心数的场景中，推荐使用此策略；例如，CPU开启超线程的特性
+        // 创建ringBuffer
+        RingBuffer<MessageEvent> ringBuffer = RingBuffer.createSingleProducer(new MessageEventFactory(), BUFFER_SIZE);
+
+        // 定义栏栅（用于协调生产者和消费者之间的消费速度）
+        SequenceBarrier sequenceBarrier = ringBuffer.newBarrier();
+
+        WorkerPool<MessageEvent> messageEventWorkerPool = new WorkerPool<>(ringBuffer, sequenceBarrier, new ExceptionHandler<MessageEvent>() {
+            @Override
+            public void handleEventException(Throwable throwable, long l, MessageEvent messageEvent) {
+                System.out.println("messageEvent");
+            }
+
+            @Override
+            public void handleOnStartException(Throwable throwable) {
+                System.out.println("handleOnStartException");
+            }
+
+            @Override
+            public void handleOnShutdownException(Throwable throwable) {
+                System.out.println("handleOnShutdownException");
+            }
+        }, (WorkHandler<MessageEvent>) messageEvent -> System.out.println("通过内部类实现事件处理器=" + messageEvent));
+
+        // 将线程提交到工作者池中（相当于事件处理器）
+        messageEventWorkerPool.start(executorService);
+
+        // 开始生产数据
+        // 开始生产数据
+        Future<MessageEvent> eventFuture = executorService.submit((Callable<MessageEvent>) () -> {
+            for (int i = 0; i < 100; i++) {
+                long next = ringBuffer.next();
+                System.out.println("ringbuffer槽=" + next);
+                ringBuffer.get(next).setPrice((long) (Math.random() * 909));
+                // 发布消息到位置为next的ringbuffer槽
+                ringBuffer.publish(next);
+            }
+            return null;
+        });
+
+        try {
+            TimeUnit.SECONDS.sleep(5L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        messageEventWorkerPool.halt();
+        executorService.shutdown();
+    }
+
+
+    /**
+     * 通过创建ringBuffer方式
+     */
+    private static void createRingbuffer() {
         ExecutorService executorService = Executors.newFixedThreadPool(4);
 
         //YieldingWaitStrategy 的性能是最好的，适合用于低延迟的系统。在要求极高性能且事件处理线数小于CPU逻辑核心数的场景中，推荐使用此策略；例如，CPU开启超线程的特性
@@ -98,6 +171,5 @@ public class RingBufferLearn {
         eventProcessor.halt();
 
         executorService.shutdown();
-
     }
 }
