@@ -21,6 +21,7 @@ public class AddTask4CaseHandler implements EventHandler<CaseEvent> {
 
     @Override
     public void onEvent(CaseEvent caseEvent, long l, boolean b) throws Exception {
-        caseEvent.setTask(new Task(atomicLong.get(), "task" + atomicLong.get(), "other" + atomicLong.get()));
+        Task task = new Task(atomicLong.get(), "task" + atomicLong.get(), "other" + atomicLong.get());
+        caseEvent.setTask(task);
     }
 }

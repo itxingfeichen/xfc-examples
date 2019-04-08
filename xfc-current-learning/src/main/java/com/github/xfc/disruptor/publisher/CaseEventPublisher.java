@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class CaseEventPublisher implements Runnable {
 
-    private static final Long TASK_COUNT = 100L;
+    private static final int TASK_COUNT = 10;
 
     /**
      * 传入disruptor
@@ -31,8 +31,7 @@ public class CaseEventPublisher implements Runnable {
     private AtomicLong atomicLong;
 
 
-
-    public CaseEventPublisher(Disruptor<CaseEvent> disruptor, CountDownLatch countDownLatch,AtomicLong atomicLong) {
+    public CaseEventPublisher(Disruptor<CaseEvent> disruptor, CountDownLatch countDownLatch, AtomicLong atomicLong) {
         this.disruptor = disruptor;
         this.countDownLatch = countDownLatch;
         this.atomicLong = atomicLong;
@@ -42,7 +41,12 @@ public class CaseEventPublisher implements Runnable {
     public void run() {
         CaseEventTrans caseEventTrans = new CaseEventTrans();
         for (int i = 0; i < TASK_COUNT; i++) {
-            atomicLong.incrementAndGet();
+            try {
+                atomicLong.incrementAndGet();
+                Thread.sleep(200L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             disruptor.publishEvent(caseEventTrans);
         }
         countDownLatch.countDown();

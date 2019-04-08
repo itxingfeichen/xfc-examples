@@ -20,6 +20,6 @@ public class AddOrderNo4CaseHandler implements EventHandler<CaseEvent> {
 
     @Override
     public void onEvent(CaseEvent caseEvent, long l, boolean b) throws Exception {
-        caseEvent.setCustomerName("订单：" + atomicLong.get() + "号");
+        caseEvent.setOrderNo("订单：" + atomicLong.get() + "号");
     }
 }
