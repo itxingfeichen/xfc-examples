@@ -84,7 +84,7 @@
     *   在每个对象中都能跟踪序列号（ring buffer，claim Strategy，生产者和消费者），加上神奇的cache line padding，就意味着没有为伪共享和非预期的竞争。
 *   CAS算法（Compare And Swap）
 
-##  IO和NIO
+##  IO和NIO,AIO
 *   阻塞概念：应用程序在获取网络数据的时候，如果网络传输很慢，那么程序一直等待，直到传输完成
 *   非阻塞概念：应用程序直接可以获取已经准备就绪的数据，无需等待
     BIO为同步阻塞形式，NIO为同步非阻塞形式，NIO并没有实现异步。jdk1.7升级NIO包，支持了异步非阻塞通信模型NIO2.0（AIO）
@@ -97,3 +97,9 @@
     也可称之为NIO2.0，这种模式才是真正的属于我们**异步非阻塞模型**；
     *   AsynchronousServerSocketChannel
     *   AsynchronousSocketChannel
+##  Nettyr入门
+*   Netty实现通信的步骤
+    *   创建两个线程组，一个用于处理客户端的链接，另一用于处理数据通信中的读写
+    *   创建一个ServerBootStrap对象，配置一系列参数。例如tcp缓冲区大小，读写缓冲区大小等
+    *   创建一个用于实际处理数据的类Channellnitializer，进行初始化传出数据的字符集，格式等
+    *   绑定端口，进行同步阻塞方法等待服务端启动即可
