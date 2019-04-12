@@ -114,3 +114,12 @@
         *   特殊分隔符，自己指定（客户端指定，服务端还是按照bytBuf形式读写数据） DelimlterBasedFrameDecoder
         *   消息定长 FixedLengthFrameDecoder
         *   将消息氛围消息头和消息体，在消息头中包含表示消息总长度的字段，然后进行业务逻辑的处理
+*   Netty编解码技术
+    *   就是指java序列化，序列化目的就是两个，第一个是进行网络传输，第二个是进行对象持久化
+    *   虽然我们可以使用java进行对象序列化，netty去传输，但是java序列化的硬伤太多，比如java序列化无法跨语言，序列化后码流太大，序列化性能太低
+    *   主流的编解码框架
+        *   JBoss的Marshalling包
+            *   是一个java序列化话包，对JDK默认的序列化框架进行了优化，但是又保持跟java.io.Seriallizable接口的兼容，同时增加了一些可以调节的参数
+        *   Google的Protobuf
+        *   基于P融通部分的Kyro
+        *   MessagePack框架
