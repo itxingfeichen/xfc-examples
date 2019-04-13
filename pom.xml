@@ -11,6 +11,7 @@
     <modules>
         <module>xfc-current-learning</module>
         <module>springboot-learning</module>
+        <module>xfc-spring-learning</module>
     </modules>
 
     <properties>
