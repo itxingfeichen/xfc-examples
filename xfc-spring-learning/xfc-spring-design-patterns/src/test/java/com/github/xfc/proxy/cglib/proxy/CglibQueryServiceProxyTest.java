@@ -15,12 +15,13 @@ public class CglibQueryServiceProxyTest {
 
     @Test
     public void testCglibProxy() {
-
+        // 将字节码文件写到指定地方
+        // System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/Users/chenxingfei");
         CglibQueryServiceProxy cglibQueryServiceProxy = new CglibQueryServiceProxy();
         ICglibQueryService iCglibQueryService = new CglibQueryServiceImpl();
         System.out.println("原始对象hashCode"+iCglibQueryService.hashCode());
         Object proxy = cglibQueryServiceProxy.getProxy(iCglibQueryService);
-        System.out.println("代理对象hashCode"+proxy.hashCode()+" toString"+proxy.toString());
+//        System.out.println("代理对象hashCode"+.hashCode()+" toString"+proxy.toString());
         Boolean flag=  false;
         if(proxy instanceof ICglibQueryService){
             flag = true;

@@ -43,10 +43,10 @@ public class CglibQueryServiceProxy implements MethodInterceptor {
      */
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        System.out.println("执行方法之前");
+        System.out.println("执行方法:"+method.getName());
+        System.out.println("cglib执行方法之前");
         Object invoke = methodProxy.invokeSuper(o, objects);
-        System.out.println("hashcode" + invoke.hashCode());
-        System.out.println("执行方法之后。。。");
+        System.out.println("cglib执行方法之后。。。");
         return invoke;
     }
 }
