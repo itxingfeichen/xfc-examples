@@ -1,14 +1,10 @@
 package com.github.xfc.proxy.jdk.proxy;
 
-import com.github.xfc.proxy.jdk.model.User;
+import com.github.xfc.proxy.common.User;
 import com.github.xfc.proxy.jdk.service.IJDKQueryService;
 import com.github.xfc.proxy.jdk.service.JDKQueryServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.lang.reflect.Proxy;
-
-import static org.junit.Assert.*;
 
 /**
  * @author : chenxingfei

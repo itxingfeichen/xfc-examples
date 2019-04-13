@@ -1,4 +1,4 @@
-package com.github.xfc.proxy.jdk.model;
+package com.github.xfc.proxy.common;
 
 import lombok.Data;
 

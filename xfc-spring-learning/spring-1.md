@@ -9,40 +9,51 @@
         *   基于切面和惯性进行声明式编程
         *   通过切面和模版减少样板式代码
     *   她主要是通过：面向Bean，依赖注入和切面编程这三种方式来达成的
-*   面向Bean编程
-    *   Spring是面向Bean的编程，Bean在Spring中才是真正的主角，Bean在Spring中的作用就像Object对OOP的意义一样，Spring中如果没有Bean也就没有Spring的意义，Spring提供了IOC容器通过配置文件或注解的方式来管理对象之间的依赖关系
-    *   Spring和核心概念
-        *   控制反转(Inversion of Controller):控制对象的创建，最终目的是为了实现依赖注入
-            *   依赖注入(Dependency inject):依赖注入
-                *   @Autowired InterfaceA a;自动把它的实现类注入
-                *   @Resource("beanName") InterfaceA a;IOC容器类的id对象自动注入到这里（可以支持父子类关系）
-                *   @Autowired A a;可以注入普通类
-            *   Spring的注入方式
-                *   set方法
-                *   构造方法
-                *   强制赋值（暴力反射）
-        *   AOP(面向切面编程):允许程序员对某个影响多个类行为的逻辑抽取出来作为一个模块嵌入到正常的业务代码中执行，可与实际业务进行松耦合。如日志管理，事物管理等。
-            *   Spring中用到aop的地方
-                *   Authentication 权限认证
-                *   Logging 日志
-                *   Transaction Manager 事务管理
-                *   Lazy Loading 懒加载
-                *   Context Process 上下文处理
-                *   Error Handler 异常处理
-                *   Cache 处理
-*   常用的设计模式
-    *   代理模式
-        *   原理
+##   面向Bean编程
+*   Spring是面向Bean的编程，Bean在Spring中才是真正的主角，Bean在Spring中的作用就像Object对OOP的意义一样，Spring中如果没有Bean也就没有Spring的意义，Spring提供了IOC容器通过配置文件或注解的方式来管理对象之间的依赖关系
+*   Spring和核心概念
+    *   控制反转(Inversion of Controller):控制对象的创建，最终目的是为了实现依赖注入
+        *   依赖注入(Dependency inject):依赖注入
+            *   @Autowired InterfaceA a;自动把它的实现类注入
+            *   @Resource("beanName") InterfaceA a;IOC容器类的id对象自动注入到这里（可以支持父子类关系）
+            *   @Autowired A a;可以注入普通类
+        *   Spring的注入方式
+            *   set方法
+            *   构造方法
+            *   强制赋值（暴力反射）
+    *   AOP(面向切面编程):允许程序员对某个影响多个类行为的逻辑抽取出来作为一个模块嵌入到正常的业务代码中执行，可与实际业务进行松耦合。如日志管理，事物管理等。
+        *   Spring中用到aop的地方
+            *   Authentication 权限认证
+            *   Logging 日志
+            *   Transaction Manager 事务管理
+            *   Lazy Loading 懒加载
+            *   Context Process 上下文处理
+            *   Error Handler 异常处理
+            *   Cache 处理
+##   常用的设计模式
+*   代理模式
+    *   JDK代理
+        *   原理描述
             *   首先拿到被代理对象的引用，然后去获取它的接口
             *   JDK代理会重新生成一个类，同时实现我们给的代理对象所实现的接口
             *   把被代理对象的引用拿到
             *   重新生成一个java文件，并通过jdk自带的编译工具编译为class字节码文件
             *   通过来加载器家在到jvm
-        *   适用场景
-        *   原理描述
-    *   工厂模式
-    *   单例模式
-    *   委派模式
-    *   
+        *   适用场景(3个必要条件)
+            *   两个角色：执行者，被代理对象
+            *   注重过程，必须要做的事儿，但是被代理对象没有时间做或者不想做
+            *   执行者必须拿到被代理对象的信息(执行者持有被代理对象的引用)
+        *   总结：字节码重组
+    *   Cglib代理
+        *   原理
+        *   使用场景
+        *   总结
+    *   JDK代理和cglib代理对比
+        *   jdk的动态代理是通过接口来进行强制转换的，生成以后的代理对象，可以强转为接口类型
+        *   CGlib的动态代理是通过生成被代理对象的子类，然后重写父类的方法，生成以后的对象，可以强制转换为被代理对象，也就是用自己写的类，多态（子类引用赋值给父类）
+*   工厂模式
+*   单例模式
+*   委派模式
+*   策略模式
             
         

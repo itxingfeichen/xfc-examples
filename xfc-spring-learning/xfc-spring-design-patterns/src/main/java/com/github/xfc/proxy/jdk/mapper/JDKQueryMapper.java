@@ -1,6 +1,6 @@
 package com.github.xfc.proxy.jdk.mapper;
 
-import com.github.xfc.proxy.jdk.model.User;
+import com.github.xfc.proxy.common.User;
 
 /**
  * @author : chenxingfei

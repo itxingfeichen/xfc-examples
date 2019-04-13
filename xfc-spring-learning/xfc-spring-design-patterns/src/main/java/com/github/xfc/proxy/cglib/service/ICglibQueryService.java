@@ -1,4 +1,4 @@
-package com.github.xfc.proxy.jdk.service;
+package com.github.xfc.proxy.cglib.service;
 
 import com.github.xfc.proxy.common.User;
 
@@ -7,7 +7,7 @@ import com.github.xfc.proxy.common.User;
  * @date: 2019-04-13  14:29
  * @description: 查询用户服务接口
  */
-public interface IJDKQueryService {
+public interface ICglibQueryService {
 
     User findUser(Long id);
 }

@@ -1,7 +1,7 @@
 package com.github.xfc.proxy.jdk.service;
 
 import com.github.xfc.proxy.jdk.mapper.JDKQueryMapper;
-import com.github.xfc.proxy.jdk.model.User;
+import com.github.xfc.proxy.common.User;
 
 /**
  * @author : chenxingfei
@@ -14,12 +14,14 @@ public class JDKQueryServiceImpl implements IJDKQueryService {
 
     public JDKQueryServiceImpl() {
         this.jdkQueryMapper = new JDKQueryMapper() {
+            @Override
             public User findUser(Long id) {
                 return new User("张三", id, "xingfeichen@163.com");
             }
         };
     }
 
+    @Override
     public User findUser(Long id) {
         return jdkQueryMapper.findUser(id);
     }
