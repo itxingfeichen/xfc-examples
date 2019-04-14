@@ -64,7 +64,7 @@
                 *   count:代表需要阻塞的线程个数
                 *   Runnable:所有任务完成后，额外需要进行的操作任务
         *   CountDownLatch(计数)：
-## 并发框架Distruptor
+## 并发框架Distruptor[学习记录](disruptor.md)
 *   disruptor术语说明
     *   RingBuffer: 被看作是Disruptor最重要的组件，然而从3.0开始RingBuffer仅仅负责存储和更新在Disruptor中数据的流通
     *   Sequence: Disruptor使用Sequence来表示一个特殊组件处理的序号。和Disruptor一样，每个消费者（EventProcessor）都维持着一个Sequence大部分的并发代码依赖Sequence值运转，因此Sequence支持多种当前为AtomicLong类的类型

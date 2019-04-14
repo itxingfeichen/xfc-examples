@@ -3,7 +3,7 @@ package com.github.xfc.signleton;
 /**
  * @author : chenxingfei
  * @date: 2019-03-31  22:06
- * @description: 静态内部类方式创建饿汉式单例
+ * @description: 静态内部类方式创建饿汉式单例，也可以通过静态代码块实现，但是静态代码块的内容是在类加载结束后就会直接加载到内存，因此如果该单例在系统中一直不实用的化，会浪费内存
  */
 public class InnerSingleton {
 

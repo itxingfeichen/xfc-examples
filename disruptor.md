@@ -1,4 +1,4 @@
-##  Disruptor是什么(内容参考https://www.jianshu.com/p/d24b2eb4a881)
+##  Disruptor是什么(内容参考[简书Distuptor使用](https://www.jianshu.com/p/d24b2eb4a881)
 *   disruptor是一个高性能的异步处理框架，或者可以任务是线程间通信的高效低延时内存消息组件，它的最大特点是高性能。其Lmax架构可以获得每秒6百万订单，用1微秒的延迟获得吞吐量为100K+。
 *   jdk内置队列
 ##   实现高性能的原理   
