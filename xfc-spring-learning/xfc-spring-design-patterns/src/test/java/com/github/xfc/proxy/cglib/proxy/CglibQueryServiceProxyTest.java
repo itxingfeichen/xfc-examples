@@ -3,6 +3,7 @@ package com.github.xfc.proxy.cglib.proxy;
 import com.github.xfc.proxy.cglib.service.CglibQueryServiceImpl;
 import com.github.xfc.proxy.cglib.service.ICglibQueryService;
 import com.github.xfc.proxy.common.User;
+import net.sf.cglib.core.DebuggingClassWriter;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class CglibQueryServiceProxyTest {
     @Test
     public void testCglibProxy() {
         // 将字节码文件写到指定地方
-        // System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/Users/chenxingfei");
+         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/Users/chenxingfei");
         CglibQueryServiceProxy cglibQueryServiceProxy = new CglibQueryServiceProxy();
         ICglibQueryService iCglibQueryService = new CglibQueryServiceImpl();
         System.out.println("原始对象hashCode"+iCglibQueryService.hashCode());
