@@ -24,6 +24,7 @@ public class User {
     private String email;
 
     public User(String userName, Long age, String email) {
+        System.out.println("调用构造方法了。。。");
         this.userName = userName;
         this.age = age;
         this.email = email;
