@@ -97,7 +97,7 @@
     也可称之为NIO2.0，这种模式才是真正的属于我们**异步非阻塞模型**；
     *   AsynchronousServerSocketChannel
     *   AsynchronousSocketChannel
-##  Nettyr入门
+##  Netty入门
 *   Netty实现通信的步骤
     *   创建两个线程组，一个用于处理客户端的链接，另一用于处理数据通信中的读写
     *   创建一个ServerBootStrap对象，配置一系列参数。例如tcp缓冲区大小，读写缓冲区大小等
