@@ -24,5 +24,7 @@
         WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
     */
 
+## [disruptor场景学习](https://www.cnblogs.com/pku-liuqiang/p/8544700.html)
+
 
         
