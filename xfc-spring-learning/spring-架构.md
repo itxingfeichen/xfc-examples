@@ -46,5 +46,8 @@
     +   目标对象(Target Object)：被一个或多个切面所通知的对象。如AService ,BService
     +   AOP代理(Aop proxy)：在Spring中的代理含两种方式，JDK动态代理和CGLib代理。默认情况下Target Object使用了JDK
 
-##  源码分析9 已看完
+    +   AOP执行过程
+        +   加载配置信息，解析为AopConfig
+        +   解析完成后交给AopProxyFactory调用createAopProxy
+##  源码分析12 应看
     
