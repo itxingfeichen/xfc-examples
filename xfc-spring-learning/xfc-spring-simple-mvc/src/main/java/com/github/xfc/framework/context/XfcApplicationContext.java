@@ -105,7 +105,7 @@ public class XfcApplicationContext {
 
                     // 如果这个类实现了接口，则默认用接口的名字作为bena的名字
                     for (Class<?> anInterface : interfaces) {
-                        String name = anInterface.getName();
+                        String name = anInterface.getSimpleName();
                         beanMap.put(lowerFirstChar(name), aClass.newInstance());
                     }
                 } else {
