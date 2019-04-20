@@ -24,6 +24,8 @@ public class XfcApplicationContext {
 
     private ConcurrentHashMap<String, Object> beanMap = new ConcurrentHashMap<String, Object>(16);
 
+    private Properties config;
+
     /**
      * cacje class
      */
@@ -33,12 +35,12 @@ public class XfcApplicationContext {
     public XfcApplicationContext(String location) {
         // 定位
         InputStream i = this.getClass().getResourceAsStream(location);
-        Properties properties = new Properties();
+        config = new Properties();
         try {
             // 加载
-            properties.load(i);
+            config.load(i);
             // 注册，相当于把所有的class找出来保存
-            String scanPackage = properties.getProperty("scanPackage");
+            String scanPackage = config.getProperty("scanPackage");
             doRegister(scanPackage);
             // 初始化
             doCreateBean();
@@ -49,8 +51,15 @@ public class XfcApplicationContext {
         }
     }
 
+    public Properties getConfig() {
+        return config;
+    }
+
+    public void setConfig(Properties config) {
+        this.config = config;
+    }
+
     /**
-     *
      * @return
      */
     public Map<String, Object> getAllBeans() {

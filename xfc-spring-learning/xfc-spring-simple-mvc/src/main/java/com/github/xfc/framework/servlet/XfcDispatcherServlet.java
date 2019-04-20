@@ -2,6 +2,7 @@ package com.github.xfc.framework.servlet;
 
 import com.github.xfc.framework.annotation.XfcController;
 import com.github.xfc.framework.annotation.XfcRequestMapping;
+import com.github.xfc.framework.annotation.XfcRequestParam;
 import com.github.xfc.framework.context.XfcApplicationContext;
 
 import javax.servlet.ServletConfig;
@@ -9,10 +10,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author : chenxingfei
@@ -21,7 +29,11 @@ import java.util.Map;
  */
 public class XfcDispatcherServlet extends HttpServlet {
 
-    private Map<String, Handler> handlerMapping = new HashMap<String, Handler>(16);
+    private List<XfcHandler> handlerMapping = new ArrayList<XfcHandler>(16);
+
+    private Map<XfcHandler, HandlerAdapter> adapterMapping = new HashMap<XfcHandler, HandlerAdapter>(16);
+
+    private List<XfcViewResolver> resolvers = new ArrayList<XfcViewResolver>();
 
 
     @Override
@@ -31,7 +43,6 @@ public class XfcDispatcherServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doPost(req, resp);
         try {
             doDispatch(req, resp);
         } catch (Exception e) {
@@ -47,15 +58,40 @@ public class XfcDispatcherServlet extends HttpServlet {
      * @throws Exception
      */
     private void doDispatch(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        Handler handler = getHandler(req);
+        XfcHandler handler = getHandler(req);
         if (handler == null) {
             resp.getWriter().write("404 Not Found");
         }
 
-        HandlerAdapter adapter = getHandlerAdapter(handler);
+        HandlerAdapter ha = getHandlerAdapter(handler);
 
-//        adapter.handle()handl
+        XfcModelAndView mv = ha.handle(req, resp, handler);
 
+        // 解析视图
+        applyDefaultViewName(resp, mv);
+
+    }
+
+    private void applyDefaultViewName(HttpServletResponse resp, XfcModelAndView mv) {
+        if (mv == null || resolvers.isEmpty()) {
+            return;
+        }
+
+        for (XfcViewResolver resolver : resolvers) {
+            // 如果没有找到对应的视图，继续匹配
+            if (!mv.getView().toString().equals(resolver.getViewName())) {
+                return;
+            }
+            String result = resolver.parse(mv);
+
+            if (result != null) {
+                try {
+                    resp.getWriter().write(result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**
@@ -64,8 +100,8 @@ public class XfcDispatcherServlet extends HttpServlet {
      * @param handler
      * @return
      */
-    private HandlerAdapter getHandlerAdapter(Handler handler) {
-        return null;
+    private HandlerAdapter getHandlerAdapter(XfcHandler handler) {
+        return adapterMapping.get(handler);
     }
 
     /**
@@ -74,7 +110,24 @@ public class XfcDispatcherServlet extends HttpServlet {
      * @param req
      * @return
      */
-    private Handler getHandler(HttpServletRequest req) {
+    private XfcHandler getHandler(HttpServletRequest req) {
+        if (handlerMapping.isEmpty()) {
+            return null;
+        }
+        String contextPath = req.getContextPath();
+        String requestURI = req.getRequestURI();
+        String url = requestURI.replace(contextPath, "").replaceAll("/", "/");
+
+
+        for (XfcHandler handler : handlerMapping) {
+            Pattern pattern = handler.getPattern();
+            Matcher matcher = pattern.matcher(url);
+            if (!matcher.matches()) {
+                continue;
+            }
+            return handler;
+
+        }
         return null;
     }
 
@@ -111,7 +164,14 @@ public class XfcDispatcherServlet extends HttpServlet {
 
     private void initViewResolvers(XfcApplicationContext context) {
 
+        String rootTemplate = context.getConfig().getProperty("rootTemplate");
+        URL resource = this.getClass().getClassLoader().getResource(rootTemplate);
 
+        File file = new File(resource.getFile());
+
+        for (File fileNew : file.listFiles()) {
+            resolvers.add(new XfcViewResolver(fileNew.getName(), fileNew));
+        }
     }
 
     private void initRequestToViewNameTranslator(XfcApplicationContext context) {
@@ -122,7 +182,51 @@ public class XfcDispatcherServlet extends HttpServlet {
 
     }
 
+    /**
+     * 动态匹配参数，并且可以动态赋值
+     *
+     * @param context
+     */
     private void initHandlerAdapters(XfcApplicationContext context) {
+
+        if (handlerMapping.isEmpty()) {
+            return;
+        }
+
+        // 声明适配器存储的数据内容
+
+
+        // 声明一个map，用户保存参数类型对应的参数顺序
+        Map<String, Integer> params = new HashMap<String, Integer>(16);
+        // 处理参数
+        for (XfcHandler handler : handlerMapping) {
+            Method method = handler.getMethod();
+            Class<?>[] parameterTypes = method.getParameterTypes();
+
+            for (int i = 0; i < parameterTypes.length; i++) {
+                Class<?> parameterType = parameterTypes[i];
+
+                // 适配参数，适配request，和response
+                if (parameterType == HttpServletResponse.class || parameterType == HttpServletRequest.class) {
+                    params.put(parameterType.getName(), i);
+                }
+
+                // 适配带注解的参数,二维数组，代表一个参数可能会有多个注解
+                Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+                for (Annotation[] parameterAnnotation : parameterAnnotations) {
+                    for (Annotation annotation : parameterAnnotation) {
+                        if (annotation instanceof XfcRequestParam) {
+                            String paramName = ((XfcRequestParam) annotation).value();
+                            params.put(paramName, i);
+                        }
+                    }
+                }
+
+            }
+            adapterMapping.put(handler, new HandlerAdapter(params));
+
+        }
+
 
     }
 
@@ -155,8 +259,10 @@ public class XfcDispatcherServlet extends HttpServlet {
                 if (method.isAnnotationPresent(XfcRequestMapping.class)) {
                     XfcRequestMapping methodAnnotation = method.getAnnotation(XfcRequestMapping.class);
                     if (methodAnnotation != null) {
-                        String mappingUrl = url + methodAnnotation.value();
-                        handlerMapping.put(mappingUrl, new Handler(entry.getValue(), method));
+                        // 组装请求路径，并且把连续的多个斜杠替换为一个斜杠
+                        String regx = (url + methodAnnotation.value()).replaceAll("/+", "/");
+                        Pattern pattern = Pattern.compile(regx);
+                        handlerMapping.add(new XfcHandler(entry.getValue(), method, pattern));
                     }
 
                 }
@@ -179,18 +285,4 @@ public class XfcDispatcherServlet extends HttpServlet {
     }
 
 
-    /**
-     * 为了方便反射调用指定方法
-     */
-    private class Handler {
-
-        public Handler(Object object, Method method) {
-            this.object = object;
-            this.method = method;
-        }
-
-        private Object object;
-        private Method method;
-
-    }
 }
