@@ -49,5 +49,11 @@
     +   AOP执行过程
         +   加载配置信息，解析为AopConfig
         +   解析完成后交给AopProxyFactory调用createAopProxy
-##  源码分析12 应看
+##  SpringJDBC
+*   原生JDBC
+    +   加载驱动类
+    +   创建链接
+    +   创建语句集
+    +   执行
+    +   获取结果集
     
