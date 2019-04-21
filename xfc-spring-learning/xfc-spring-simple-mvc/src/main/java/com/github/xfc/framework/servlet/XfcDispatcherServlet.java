@@ -38,7 +38,7 @@ public class XfcDispatcherServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        this.doPost(req, resp);
     }
 
     @Override
@@ -209,20 +209,22 @@ public class XfcDispatcherServlet extends HttpServlet {
                 // 适配参数，适配request，和response
                 if (parameterType == HttpServletResponse.class || parameterType == HttpServletRequest.class) {
                     params.put(parameterType.getName(), i);
+                    continue;
                 }
 
-                // 适配带注解的参数,二维数组，代表一个参数可能会有多个注解
-                Annotation[][] parameterAnnotations = method.getParameterAnnotations();
-                for (Annotation[] parameterAnnotation : parameterAnnotations) {
-                    for (Annotation annotation : parameterAnnotation) {
-                        if (annotation instanceof XfcRequestParam) {
-                            String paramName = ((XfcRequestParam) annotation).value();
-                            params.put(paramName, i);
-                        }
+            }
+            // 适配带注解的参数,二维数组，代表一个参数可能会有多个注解.// 这里返回的参数注解，如果没有注解的也会返回一个空注解
+            Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+            for (int i = 0; i < parameterAnnotations.length; i++) {
+                for (Annotation annotation : parameterAnnotations[i]) {
+                    if (annotation instanceof XfcRequestParam) {
+                        String paramName = ((XfcRequestParam) annotation).value();
+                        params.put(paramName, i);
                     }
                 }
 
             }
+
             adapterMapping.put(handler, new HandlerAdapter(params));
 
         }
@@ -241,8 +243,7 @@ public class XfcDispatcherServlet extends HttpServlet {
         }
 
         for (Map.Entry<String, Object> entry : allBeans.entrySet()) {
-            Class<? extends Map.Entry> aClass = entry.getClass();
-
+            Class<?> aClass = entry.getValue().getClass();
             //  处理含@XfcController注解的类
             if (!aClass.isAnnotationPresent(XfcController.class)) {
                 continue;

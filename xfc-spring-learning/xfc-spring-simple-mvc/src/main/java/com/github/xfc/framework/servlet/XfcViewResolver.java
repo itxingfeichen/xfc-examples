@@ -48,8 +48,9 @@ public class XfcViewResolver {
             while ((line = read.readLine()) != null) {
                 Matcher matcher = getMatcher(line);
                 while (matcher.find()) {
-                    for (int i = 0; i < matcher.groupCount(); i++) {
+                    for (int i = 1; i <= matcher.groupCount(); i++) {
                         String paramName = matcher.group(i);
+                        // 去除匹配符号中的占位符
                         Object paramValue = mv.getModel().get(paramName);
 
                         if (paramValue != null) {
@@ -58,8 +59,8 @@ public class XfcViewResolver {
                             line = line.replaceAll("@\\{" + paramName + "\\}", paramValue.toString());
                         }
                     }
-                    buffer.append(line);
                 }
+                buffer.append(line);
             }
         } catch (Exception e) {
             e.printStackTrace();

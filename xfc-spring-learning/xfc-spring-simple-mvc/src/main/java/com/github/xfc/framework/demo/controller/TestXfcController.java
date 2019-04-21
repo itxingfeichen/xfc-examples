@@ -18,6 +18,7 @@ import java.util.Map;
  * @description: testController
  */
 @XfcController
+@XfcRequestMapping("/test")
 public class TestXfcController {
 
     @XfcAutowired
@@ -40,10 +41,10 @@ public class TestXfcController {
      * @param addr
      * @return
      */
-    @XfcRequestMapping("/addTest")
+    @XfcRequestMapping("/addTest.json")
     public XfcModelAndView addTest(HttpServletRequest request, HttpServletResponse response,
                                    @XfcRequestParam("name") String name, @XfcRequestParam("addr") String addr) {
-        XfcModelAndView xfcModelAndView = new XfcModelAndView("text.xfcml");
+        XfcModelAndView xfcModelAndView = new XfcModelAndView("test.xfcml");
         Map<String, Object> model = xfcModelAndView.getModel();
         model.put("addr", addr);
         model.put("name", name);

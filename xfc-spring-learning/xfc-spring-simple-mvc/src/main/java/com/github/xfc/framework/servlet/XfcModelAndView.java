@@ -1,5 +1,6 @@
 package com.github.xfc.framework.servlet;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,7 +12,7 @@ public class XfcModelAndView {
 
     private Object view;
 
-    private Map<String,Object> model;
+    private Map<String,Object> model = new HashMap<String, Object>();
 
 
     public XfcModelAndView(Object view) {

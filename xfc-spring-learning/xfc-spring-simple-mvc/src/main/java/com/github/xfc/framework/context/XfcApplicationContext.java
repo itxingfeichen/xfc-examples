@@ -34,7 +34,7 @@ public class XfcApplicationContext {
 
     public XfcApplicationContext(String location) {
         // 定位
-        InputStream i = this.getClass().getResourceAsStream(location);
+        InputStream i = this.getClass().getClassLoader().getResourceAsStream(location);
         config = new Properties();
         try {
             // 加载
@@ -73,7 +73,7 @@ public class XfcApplicationContext {
      */
     private void doRegister(String scanPackage) {
         // 获取到文件路径
-        URL resource = this.getClass().getClass().getResource("/" + scanPackage.replaceAll("\\.", "/"));
+        URL resource = this.getClass().getClassLoader().getResource("/" + scanPackage.replaceAll("\\.", "/"));
         File fileDir = new File(resource.getFile());
         for (File file : fileDir.listFiles()) {
             if (file.isDirectory()) {

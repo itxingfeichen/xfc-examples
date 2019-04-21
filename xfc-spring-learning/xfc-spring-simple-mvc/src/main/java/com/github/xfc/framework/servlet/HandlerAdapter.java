@@ -38,10 +38,11 @@ public class HandlerAdapter {
             // 如果多个参数值，则匹配转换为字符串，因为request封装成的是字符数组
             // 如果请求http:localhost:8080/web/query?name=aaa&name=bbb。结果为name=aaa,bbb
             String value = Arrays.toString(entry.getValue()).replaceAll("\\[|\\]", "").replaceAll(",\\s", ",");
+            Integer index = params.get(entry.getKey());
+            paramsArr[index] = null;
             if (!params.containsKey(entry.getKey())) {
                 continue;
             }
-            Integer index = params.get(entry.getKey());
             paramsArr[index] = castDtaType(value, parameterTypes[index]);
 
         }
@@ -53,12 +54,12 @@ public class HandlerAdapter {
 
         if (params.containsKey(HttpServletResponse.class.getName())) {
             Integer index = params.get(HttpServletResponse.class.getName());
-            paramsArr[index] = req;
+            paramsArr[index] = resp;
         }
         try {
             Object invoke = method.invoke(handler.getObject(), paramsArr);
             Class<?> returnType = method.getReturnType();
-            if (returnType == XfcModelAndView.class) {
+            if (invoke!= null && invoke.getClass() == XfcModelAndView.class) {
                 return (XfcModelAndView) invoke;
             } else if (returnType == String.class) {
                 resp.getWriter().write(invoke.toString());
