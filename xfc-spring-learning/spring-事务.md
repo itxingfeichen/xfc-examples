@@ -40,6 +40,11 @@
     
 ##  spring中的事务（基于aop实现）
 *   事务传播机制(// todo)
+    *   DEFAULT
+    *   REQUIRED
+    *   EQUIRES_NEW
+    *   SUPPORTS
+    *   NESTED
 *   事务配置        
 
 
