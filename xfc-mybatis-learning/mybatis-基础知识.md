@@ -45,6 +45,24 @@
     +   resultType
     +   resultMap
 **   嵌套结果，嵌套查询
+##  mybatis缓存体系
+*   一级缓存
+*   二级缓存
+   +    需要开启才能使用
+   +    在联合查询的时候会有问题（脏读）（因为联合查询出来的数据被二级缓存了，但是其他命名空间内的sql把数据更新了，这回导致数据不同步问题）
+   +    数据失效问题
+
+
+##  mybatis-spring整合
+*   sqlSession生命周期
+    +   有transaction情况下，会一直使用同一个sqlSession
+    +   在无transaction情况下，每次都会新获取一个sqlSession，是request/method级别的
+    
+    
+##  总结
+*   什么是mybatis
+*   mybatis和jdbc区别
+*   mybatis架构图
 
 
 
