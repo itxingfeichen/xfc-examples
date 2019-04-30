@@ -12,6 +12,8 @@
         <module>xfc-current-learning</module>
         <module>springboot-learning</module>
         <module>xfc-spring-learning</module>
+        <module>xfc-mybatis-learning</module>
+        <module>xfc-distributed-learning</module>
     </modules>
 
     <properties>
