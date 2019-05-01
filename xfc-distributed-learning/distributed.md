@@ -135,7 +135,7 @@
     +   没有重试机制
     +   基于BIO（同步阻塞io），因此效率低
     +   jdk自带的分布式通信协议
-    +   不可跨语言，不可跨平台
+    +   不可跨语言
 *   自己做rpc应该包含的要素
     +   客户端
         +  RPC proxy
@@ -178,7 +178,7 @@
 *   开发一个webservice实例
     *   生成webservice客户端的依赖文件命令： wsimport -keep http://localhost:8888/webservice/test?wsdl
 *   分析wsdl文档接口
-*   webservice的wsdl文件（服务端发布代码见xfc-distributed-webservice-server项目）
+*   webservice的wsdl文件（服务端发布代码见xfc-distributed-webservice-server项目、）
 ![webservice的wsdl文件](./images/webservice的wsdl文件.jpg 'webservice的wsdl文件')
 ------------
 *   根据wsdl生成的客户端java文件调用方式

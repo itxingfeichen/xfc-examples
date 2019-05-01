@@ -7,6 +7,7 @@ package com.github.xfc.webservice.service.impl;
  */
 public class Demo {
 
+
     public static void main(String[] args) {
 
         IWebServiceImplService iWebServiceImplService =new IWebServiceImplService();
