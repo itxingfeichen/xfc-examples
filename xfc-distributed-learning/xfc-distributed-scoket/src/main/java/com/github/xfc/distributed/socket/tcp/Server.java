@@ -1,6 +1,5 @@
 package com.github.xfc.distributed.socket.tcp;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

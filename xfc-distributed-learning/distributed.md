@@ -132,7 +132,10 @@
 *   RPC协议，其实是一个规范。dubbo,thrift,rmi,webservice,hessain
 *   特点
     +   网络协议和网络IO对于调用端和服务点来说透明
-    +   
+    +   没有重试机制
+    +   基于BIO（同步阻塞io），因此效率低
+    +   jdk自带的分布式通信协议
+    +   不可跨语言，不可跨平台
 *   自己做rpc应该包含的要素
     +   客户端
         +  RPC proxy
@@ -145,14 +148,35 @@
 *  如何实现一个RMI程序
     *   第一步：创建远程接口，并切集成java.rmi.Remote接口
     *   实现远程接口，并集成UnicastRemoteObject
-    *   创建服务器程序，LocateRegistry的.createRegistry注册服务并绑定端口
+    *   创建服务器程序，LocateRegistry.createRegistry注册服务并绑定端口
     *   通过Naming.bind("rmi://localhost:8888/test/rmi",rmiService);设置请求路由和端口
     *   编写客户端程序，通过Naming.lookup("rmi://localhost:8888/test/rmi")获取请求端服务接口，然后调用指定方法。这就完成了rmi程序的远程调用
 *   自己实现rmi程序的步骤（数据都需要序列化才能进行网络传输）
     *   编写服务器程序，暴露一个监听，可以使用socket
     *   编写客户端程序，通过ip和端口链接到指定的服务器，并将数据进行封装（序列化）
     *   服务端接收到数据后进行数据的反序列化，返回在将数据序列化后返回，这就完成了自己的rmi服务
+*   rmi通信原理图
+--------------------------------------------------------
+![rmi通信原理图](./images/rmi通信原理图.png 'rmi通信原理图')
+![rmi通信时序图](./images/rmi通信时序图.png 'rmi通信时序图')
 
+##  分布式通信框架-webservice
+*   什么是webService
+    *   也可以叫做xml web service
+    *   跨平台
+*   为什么要使用webservice
+    *   跨语言调用的解决方案
+*   为什么要使用webservice
+*   webservice中的一些概念
+    *   wsdl（web service definition language）:webservice 通过wsdl文件说明自己对外提供了哪些接口，接口对应的参数，方法等。该文件是基于xml文件进行定义的
+        *   一个webservice服务对应一个wsdl文件
+        *   定义了web service的服务端和客户端交互的数据请求格式和数据响应格式和方式
+    *   Soap（simple object access protocol简单对象访问协议）
+        *   webservice通过http发送的请求内容（请求报文）和响应内容（响应报文）都是xml格式的数据
+    *   SEL（web service endpoint interface）:webservice 终端接口
+    
+*   开发一个webservice实例
+*   分析wsdl文档接口
 
 
 
