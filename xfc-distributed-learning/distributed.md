@@ -176,9 +176,13 @@
     *   SEL（web service endpoint interface）:webservice 终端接口
     
 *   开发一个webservice实例
+    *   生成webservice客户端的依赖文件命令： wsimport -keep http://localhost:8888/webservice/test?wsdl
 *   分析wsdl文档接口
-
-
+*   webservice的wsdl文件（服务端发布代码见xfc-distributed-webservice-server项目）
+![webservice的wsdl文件](./images/webservice的wsdl文件.jpg 'webservice的wsdl文件')
+------------
+*   根据wsdl生成的客户端java文件调用方式
+![根据wsdl生成的客户端java文件调用方式](./images/根据wsdl生成的客户端java文件调用方式.jpg 'webservice的wsdl文件')
 
 
 
