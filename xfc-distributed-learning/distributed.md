@@ -284,6 +284,45 @@
     +   zookeeper的javaAPI
         +   原生api基础连接方法
             ![原生api基础连接方法](./images/zookeeper原生api连接基础代码.jpg '原生api基础连接方法')
+        +   相关api操作见@See ZKJavaApi
+    +   zookeeper的权限acl
+        +   schema:授权对象
+        +   ip：
+        +   Digest：username：password
+        +   world：开发式的权限控制模式，数据节点的访问权限对所有用户开放
+        +   super：超级用户，可以对zookeeper上的数据节点进行操作
+    +   zookeeper中的连接状态
+        @Deprecated
+        Unknown (-1)
+        Disconnected (0)
+        @Deprecated
+        NoSyncConnected (1)：未连接
+        SyncConnected (3)：已异步连接
+        AuthFailed (4)：认证失败
+        ConnectedReadOnly (5)：连接只读
+        SaslAuthenticated(6)：通过SASL认证
+        Expired (-112)：连接（会话）已过期
+    +   节点触发类型
+        None (-1)：客户端和服务端连接状态发生变化的时候，事件类型就是None
+        NodeCreated (1)：节点被创建
+        NodeDeleted (2)：节点被删除
+        NodeDataChanged (3)：节点被修改
+        NodeChildrenChanged (4)：子节点被修改
+    +   zkClient的使用
+    +   Curator的使用
+    +   zk的应用场景
+        +   订阅发布(watcher机制)
+            +   统一配置管理
+        +   分布式锁
+            +   redis可以实现
+            +   zk实现（通过节点特性），临时节点的特性
+                ![通过zookeeper临时有序节点实现分布式锁的原理](./images/通过zookeeper临时有序节点实现分布式锁的原理.jpg '通过zookeeper临时有序节点实现分布式锁的原理')
+            +   数据库
+        +   负载均衡
+        +   id生成器
+        +   分布式队列
+        +   统一命名服务
+        +   master选举
 
         
     

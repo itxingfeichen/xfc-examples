@@ -4,6 +4,7 @@ import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -62,7 +63,7 @@ public class ZKJavaApi {
         TimeUnit.SECONDS.sleep(2);
         // state连接过程 not_connected-->connection-->connected-->close
         System.out.println(zooKeeper.getState());
-        deletePersistNode(zooKeeper);
+//        deletePersistNode(zooKeeper);
         // 创建节点(临时节点)
 //        createTempNode(zooKeeper);
 //        Stat stat = zooKeeper.exists("/persistNode/node1/node2", true);
@@ -72,10 +73,12 @@ public class ZKJavaApi {
 //        }
 //        setData(zooKeeper);
 //        setPersistData(zooKeeper);
-        TimeUnit.SECONDS.sleep(1);
+//        TimeUnit.SECONDS.sleep(1);
 //        deleteNode(zooKeeper);
 
-        TimeUnit.SECONDS.sleep(5);
+//        TimeUnit.SECONDS.sleep(5);
+
+        getChild(zooKeeper);
 
 
     }
@@ -131,20 +134,42 @@ public class ZKJavaApi {
         return result;
     }
 
+    /**
+     * 持久化节点修改
+     * @param zooKeeper
+     * @throws KeeperException
+     * @throws InterruptedException
+     */
     public static void setPersistData(ZooKeeper zooKeeper) throws KeeperException, InterruptedException {
 
         Stat stat = zooKeeper.setData("/persistNode/node1", "321".getBytes(), -1);
-        byte[] data = zooKeeper.getData("/persistNode/node1", true, stat);
         System.out.println(stat);
         System.out.println("数据更新");
 
     }
 
-
+    /**
+     * 持久化节点删除
+     * @param zooKeeper
+     * @throws KeeperException
+     * @throws InterruptedException
+     */
     public static void deletePersistNode(ZooKeeper zooKeeper) throws KeeperException, InterruptedException {
         zooKeeper.delete("/persistNode/node1/node2", -1);
-//        byte[] data = zooKeeper.getData("/persistNode/node1/node2", true, stat);
         System.out.println("删除节点");
+
+    }
+
+    /**
+     * 获取指定节点下的所有子节点
+     * @param zooKeeper
+     * @throws KeeperException
+     * @throws InterruptedException
+     */
+    public static void getChild(ZooKeeper zooKeeper) throws KeeperException, InterruptedException {
+
+        List<String> children = zooKeeper.getChildren("/persistNode", true);
+        System.out.println(children);
 
     }
 }
