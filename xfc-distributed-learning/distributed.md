@@ -282,6 +282,8 @@
         +   dataLength = 3    数据值长度
         +   numChildren = 0  子节点数
     +   zookeeper的javaAPI
+        +   原生api基础连接方法
+            ![原生api基础连接方法](./images/zookeeper原生api连接基础代码.jpg '原生api基础连接方法')
 
         
     
