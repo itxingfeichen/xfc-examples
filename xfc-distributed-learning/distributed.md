@@ -310,6 +310,18 @@
         NodeChildrenChanged (4)：子节点被修改
     +   zkClient的使用
     +   Curator的使用
+        +   介绍：curator是由Netflix公司开源的zookeeper客户端，curator对zookeeper的各种使用场景进行了封装。curator-framework提供了fluent风格的api，curator-replice提供了实现封装
+        +   重试策略
+            +   ExponebtialBackoffRetey()衰减重试
+            +   RetryNtimes指定最大重试次数
+            +   RetryOneTIme 仅仅重试一次
+            +   RetryUnitilElapsed 一直重试，直到规定事件
+        +   事务操作@See CuratorFrameworkTransactionDemo
+        +   事件操作（三种watcher来做的节点监听）
+            +   pathCache 监视一个路径下子节点的创建，删除，更新
+            +   NodeCache 监听一个节点的创建，更新，删除
+            +   TreeCache pachcache+nodecache合体（监视路径下的创建，更新，删除事件）
+            +   缓存路径下的所有子节点的数据
     +   zk的应用场景
         +   订阅发布(watcher机制)
             +   统一配置管理
