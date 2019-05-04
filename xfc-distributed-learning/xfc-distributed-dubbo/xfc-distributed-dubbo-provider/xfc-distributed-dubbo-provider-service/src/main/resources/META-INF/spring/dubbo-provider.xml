@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!--dubbo应用-->
+    <dubbo:application name="demo-provider" owner="cxf"/>
+    <!--
+        直链模式，不配置zk地址即可
+    <dubbo:registry address="N/A"/>-->
+    <dubbo:registry address="zookeeper://192.168.22.129:2181"/>
+
+    <dubbo:protocol name="dubbo" port="20890"/>
+    <!--暴露dubbo接口-->
+    <dubbo:service interface="com.xfc.distributed.dubbo.api.IDubboTestService" ref="dubboTest"/>
+
+    <!--    实例化bean-->
+    <bean id="dubboTest" class="com.xfc.distributed.dubbo.service.IDubboTestServiceImpl"/>
+</beans>

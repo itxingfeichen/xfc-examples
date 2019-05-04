@@ -10,6 +10,7 @@ com/github/xfc/proxy/jdk/proxy/JDKQueryProxy.class
 com/github/xfc/proxy/custom/mapper/CustomQueryMapper.class
 com/github/xfc/factory/common/Operate.class
 com/github/xfc/factory/common/CarEngine.class
+com/github/xfc/prototype/deep/ClonePrototypeDeep.class
 com/github/xfc/factory/common/MulOperate.class
 com/github/xfc/factory/abstrac/AbstractCarFactory.class
 com/github/xfc/proxy/common/User.class
@@ -31,6 +32,7 @@ com/github/xfc/factory/abstrac/LuckyFactory.class
 com/github/xfc/factory/method/DivideFactory.class
 com/github/xfc/factory/simple/SimpleFactory$1.class
 com/github/xfc/delegation/UserB.class
+com/github/xfc/prototype/simple/ClonePrototype.class
 com/github/xfc/proxy/jdk/service/IJDKQueryService.class
 com/github/xfc/factory/method/MethodFactory.class
 com/github/xfc/factory/simple/SimpleFactory.class

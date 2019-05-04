@@ -17,6 +17,7 @@
         <module>xfc-distributed-rmi</module>
         <module>xfc-distributed-webservice</module>
         <module>xfc-distributed-zookeeper</module>
+        <module>xfc-distributed-dubbo</module>
     </modules>
 
 
