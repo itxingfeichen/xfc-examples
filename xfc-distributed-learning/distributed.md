@@ -345,8 +345,55 @@
         +   分布式队列
         +   统一命名服务
         +   master选举
-
-        
+    +   zookeeper总结
+        +   数据模型
+            +   数据模型是一个树形结构，最小数据单元是znode，每个节点可以存储少量数据
+            +   临时节点（有序/无序），
+                +   依据这些特性可以做发布订阅，负载均衡，统一命名，集群，配置中心 。。。
+                +   客户端连接服务端的会话结束，该节点就会被清理
+            +   持久化节点（有序/无序）
+                +   依据这些特性可以做发布订阅，负载均衡，统一命名，集群，配置中心 。。。
+            +   特性
+                +   原子行：要么同时成功，要么同时失败（分布式事务）
+                +   单一视图：无论客户端连接到哪个服务器，看到的模型都是一致的
+                +   可靠性：通过zab协议的崩溃恢复和原子广播。可以保证数据的一致行和可靠性，一旦服务器提交了一个事务并且获得了服务器端返回成功的表示，那么这个事务锁引起的服务器端的变更会一直保留
+                +   实时行：近实时（节点之间的数据同步非常高）
+            +   zookeeper并不是用来存储数据的（主要用于监控数据状态变化，以达到基于数据的集群管理，能在分布式架构中可以做到数据的同步，状态的控制等）
+        +   集群配置
+            +   修改zoo.cfg
+                +   server.id=ip:port:port,ip:port:port
+                +   第一个port是数据同步通信的端口，第二个port是用于leader选举的端口
+                +   server.id=id
+                +   myid文件（myid参与leader的选举），内容：server.id对应的就是当前机服务器的id号    
+            +   如果增加observer
+                +   需要在第一步中增加server.id=ip:port,ip:port:observer;peerType=observer
+        +   会话
+            +   NOT_CONNECT-->CONNECTION-->CONNECTED-->CONNECT_CLOSE
+            +   如果一个客户端提交了一个事务到follower节点，follower节点是不能直接处理事务请求的，需要进行转发到leader节点
+        +   Watcher
+            +   EventType
+                +   NONE：客户端与服务器端成功建立会话
+                +   NodeCreated：节点创建（子节点创建才会触发）
+                +   NodeDeleted：节点删除（子节点删除才会出发）
+                +   NodeDataChanged：数据变更
+                +   NodeChildrenChanged：子节点发生变更，子节点删除，新增的时候才会出发
+            +   特性：事件被处理一次后，会被移除，如果需要永久监听，则需要反复注册
+        +   ACL权限操作：保证存储在zookeeper上的数据安全问题
+            +   schema（ip/djgest/world/wuper）
+            +   授权对象（ip，root：root/world：anyone/admin）
+        +   数据存储
+            +   内存数据和磁盘数据
+                +   内存数据（zookeeper底层是key-value方式存储），ConcurrentHashMap<String,DataNode>
+                    +   zookeeper会定时同步到磁盘上（时间间隔可以通过zoo.cfg配置同步策略）
+                    +   dataDir目录存储的是数据快照
+                +   磁盘数据
+                    ![zookeeper数据存储快照](./images/zookeeper数据储存快照.jpg 'zookeeper数据存储快照')
+                +   zookeeper的日子
+                    +   zookeeper.out ： zookeeper运行日志
+                    +   事务日志
+                    +   快照：存储某一时刻的全量数据       
+                   
+                    
     
     
 
