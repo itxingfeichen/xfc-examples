@@ -59,12 +59,12 @@ public class NioServer {
 
                 // 接入事件
                 if (selectionKey.isAcceptable()) {
-                    processAccept(serverSocketChannel,selector);
+                    processAccept(serverSocketChannel, selector);
                 }
 
                 // 可读事件
                 if (selectionKey.isReadable()) {
-                    processRead(selectionKey,selector);
+                    processRead(selectionKey, selector);
                 }
             }
 
@@ -90,28 +90,66 @@ public class NioServer {
     /**
      * 处理读事件
      */
-    private static void processRead(SelectionKey selectionKey,Selector selector) throws IOException {
-
+    private static void processRead(SelectionKey selectionKey, Selector selector) throws IOException {
         // 从选择器中获取到已经就绪的channel
         SocketChannel channel = (SocketChannel) selectionKey.channel();
         // 创建buffer(申请内存空间)
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-
         // 循环写入数据到buffer中
-
         StringBuffer requestData = new StringBuffer();
         if (channel.read(byteBuffer) > 0) {
-
             // 复位或者叫做转换为读模式
             byteBuffer.flip();
             requestData.append(Charset.forName("UTF-8").decode(byteBuffer));
         }
         // 读取数据结束，把channel重新注册到selector上
-        channel.register(selector,SelectionKey.OP_READ);
-
-        if(requestData.length()>0){
+        channel.register(selector, SelectionKey.OP_READ);
+        if (requestData.length() > 0) {
             // 开始广播给其他的客户端
-            System.out.println("requestData.toString() = " + requestData.toString());
+            String s = requestData.toString();
+            boardcast(selector,channel,s);
         }
     }
+
+    /**
+     * 广播
+     *
+     * @param selector
+     * @param socketChannel 当前请求到服务端的channel
+     */
+    private static void boardcast(Selector selector, SocketChannel socketChannel,String sourceData) {
+        // 获取所有已经接入的客户端
+        Set<SelectionKey> keys = selector.keys();
+        if (keys != null && keys.size() > 0) {
+            keys.forEach(action->{
+                Channel channel = action.channel();
+                if(channel instanceof SocketChannel && channel!=socketChannel){
+                    SocketChannel socketChannel1 = (SocketChannel)channel;
+                    try {
+                        // 发送信息到所有的客户端
+                        socketChannel1.write(Charset.forName("UTF-8").encode(sourceData));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            });
+
+        }
+
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

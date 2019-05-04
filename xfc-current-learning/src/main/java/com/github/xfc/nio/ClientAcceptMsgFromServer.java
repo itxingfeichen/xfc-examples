@@ -93,7 +93,7 @@ public class ClientAcceptMsgFromServer implements Runnable {
 
         if (requestData.length() > 0) {
             // 开始广播给其他的客户端
-            System.out.println("requestData.toString() = " + requestData.toString());
+            System.out.println(requestData.toString());
         }
     }
 }

@@ -17,7 +17,8 @@ import java.util.Scanner;
  */
 public class NioClient {
 
-    public static void main(String[] args) throws IOException {
+
+    public void start(String nickname) throws IOException {
         // 启动客户端
         final SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("localhost", 8000));
 
@@ -31,10 +32,8 @@ public class NioClient {
         while (scanner.hasNextLine()) {
             final String nextLine = scanner.nextLine();
             if (nextLine != null && nextLine.length() > 0) {
-                socketChannel.write(Charset.forName("UTF-8").encode(nextLine));
+                socketChannel.write(Charset.forName("UTF-8").encode(nickname+" : "+nextLine));
             }
         }
-
-
     }
 }
