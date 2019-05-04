@@ -225,7 +225,7 @@
         +   原子性：所有的事务请求的处理结果在整个集群中的所有机器上的应用是一致的，也就是说整个集群中的所有机器都成功应用了某一个事务
         +   可靠性：一旦服务器成功应用了某一个事务数据，并且对客户端做了响应，那么这个数据在整个集群中一定是同步并且保留下来的
         +   实时性：一旦一个事务被成功应用，客户端 就能立即从服务器读取到事务变更后的最新数据状态；（仅仅保证在一定时间内，近实时） 
-    +   zk中的三种角色，leader/follower/observer[zk中的三种角色](https://www.jianshu.com/p/fe6f807735b4)
+    +   zk中的三种角色，leader/follower/observer[zk中的三种角色](https://www.jianshu.com/p/fe6f807735b4)  [zk中的三种角色](https://blog.csdn.net/yu757371316/article/details/80742223)
         +   leader：Leader作为整个Zookeeper集群的主节点，负责响应所有对Zookeeper状态变更的请求。它会将每个状态更新请求进行排序和编号，以便保证整个集群内部消息处理的FIFO
         +   follower：除了响应本服务器上的读请求外，Follower还要处理Leader的提议，并在Leader提交该提议时在本地也进行提交。Follower处理提议的过程已经在ZAB协议中描述过了
         +   observer：如果Zookeeper集群的读取负载很高，或者客户端多到跨机房，可以设置一些observer服务器，以提高读取的吞吐量,observer节点可以避免水平扩展follower节点时所有节点同步数据带来的网络开销，因为新增的节点可以直接想observer节点同步数据，observer节点会同步leader的所有数据。Observer和Follower比较相似，只有一些小区别：首先observer不属于法定人数，即不参加选举也不响应提议；<br>
