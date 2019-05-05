@@ -1,6 +1,7 @@
 package com.xfc.distrubuted.consumer.service;
 
 import com.xfc.distributed.dubbo.api.IDubboTestService;
+import com.xfc.distributed.dubbo.api.IHessianTestService;
 import com.xfc.distributed.dubbo.common.RequestDto;
 import com.xfc.distributed.dubbo.common.ResponseDto;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,6 +27,10 @@ public class DubboConsumer {
         ResponseDto responseDto = dubboTest.helloDubbo(requestDto);
         System.out.println("requestDto = " + responseDto);
 
-//        System.in.read();
+
+        final IHessianTestService hessianTest = (IHessianTestService) context.getBean("hessianTest");
+        final ResponseDto responseDto1 = hessianTest.helloDubboFromHessian(requestDto);
+        System.out.println("responseDto1 = " + responseDto1);
+
     }
 }
