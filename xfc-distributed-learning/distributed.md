@@ -394,7 +394,14 @@
                     +   快照：存储某一时刻的全量数据  
     +   Dubbo 
         +   dubbo是什么：dubbo是一个分布式的高性能的服务框架，提供高性能以及透明化的RPC远程服务调用方法，以及SOA服务治理方案
-        +   dubbo核心部分：远程通信，服务治理，负载均衡     
+        +   dubbo核心部分：远程通信，服务治理，负载均衡
+        +   dubbo的服务检查
+            +   dubbo:reference check属性，默认值为true，指启动时会强制检查依赖的服务是否有效，否则启动失败
+            +   dubbo:consumer check属性，默认值为true，指启动时会强制检查依赖的服务是否有效，否则启动失败
+            +   dubbo:registry  check属性  check=true ,指注册订阅失败报错
+        +   dubbo的多协议支持
+            +   dubbo支持的协议：dubbo,hessian,rmi,webservice,thrift,http
+             
                    
                     
     
