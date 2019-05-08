@@ -18,6 +18,7 @@
         <module>xfc-distributed-webservice</module>
         <module>xfc-distributed-zookeeper</module>
         <module>xfc-distributed-dubbo</module>
+        <module>xfc-distributed-netty</module>
     </modules>
 
 
