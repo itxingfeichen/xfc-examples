@@ -408,6 +408,44 @@
     +   消息异步
     +   应用解耦
     +   流量削锋  
+*   消息传递域
+    +   点对点
+        +   每个消费者只能有一个消费者
+        +   消息的生产者和消费者之间没有时间上的相关性，无论消费者在生产者发送消息的时候是否处于运行状态，都可以提取
+    +   发布订阅
+        +   每个消息可以有多个消费者
+        +   消息的生产者和消费者席间存在时间上的相关性，订阅一个主题的消费者只能消费来自它订阅之后发的消息。JMS允许提供客户端创建持久消息
+    +   JMS的API
+        +   ConnectionFactory
+        +   Session
+        +   Destination
+        +   MessageProducer/MessageConsumer
+    +   JMS的可靠性机制
+        +   jms消息发送之后被确认，才会认为是消费成功，消息的消费包含三个阶段，客户端接收消息，客户端处理消息，消息被客户端进行确认
+        +   事务性会话（第一个参数为true是则默认是事务性会话）
+            +   connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            +   消费端调用commit方法代表所有消息都自动确认接收到
+        +   非事务性回话connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            +   取决于第一个参数为false，第二个参数可进行配置 
+            +   static final int AUTO_ACKNOWLEDGE = 1;
+                +   当客户端成功从receive方法返回以后，或者MessageListener的onMessage方法获取到消息后会进行自动确认
+            +   static final int CLIENT_ACKNOWLEDGE = 2;
+                +   客户端确认，客户端可以通过textMessage.acknowledge()方法进行确认消息。在这种模式下，如果一共是10个消息，那么如果消费了5个消息，然后在地5个消息后进行了textMessage.acknowkedge()方法，则之前消费的5个消息都会被确认，后面的5个则不会被消费 
+            +   static final int DUPS_OK_ACKNOWLEDGE = 3;
+                +   延迟确认
+            +   static final int SESSION_TRANSACTED = 0;
+        +   本地事务
+            +   
+        +   jms的（pub/sub）模型
+            +   订阅可以分为持久订阅和非持久订阅
+            +   当所有的消息必须接受的时候，则可以考虑使用持久订阅，反之，则用非持久订阅
+        +   jms的（p2p点对点模型）
+            +   如果session关闭时，有一些消息已经收到牡丹石还没有签收，那么当消费者再次连接到相同的队列时，消息还会被签收
+            +   如果用户在receive方法中设定了消息选择条件，那么不符合条件的消息会留在队列中不会被消费
+            +   队列可以长久保存消息，直到消息被消费者签收，消费者不需要担心因为消息丢失而要不要去时刻连接provider端
+        +   Broker：可以理解为一个服务，可以进行自定义broker
+            +   
+     
 
     
              

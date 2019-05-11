@@ -1,20 +1,21 @@
-package com.xfc.distributed.activemq.simple.producer;
+package com.xfc.distributed.activemq.broker.producer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
 /**
- * @author : chenxingfei
- * @date: 2019-05-11  12:37
- * @description: 简单生产者（点对点）
- */
-public class SimpleProducer {
+ * @author : cxf
+ * @date: 2019/5/11  16:40
+ * @description: 给予自定义broker的producer
+ **/
+public class CustomBrokerProducer {
+
 
     public static void main(String[] args) throws JMSException {
 
         // 创建连接工厂
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin","admin","tcp://192.168.22.128:61617");
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("tcp://localhost:16162");
 
         Connection connection = activeMQConnectionFactory.createConnection();
 
@@ -32,8 +33,7 @@ public class SimpleProducer {
         MessageProducer producer = session.createProducer(queue);
         // 构造消息体
         TextMessage textMessage = session.createTextMessage();
-        textMessage.setStringProperty("myKey","myValue");
-        textMessage.setText("hello activemq");
+        textMessage.setText("自定义的broker");
 
         // 发送消息
         producer.send(textMessage);

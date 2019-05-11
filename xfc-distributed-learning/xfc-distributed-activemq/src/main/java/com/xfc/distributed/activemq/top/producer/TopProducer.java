@@ -1,4 +1,4 @@
-package com.xfc.distributed.activemq.simple.producer;
+package com.xfc.distributed.activemq.top.producer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -9,7 +9,7 @@ import javax.jms.*;
  * @date: 2019-05-11  12:37
  * @description: 简单生产者（点对点）
  */
-public class SimpleProducer {
+public class TopProducer {
 
     public static void main(String[] args) throws JMSException {
 
@@ -21,25 +21,22 @@ public class SimpleProducer {
         connection.start();
 
 
-//        Session session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
-        // 需要消费者通过textMessage.acknowledge()方法进行消息确认
-        Session session = connection.createSession(Boolean.FALSE, Session.CLIENT_ACKNOWLEDGE);
+        Session session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
 
         // 创建队列
-        Queue queue = session.createQueue("dimple-queue");
+        Topic queue = session.createTopic("queue-topic");
 
         // 创建生产者
         MessageProducer producer = session.createProducer(queue);
         // 构造消息体
         TextMessage textMessage = session.createTextMessage();
-        textMessage.setStringProperty("myKey","myValue");
-        textMessage.setText("hello activemq");
+        textMessage.setText("hello activemq-----top");
 
         // 发送消息
         producer.send(textMessage);
 
 
-//        session.commit();
+        session.commit();
         session.close();
         connection.close();
     }

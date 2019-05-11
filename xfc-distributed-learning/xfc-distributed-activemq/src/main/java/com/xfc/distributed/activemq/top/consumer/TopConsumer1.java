@@ -1,4 +1,4 @@
-package com.xfc.distributed.activemq.simple.consumer;
+package com.xfc.distributed.activemq.top.consumer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -9,7 +9,7 @@ import javax.jms.*;
  * @date: 2019-05-11  12:37
  * @description: 简单生产者（点对点）
  */
-public class SimpleConsumer {
+public class TopConsumer1 {
 
     public static void main(String[] args) throws JMSException {
         // 创建连接工厂
@@ -28,13 +28,13 @@ public class SimpleConsumer {
         }
 
         // 创建队列
-        Queue queue = session.createQueue("dimple-queue");
+        Topic queue = session.createTopic("queue-topic");
 
         // 创建生产者
         MessageConsumer producer = session.createConsumer(queue);
         TextMessage receive = (TextMessage) producer.receive();
         receive.acknowledge();
-        System.out.println("receive.getText() = " + receive.getText()+ "-=====>"+receive.getStringProperty("mykey"));
+        System.out.println("receive.getText() = " + receive.getText());
 
         session.commit();
         session.close();
