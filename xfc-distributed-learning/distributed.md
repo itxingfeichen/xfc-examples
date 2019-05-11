@@ -445,6 +445,47 @@
             +   队列可以长久保存消息，直到消息被消费者签收，消费者不需要担心因为消息丢失而要不要去时刻连接provider端
         +   Broker：可以理解为一个服务，可以进行自定义broker
             +   
+        +   activeMQ的消息发送策略
+            +   持久化消息
+                +   默认情况下，生产者发送的消息是持久化的，消息发送到broker后，producer会等待broker对这条消息的处理情况的反馈
+                    为了提高持久化消息的发送新能，可以设置消息发送端发送持久化消息的异步方式
+                    可以通过activeMqConnectionFactory类的方setUseAsyncSend(true)来完成异步发送。
+                    +   异步发送消息会产生的问题：如果是异步发送，因为队列的容量是有限的，如果异步发送的化，客户端可能不能立即知道当前已经不能发送消息。
+                        解决办法：通过connectionFactory.setProducerWindowSize()设置回执窗口大小。当这个回执窗口被填满了，则会立即反馈个客户端不能发送消息
+            +   非持久化消息
+                +   设置方法：connectionFactory.setJMSDeliveryMode(DeliverMode.NON_PERSISTENT)
+                +   持久化消息模式下，默认就是异步发送过程，如果需要对持久化消息的每次发送的消息获得broker的回执，可通过如下设置完成connectionFactory.setAlwaysSyncSend()
+            +   consumer获取消息是pull还是（broker主动推送的）
+                +   默认情况下，mq服务器采用异步方式向客户端主动推送消息（push）。也就是说broker在某个消费者会话推送消息后，不会等待消费者响应消息，知道消费者处理完成后，主动给服务端反馈信息
+                    参数：prefectchsize
+                +   预取消息数量
+                    +   broker端一旦有消息，就主动按照默认设置的规则推送给当前活动的消费者，每次推送都有一定的数量限制，而这个数量就是prefectchSize
+            +   关于acknowledge为什么能够在第n次消费消息，主动ack后，会把前面的消息都消费掉
+                +   activemq会记录当前客户端已消费的数据数，deliveredMessages参数保存了客户端当前消费了但是没有确认的数据集合，在确认时，会将已消费到到数据都进行确认掉
+            +   spring整合activemq
+            +   activemq支持的传输协议
+                +   TCP
+                +   UDP
+                +   NIO（基于tcp）
+                +   SSL（基于tcp）
+                +   HTTP(S)（基于tcp）
+                +   VM（基于tcp）
+                +   协议的配置方法，在rabbtimq的配置文件activemq.xml文件增加transportConnector标签即可，使用时传入对应协议的url即可
+                    !['activemq协议配置图'](./images/mq协议配置图.PNG 'mq协议配置图')
+                +   ActiveMq的持久化存储
+                    !['activemq持久化存储'](./images/mq数据持久化方式.PNG 'activemq持久化存储')
+                    +   kahaDB
+                    +   ampPersistence
+                    +   jdbc
+                        !['activemq通过jdbc持久化存储'](./images/activemq的jdbc配置方法.PNG 'activemq通过jdbc持久化存储')
+                        +   需要在activemq.xml中配置数据源
+                        +   
+                    +   
+                
+                
+             
+                
+                
      
 
     
