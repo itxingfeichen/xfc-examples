@@ -484,9 +484,17 @@
                             !['jdbcPersistenceAdapter标签配置'](./images/通过mysql持久化消息配置.jpg 'jdbcPersistenceAdapter标签配置')
                         +   自动建表
                             !['自动建表'](./images/activemq自动创建的表.jpg '自动建表')
-                     
-                     
-                
+            +   activemq的网络连接
+                +   静态网络
+                    !['activeMq配置静态网络原理'](./images/activemq的静态网络.jpg 'activeMq配置静态网络原理')
+                    +   容错协议的配置：一个消费者可以连接多个服务端，如果当前消费者正在消费的broker宕机，可以立即去其他broker继续消费，因为消息会进行回流
+                    +   network配置静态网络            
+                        ["network配置静态网络"](http://activemq.apache.org/networks-of-brokers 'network配置静态网络)
+                    +   <networkConnectors>
+                        +    <networkConnector uri="static:(tcp://host1:61616,tcp://host2:61616,tcp://..)"/>
+                    +   </networkConnectors>
+                +   动态网络连接
+            +   activemq和zookeeper实现高可用架构                
                 
              
                 
