@@ -14,7 +14,6 @@
     <modules>
         <module>xfc-distributed-webservice-server</module>
         <module>xfc-distributed-webservice-client</module>
-        <module>xfc-distribute-webservice-spring-cxf</module>
     </modules>
 
 
