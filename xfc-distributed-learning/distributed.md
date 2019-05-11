@@ -472,15 +472,20 @@
                 +   VM（基于tcp）
                 +   协议的配置方法，在rabbtimq的配置文件activemq.xml文件增加transportConnector标签即可，使用时传入对应协议的url即可
                     !['activemq协议配置图'](./images/mq协议配置图.PNG 'mq协议配置图')
-                +   ActiveMq的持久化存储
+                +   ActiveMq的持久化存储["activemq的持久化"](http://activemq.apache.org/persistence.html '持久化)
                     !['activemq持久化存储'](./images/mq数据持久化方式.PNG 'activemq持久化存储')
                     +   kahaDB
                     +   ampPersistence
                     +   jdbc
                         !['activemq通过jdbc持久化存储'](./images/activemq的jdbc配置方法.PNG 'activemq通过jdbc持久化存储')
                         +   需要在activemq.xml中配置数据源
-                        +   
-                    +   
+                            !['需要在activemq.xml中配置数据源'](./images/数据源配置.jpg '需要在activemq.xml中配置数据源')
+                        +   将数据员通过jdbcPersistenceAdapter标签配置
+                            !['jdbcPersistenceAdapter标签配置'](./images/通过mysql持久化消息配置.jpg 'jdbcPersistenceAdapter标签配置')
+                        +   自动建表
+                            !['自动建表'](./images/activemq自动创建的表.jpg '自动建表')
+                     
+                     
                 
                 
              
