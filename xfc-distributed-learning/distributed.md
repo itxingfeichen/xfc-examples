@@ -392,15 +392,24 @@
                     +   zookeeper.out ： zookeeper运行日志
                     +   事务日志
                     +   快照：存储某一时刻的全量数据  
-    +   Dubbo 
-        +   dubbo是什么：dubbo是一个分布式的高性能的服务框架，提供高性能以及透明化的RPC远程服务调用方法，以及SOA服务治理方案
-        +   dubbo核心部分：远程通信，服务治理，负载均衡
-        +   dubbo的服务检查
-            +   dubbo:reference check属性，默认值为true，指启动时会强制检查依赖的服务是否有效，否则启动失败
-            +   dubbo:consumer check属性，默认值为true，指启动时会强制检查依赖的服务是否有效，否则启动失败
-            +   dubbo:registry  check属性  check=true ,指注册订阅失败报错
-        +   dubbo的多协议支持
-            +   dubbo支持的协议：dubbo,hessian,rmi,webservice,thrift,http
+##   Dubbo 
++   dubbo是什么：dubbo是一个分布式的高性能的服务框架，提供高性能以及透明化的RPC远程服务调用方法，以及SOA服务治理方案
++   dubbo核心部分：远程通信，服务治理，负载均衡
++   dubbo的服务检查
+    +   dubbo:reference check属性，默认值为true，指启动时会强制检查依赖的服务是否有效，否则启动失败
+    +   dubbo:consumer check属性，默认值为true，指启动时会强制检查依赖的服务是否有效，否则启动失败
+    +   dubbo:registry  check属性  check=true ,指注册订阅失败报错
++   dubbo的多协议支持
+    +   dubbo支持的协议：dubbo,hessian,rmi,webservice,thrift,http
+##   Netty(需补课)
+##  ActiveMQ
+*   概念：java消息服务是java平台中关于面向消息中间件的API，用与在两个应用程序之间，或者分布式系统中发送消息，进行异步通信，jms是一个具体平台无关的API，绝大多数MOM（message oriented Middleware）(面向消息中间件提供商都对jms提供了支持)
+*   应用场景
+    +   消息异步
+    +   应用解耦
+    +   流量削锋  
+
+    
              
                    
                     
