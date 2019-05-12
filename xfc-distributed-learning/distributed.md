@@ -494,7 +494,25 @@
                         +    <networkConnector uri="static:(tcp://host1:61616,tcp://host2:61616,tcp://..)"/>
                     +   </networkConnectors>
                 +   动态网络连接
-            +   activemq和zookeeper实现高可用架构                
+            +   activemq和zookeeper实现高可用架构 
+## kafka["kafka官网"](http://kafka.apache.org/quickstart 'kafka官网)
+*   概念
+*   安装
+    +   kafka配置
+        !['配置本机id以及ip'](./images/kafka基础配置.jpg '监听消息')
+        !['配置zookeeper'](./images/kafka配置zookeeper.jpg '监听消息')
+    +   解压 tar  -vxf kafkaxxx.tgz
+    +   配置 conf/server.properties的id参数
+    +   配置 listeners
+    +   配置 zookeeper地址    
+*  基本操作          
+    +   启动服务 sh kafka-server-start.sh ../config/zookeeper.properties
+    +   创建队列 sh kafka-topics.sh --create --bootstrap-server ip:9092 --replication-factor 1 --partitions 1 --topic test
+    +   发送消息 sh kafka-console-producer.sh --broker-list ip:9092 --topic test
+        !['发送消息'](./images/kafka命令发送消息.jpg '发送消息')
+    +   消费消息 sh kafka-console-consumer.sh --bootstrap-server ip:9092 --topic test --from-beginning
+        !['监听消息'](./images/kafka监听消息.jpg '监听消息')
+    
                 
              
                 
