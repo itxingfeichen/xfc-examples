@@ -512,8 +512,20 @@
         !['发送消息'](./images/kafka命令发送消息.jpg '发送消息')
     +   消费消息 sh kafka-console-consumer.sh --bootstrap-server ip:9092 --topic test --from-beginning
         !['监听消息'](./images/kafka监听消息.jpg '监听消息')
-    
-                
++   实现细节
+    +   存储可靠性   --partitions    代表分片数参数代表副本数（保证消息的吞吐量）
+    +   发送可靠性   --replication-factor    参数代表副本数（各个机器相互备份其他机器的内容达到消息可靠性） 
+        +   副本消息也有leader和follower的方式维护 
+        !['发送可靠性和存储可靠性'](./images/kafka消息的高可用和高性能配置参数.jpg '监听消息')
+    +   Partition规则
+    +   ISR（副本同步队列），满足存储到ISR队列需要满足两个条件
+        +   副本同步细节
+            !['kafka副本同步细节'](./images/kafka副本同步细节.jpg 'kafka副本同步细节')
+        +   副本的所有节点都需要跟zookeeper保持连接状态
+        +   副本的最后一条消息的offset和leader副本的最后一条消息的offset之间的差值不能超过指定阀值，该阀值是可以进行设置的。一旦ISR队列中的某个节点与zookeeper断开联系，则会被踢出ISR队列
++   kafka的分区分片策略
+    +   range策略
+    +   inbound策略
              
                 
                 

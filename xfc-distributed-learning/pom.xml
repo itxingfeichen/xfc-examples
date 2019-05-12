@@ -20,6 +20,7 @@
         <module>xfc-distributed-dubbo</module>
         <module>xfc-distributed-netty</module>
         <module>xfc-distributed-activemq</module>
+        <module>xfc-distributed-kafka</module>
     </modules>
 
 
