@@ -388,11 +388,11 @@
                     +   dataDir目录存储的是数据快照
                 +   磁盘数据
                     ![zookeeper数据存储快照](./images/zookeeper数据储存快照.jpg 'zookeeper数据存储快照')
-                +   zookeeper的日子
+                +   zookeeper的日志
                     +   zookeeper.out ： zookeeper运行日志
                     +   事务日志
                     +   快照：存储某一时刻的全量数据  
-##   Dubbo 
+##  Dubbo 
 +   dubbo是什么：dubbo是一个分布式的高性能的服务框架，提供高性能以及透明化的RPC远程服务调用方法，以及SOA服务治理方案
 +   dubbo核心部分：远程通信，服务治理，负载均衡
 +   dubbo的服务检查
@@ -525,9 +525,9 @@
         +   副本的最后一条消息的offset和leader副本的最后一条消息的offset之间的差值不能超过指定阀值，该阀值是可以进行设置的。一旦ISR队列中的某个节点与zookeeper断开联系，则会被踢出ISR队列
 +   kafka的分区分片策略
     +   range策略
-    +   inbound策略
+    +   inbalance策略
 ## redis
-*   redis的有点
+*   redis的特点
     *   redis数据类型
         +   字符类型
         +   散列类型
