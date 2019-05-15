@@ -667,6 +667,27 @@
         9台虚拟机单独拆分到9台服务器
         2.	codis基于redis2.8.13分支开发了一个codis-server
         3.	twemproxy  twitter提供的开源解决方案
+##  nginxn原理
+*   nginx的动态代理
+    +   正向代理
+    +   反向代理
+        +   ip代理
+        +   端口代理
+        +   域名代理
+*   location的匹配规则
+    +   精准匹配
+    +   普通匹配
+        +   如果存在多个前缀相同路径，会按照最长前缀进行匹配
+            +   location /prefix/
+            +   location /prefix/xx/yyy   这个会被匹配到
+    +   正则匹配
+    +   优先级  精准匹配>普通匹配>正则匹配
+*   rewrite的使用
+    +   支持url跳转，if判断，return
+    +   作用域：server/location/if，只能对域名后面的除参数外的字符串起作用
+    +   语法 if(条件){}
+*   缓存配置
+*   压缩 gzip
 
         
      
