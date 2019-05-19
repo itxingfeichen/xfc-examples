@@ -51,10 +51,10 @@ public class JvmTestController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("");
-
-        Object bean = annotationConfigApplicationContext.getBean("");
+//
+//        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("");
+//
+//        Object bean = annotationConfigApplicationContext.getBean("");
 
 
     }
