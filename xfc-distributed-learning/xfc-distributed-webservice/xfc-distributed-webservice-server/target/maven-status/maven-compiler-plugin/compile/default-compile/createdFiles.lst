@@ -1,0 +1,3 @@
+com/github/xfc/webservice/service/IWebService.class
+com/github/xfc/webservice/WebServiceServer.class
+com/github/xfc/webservice/service/impl/IWebServiceImpl.class

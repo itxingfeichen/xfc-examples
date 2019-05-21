@@ -1,0 +1,13 @@
+com/xfc/distributed/rpc/framework/registry/RpcRegistry.class
+com/xfc/distributed/rpc/framework/provider/impl/IRpcHelloServiceImpl.class
+com/xfc/distributed/rpc/framework/provider/impl/IRpcCalcServiceImpl.class
+com/xfc/distributed/rpc/framework/api/IRpcCalcService.class
+com/xfc/distributed/rpc/framework/registry/RegistryHandler.class
+com/xfc/distributed/rpc/framework/api/IRpcHelloService.class
+com/xfc/distributed/rpc/framework/consumer/RpcConsumer.class
+com/xfc/distributed/rpc/framework/consumer/proxy/RpcProxy$MethodProxy$1.class
+com/xfc/distributed/rpc/framework/consumer/proxy/RpcProxy$MethodProxy.class
+com/xfc/distributed/rpc/framework/core/msg/InvokerMsg.class
+com/xfc/distributed/rpc/framework/consumer/proxy/RpcProxyHandler.class
+com/xfc/distributed/rpc/framework/registry/RpcRegistry$1.class
+com/xfc/distributed/rpc/framework/consumer/proxy/RpcProxy.class

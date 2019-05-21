@@ -1,0 +1,7 @@
+com/github/xfc/webservice/service/impl/Demo.class
+com/github/xfc/webservice/service/impl/package-info.class
+com/github/xfc/webservice/service/impl/SayHelloWebServiceResponse.class
+com/github/xfc/webservice/service/impl/SayHelloWebService.class
+com/github/xfc/webservice/service/impl/IWebServiceImplService.class
+com/github/xfc/webservice/service/impl/ObjectFactory.class
+com/github/xfc/webservice/service/impl/IWebServiceImpl.class

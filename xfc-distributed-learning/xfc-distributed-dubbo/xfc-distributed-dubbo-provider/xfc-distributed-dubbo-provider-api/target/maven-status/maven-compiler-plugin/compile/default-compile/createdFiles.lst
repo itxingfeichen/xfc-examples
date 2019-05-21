@@ -1,0 +1,4 @@
+com/xfc/distributed/dubbo/common/RequestDto.class
+com/xfc/distributed/dubbo/api/IDubboTestService.class
+com/xfc/distributed/dubbo/common/ResponseDto.class
+com/xfc/distributed/dubbo/api/IHessianTestService.class

@@ -1,0 +1,4 @@
+com/github/xfc/distributed/socket/tcp/Server.class
+com/github/xfc/distributed/socket/multi/MultiClient.class
+com/github/xfc/distributed/socket/tcp/Client.class
+com/github/xfc/distributed/socket/multi/MultiServer.class

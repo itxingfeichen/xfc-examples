@@ -1,0 +1,4 @@
+com/github/distributed/rmi/server/RmiServer.class
+com/github/distributed/rmi/client/RmiClient.class
+com/github/distributed/rmi/server/service/impl/RmiServiceImpl.class
+com/github/distributed/rmi/server/service/RmiService.class

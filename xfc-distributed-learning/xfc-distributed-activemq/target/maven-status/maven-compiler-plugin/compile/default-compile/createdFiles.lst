@@ -1,0 +1,5 @@
+com/xfc/distributed/activemq/spring/service/Main.class
+com/xfc/distributed/activemq/simple/producer/SimpleProducer.class
+com/xfc/distributed/activemq/spring/service/AmqProducerService.class
+com/xfc/distributed/activemq/simple/consumer/SimpleConsumer.class
+com/xfc/distributed/activemq/spring/service/impl/AmqProducerServiceImpl.class

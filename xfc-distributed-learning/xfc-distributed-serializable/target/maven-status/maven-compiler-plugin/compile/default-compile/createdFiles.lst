@@ -1,0 +1,3 @@
+com/github/xfc/distributed/serializable/model/User.class
+com/github/xfc/distributed/serializable/model/Teacher.class
+com/github/xfc/distributed/serializable/deepclone/DeepClone.class
