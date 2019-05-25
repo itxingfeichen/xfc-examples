@@ -11,3 +11,7 @@ spring:
           password: xf1123581321
   application:
     name: config-server
+management:
+  endpoint:
+    refresh:
+      enabled: false

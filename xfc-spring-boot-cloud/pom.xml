@@ -14,15 +14,8 @@
     <modules>
         <module>xfc-spring-config-client</module>
         <module>xfc-spring-cloud-config-server</module>
+        <module>xfc-spring-cloud-config-client</module>
     </modules>
 
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
-    </dependencies>
 
 </project>
