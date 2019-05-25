@@ -15,6 +15,7 @@
         <module>xfc-mybatis-learning</module>
         <module>xfc-distributed-learning</module>
         <module>xfc-performance-learning</module>
+        <module>xfc-spring-boot-cloud</module>
     </modules>
 
     <properties>
