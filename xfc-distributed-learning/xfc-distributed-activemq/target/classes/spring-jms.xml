@@ -59,12 +59,12 @@
         <property name="messageListener" ref="destinationQueueListener"/>
     </bean>
 
-<!--    <bean id="jmsContainerForTopic"-->
-<!--          class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
-<!--        <property name="connectionFactory" ref="cachingConnectionFactory"/>-->
-<!--        <property name="destination" ref="destinationTopic"/>-->
-<!--        <property name="messageListener" ref="destinationTopicListener"/>-->
-<!--    </bean>-->
+    <bean id="jmsContainerForTopic"
+          class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="cachingConnectionFactory"/>
+        <property name="destination" ref="destinationTopic"/>
+        <property name="messageListener" ref="destinationTopicListener"/>
+    </bean>
 
 <!--    <bean id="destinationQueueListener" class="com.xfc.distributed.activemq.spring.service.ConsumerQueueListener"></bean>-->
 <!--    <bean id="destinationTopicListener" class="com.xfc.distributed.activemq.spring.container.ConsumerTopicListener"></bean>-->
