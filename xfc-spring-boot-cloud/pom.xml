@@ -17,6 +17,7 @@
         <module>xfc-spring-cloud-config-client</module>
         <module>xfc-spring-cloud-eureka-server</module>
         <module>xfc-spring-cloud-eurka-client</module>
+        <module>xfc-spring-cloud-service</module>
     </modules>
 
 

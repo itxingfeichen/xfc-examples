@@ -1,5 +1,5 @@
 server:
-  port: 1230
+  port: 8080
 eureka:
   client:
     ##  取消自我注册
