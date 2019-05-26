@@ -6,4 +6,7 @@ eureka:
     register-with-eureka: false
     ##  关闭服务检索（因为自己本来就拥有所有服务资源）
     fetch-registry: false
-    eureka-server-u-r-l-context: http://localhost:${server.port}/eurka
+    eureka-server-u-r-l-context: http://localhost:${server.port}/eureka
+spring:
+  application:
+    name: eureka-server
