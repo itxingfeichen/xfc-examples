@@ -1,49 +1,90 @@
 package com.github.xfc.i18n.config;
 
-import org.springframework.beans.factory.BeanClassLoaderAware;
+import com.github.xfc.i18n.model.I18N;
+import com.github.xfc.i18n.service.I18NService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.context.MessageSourceProperties;
 import org.springframework.context.support.AbstractResourceBasedMessageSource;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import java.text.MessageFormat;
-import java.util.Locale;
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author : chenxingfei
  * @date: 2019-06-22  22:26
  * @description: 自定义国际哈信息解析起
  */
-public class CustomMessageSource extends AbstractResourceBasedMessageSource implements BeanClassLoaderAware {
-    /**
-     * Callback that supplies the bean {@link ClassLoader class loader} to
-     * a bean instance.
-     * <p>Invoked <i>after</i> the population of normal bean properties but
-     * <i>before</i> an initialization callback such as
-     * {@link InitializingBean InitializingBean's}
-     * {@link InitializingBean#afterPropertiesSet()}
-     * method or a custom init-method.
-     *
-     * @param classLoader the owning class loader
-     */
-    @Override
-    public void setBeanClassLoader(ClassLoader classLoader) {
+//@Service("messageSource")
+public class CustomMessageSource extends AbstractResourceBasedMessageSource {
 
+    @Autowired
+    private MessageSourceProperties properties;
+
+    /**
+     * 说明:</b>
+     * <p>
+     * 通过一个map集合存储各个语言的国际化内容</b>
+     * Local: 语言类型
+     * </p>
+     */
+    private final Map<Locale, Map<String, Object>> cacheI8nData = new ConcurrentHashMap();
+
+    @Autowired
+    private I18NService i18NService;
+
+    @PostConstruct
+    private void postConstruct() {
+        List<I18N> i18NS = i18NService.list();
+        i18NS.forEach(action -> {
+            String actionLocale = action.getLocale();
+            if(actionLocale!=null && actionLocale.contains("_")){
+                String[] codeAndCountry = actionLocale.split("_");
+                Locale locale = new Locale(codeAndCountry[0], codeAndCountry[1]);
+                if(cacheI8nData.containsKey(locale)){
+                    cacheI8nData.get(locale).put(action.getI18nKey(),action.getI18nValue());
+                }else{
+                    Map<String,Object> map = new HashMap<>();
+                    map.put(action.getI18nKey(),action.getI18nValue());
+                    cacheI8nData.put(locale,map);
+                }
+            }
+        });
     }
 
+
     /**
-     * Subclasses must implement this method to resolve a message.
-     * <p>Returns a MessageFormat instance rather than a message String,
-     * to allow for appropriate caching of MessageFormats in subclasses.
-     * <p><b>Subclasses are encouraged to provide optimized resolution
-     * for messages without arguments, not involving MessageFormat.</b>
-     * See the {@link #resolveCodeWithoutArguments} javadoc for details.
+     * 在国际化内容中包含参数时需要使用,所以所有的子类必须自己实现
      *
-     * @param code   the code of the message to resolve
-     * @param locale the locale to resolve the code for
-     *               (subclasses are encouraged to support internationalization)
-     * @return the MessageFormat for the message, or {@code null} if not found
-     * @see #resolveCodeWithoutArguments(String, Locale)
+     * @param code
+     * @param locale
+     * @return
      */
     @Override
     protected MessageFormat resolveCode(String code, Locale locale) {
-        return null;
+        return new MessageFormat(code, locale);
+    }
+
+
+    /**
+     * 根据语言获取自己存储在redis中或者在本地缓存的数据
+     *
+     * @param code
+     * @param locale
+     * @return
+     */
+    @Override
+    protected String resolveCodeWithoutArguments(String code, Locale locale) {
+        // TODO
+//        return super.resolveCodeWithoutArguments(code, locale);
+        Object o = cacheI8nData.get(locale).get(code);
+        if (o == null) {
+            return code;
+        }
+        return o.toString();
     }
 }

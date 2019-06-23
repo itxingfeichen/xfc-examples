@@ -53,7 +53,8 @@ public class Consumer extends ShutdownableThread {
 
 
     public static void main(String[] args) {
-        new Consumer1(KafkaProperties.TOPIC).start();
+//        new Consumer1(KafkaProperties.TOPIC).start();
+        new Consumer1("zipkin").start();
     }
 
 

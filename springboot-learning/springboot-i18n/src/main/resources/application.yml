@@ -9,3 +9,5 @@ spring:
     cache-duration: 1
     use-code-as-default-message: true
     always-use-message-format: false
+  profiles:
+    active: dev
