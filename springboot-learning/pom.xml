@@ -20,5 +20,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>springboot-redis-lock</module>
+        <module>springboot-i18n</module>
     </modules>
 </project>
