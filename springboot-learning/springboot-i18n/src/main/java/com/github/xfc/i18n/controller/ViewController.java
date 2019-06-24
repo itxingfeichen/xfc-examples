@@ -21,6 +21,8 @@ public class ViewController {
         products.add("P3");
 //        products.add("P4");
         modelAndView.addObject("products",products);
+        modelAndView.addObject("t","bbb");
+        modelAndView.addObject("x","ccc");
         return modelAndView;
     }
 }

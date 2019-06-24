@@ -14,6 +14,10 @@
     <option th:value="${product}" th:each="product : ${products}" th:text="#{'select-'+${product}}"></option>
 </select>
 
+<div th:if="${t == 'aaa' || t=='bbb'}" >多条件表达式测试</div>
+<div th:if="${t == 'aaa' || t=='bbn'}" >多条件表达式测试</div>
+<div th:if="${t == 'aaa' or x=='ccc'}" >多条件表达式测试---Or</div>
+
 </body>
 </html>
 
