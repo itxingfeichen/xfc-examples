@@ -16,6 +16,7 @@
         <module>xfc-distributed-learning</module>
         <module>xfc-performance-learning</module>
         <module>xfc-spring-boot-cloud</module>
+        <module>xfc-typical-case</module>
     </modules>
 
     <properties>
