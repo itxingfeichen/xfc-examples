@@ -1,8 +1,8 @@
 spring:
   rabbitmq:
-    addresses: host
-    username: 123
-    password: 123
+    addresses: 192.168.3.128
+    username: admin
+    password: admin
     virtual-host: /
     listener:
       direct:
