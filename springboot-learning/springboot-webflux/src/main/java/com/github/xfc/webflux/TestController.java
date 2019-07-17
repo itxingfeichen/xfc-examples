@@ -1,9 +1,11 @@
 package com.github.xfc.webflux;
 
+import com.github.xfc.webflux.model.CaseInCollectionBatchModel;
 import com.github.xfc.webflux.producer.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,5 +29,17 @@ public class TestController {
         producerService.testSend();
 
         return value;
+    }
+
+    /**
+     * 数据构建
+     *
+     * @return
+     */
+    @RequestMapping(value = "dataBuild")
+    @ResponseBody
+    public CaseInCollectionBatchModel dataBuild(CaseInCollectionBatchModel caseInCollectionBatchModel) {
+        System.out.println(caseInCollectionBatchModel);
+        return caseInCollectionBatchModel;
     }
 }
