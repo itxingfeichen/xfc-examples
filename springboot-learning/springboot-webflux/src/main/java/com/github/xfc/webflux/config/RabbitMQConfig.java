@@ -1,6 +1,7 @@
 package com.github.xfc.webflux.config;
 
 import org.springframework.amqp.core.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @description: mq配置
  */
 @Configuration
+@ConditionalOnProperty("${config.flag.rabbitmq}")
 public class RabbitMQConfig {
 
 
