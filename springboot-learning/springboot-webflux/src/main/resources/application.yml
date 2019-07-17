@@ -1,0 +1,15 @@
+spring:
+  rabbitmq:
+    addresses: mq-test.yzdftech.com
+    username: mintq
+    password: mintq
+    virtual-host: /
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+      type: direct
+    publisher-confirms: true
+server:
+  port: 9999
