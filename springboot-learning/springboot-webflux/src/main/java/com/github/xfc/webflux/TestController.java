@@ -2,11 +2,21 @@ package com.github.xfc.webflux;
 
 import com.github.xfc.webflux.model.CaseInCollectionBatchModel;
 import com.github.xfc.webflux.producer.ProducerService;
+import com.github.xfc.webflux.model.CaseInCollectionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.math.BigDecimal;
+import java.security.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author : chenxingfei
@@ -40,6 +50,39 @@ public class TestController {
     @ResponseBody
     public CaseInCollectionBatchModel dataBuild(CaseInCollectionBatchModel caseInCollectionBatchModel) {
         System.out.println(caseInCollectionBatchModel);
+
+        caseInCollectionBatchModel.setCallbackUrl("http:baidu.com");
+        caseInCollectionBatchModel.setProduct("KG");
+        caseInCollectionBatchModel.setSecret("qwertyuio");
+        caseInCollectionBatchModel.setTimestamp(Instant.now().toEpochMilli());
+        caseInCollectionBatchModel.setTotal(100);
+        List<CaseInCollectionModel> list = new ArrayList<>(2);
+
+        for (int i = 0; i < 2; i++) {
+
+            CaseInCollectionModel caseInCollectionModel = new CaseInCollectionModel();
+            caseInCollectionModel.setAccountType("ACCOUNT_TYPE"+i);
+            caseInCollectionModel.setProduct("PRODUCT"+i);
+
+            caseInCollectionModel.setAppId("appId1");
+            caseInCollectionModel.setBusinessId("businessId"+i);
+            caseInCollectionModel.setApprovedDate(new Date());
+            caseInCollectionModel.setApprovedPeriod(i);
+            caseInCollectionModel.setOrderNo("orderNo"+i);
+            caseInCollectionModel.setApprovedPrincipal(BigDecimal.valueOf(100).add(BigDecimal.valueOf(i)));
+            caseInCollectionModel.setCurrentTerm(i);
+            caseInCollectionModel.setDueDate(new Date());
+            list.add(caseInCollectionModel);
+        }
+        caseInCollectionBatchModel.setCollectionModels(list);
         return caseInCollectionBatchModel;
     }
+
+    @RequestMapping("buildData")
+    @ResponseBody
+    public CaseInCollectionBatchModel buildData(@RequestBody CaseInCollectionBatchModel caseInCollectionBatchModel){
+
+        return caseInCollectionBatchModel;
+    }
+
 }
