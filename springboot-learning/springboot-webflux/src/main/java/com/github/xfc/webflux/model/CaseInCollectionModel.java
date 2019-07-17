@@ -1,6 +1,5 @@
 package com.github.xfc.webflux.model;
 
-import com.mintq.collection.enums.OrderStatus;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -10,7 +9,6 @@ import java.util.Date;
  * @Author chenxingfei
  * @Description 入催模型对象（之后需要将菲律宾入催也改为此对象数据，统一入催）</br>
  * @Date 2018/8/20 10:53
- * @see com.mintq.collection.models.CaseInCollection
  **/
 public class CaseInCollectionModel implements Serializable {
 
@@ -55,7 +53,7 @@ public class CaseInCollectionModel implements Serializable {
     /**
      * 订单状态
      */
-    private OrderStatus orderStatus;
+    private String orderStatus;
     /**
      * 城市
      */
@@ -185,12 +183,14 @@ public class CaseInCollectionModel implements Serializable {
         this.accountType = accountType;
     }
 
-    public OrderStatus getOrderStatus() {
+
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(OrderStatus orderStatus) {
+    public CaseInCollectionModel setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+        return this;
     }
 
     public String getCity() {
