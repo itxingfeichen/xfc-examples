@@ -22,5 +22,6 @@
         <module>springboot-redis-lock</module>
         <module>springboot-i18n</module>
         <module>springboot-webflux</module>
+        <module>springboot-web</module>
     </modules>
 </project>

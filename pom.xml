@@ -17,7 +17,6 @@
         <module>xfc-performance-learning</module>
         <module>xfc-spring-boot-cloud</module>
         <module>xfc-typical-case</module>
-        <module>springboot-web</module>
     </modules>
 
     <properties>
