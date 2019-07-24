@@ -66,34 +66,30 @@ public class TestController {
         ExecutorService pool = Executors.newFixedThreadPool(3);
 
 
-        CompletableFuture<String> task=CompletableFuture.supplyAsync(new Supplier<String>() {
-            @Override
-            public String get() {
-                try {
-                    Thread.sleep(1000L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(getThreadName()+"supplyAsync");
-                return "123";
+        CompletableFuture<String> task=CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            System.out.println(getThreadName()+"supplyAsync");
+            return "123";
         },pool);
 
-        CompletableFuture<String> task1=CompletableFuture.supplyAsync(new Supplier<String>() {
-            @Override
-            public String get() {
-                try {
-                    Thread.sleep(2000L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(getThreadName()+"supplyAsync1");
-                return "456";
+        CompletableFuture<String> task1=CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(2000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            System.out.println(getThreadName()+"supplyAsync1");
+            return "456";
         },pool);
 
         String s = task.get();
         String s1 = task1.get();
+
+
 
         System.out.println("s+s1 = " + s + s1);
 
