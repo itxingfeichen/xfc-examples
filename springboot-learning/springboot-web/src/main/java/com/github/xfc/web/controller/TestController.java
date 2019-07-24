@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.function.Supplier;
 
 /**
  * @author : chenxingfei
@@ -14,6 +19,11 @@ import java.io.IOException;
  */
 @RestController
 public class TestController {
+
+    public TestController() {
+
+        System.out.println("test");
+    }
 
     /**
      * servlet异步（错误示范）
@@ -34,4 +44,63 @@ public class TestController {
         });
         return "???";
     }
+
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+//        CompletableFuture.runAsync(()-> System.out.println(getCurrentName()+" 测试1"),pool).thenRunAsync(()-> System.out.println(getCurrentName()+" test2"),pool).get();
+
+        asyncCallback();
+
+
+
+    }
+
+
+    public static String getThreadName(){
+
+        return Thread.currentThread().getName() +"线程";
+    }
+
+    public static void asyncCallback() throws ExecutionException, InterruptedException {
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+
+
+        CompletableFuture<String> task=CompletableFuture.supplyAsync(new Supplier<String>() {
+            @Override
+            public String get() {
+                try {
+                    Thread.sleep(1000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(getThreadName()+"supplyAsync");
+                return "123";
+            }
+        },pool);
+
+        CompletableFuture<String> task1=CompletableFuture.supplyAsync(new Supplier<String>() {
+            @Override
+            public String get() {
+                try {
+                    Thread.sleep(2000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(getThreadName()+"supplyAsync1");
+                return "456";
+            }
+        },pool);
+
+        String s = task.get();
+        String s1 = task1.get();
+
+        System.out.println("s+s1 = " + s + s1);
+
+        pool.shutdown();
+
+
+    }
+
+
 }
