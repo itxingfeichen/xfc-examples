@@ -23,9 +23,13 @@ public class AsyncTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        for (int i = 0; i < 10; i++) {
-            dataConsumer("myData" + i);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            dataConsumer("myData" + i);
+//        }
+
+        StaticMethodTest.test();
+        StaticMethodTest.test();
+        StaticMethodTest.test();
     }
 
     private static void dataConsumer(String data) throws ExecutionException, InterruptedException {
