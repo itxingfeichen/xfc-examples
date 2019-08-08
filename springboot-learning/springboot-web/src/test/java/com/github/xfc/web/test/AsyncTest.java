@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.Instant;
 import java.util.concurrent.*;
 
+import static java.lang.Thread.currentThread;
+
 /**
  * @author : chenxingfei
  * @date: 2019-07-31  23:21
@@ -27,9 +29,11 @@ public class AsyncTest {
 //            dataConsumer("myData" + i);
 //        }
 
-        StaticMethodTest.test();
-        StaticMethodTest.test();
-        StaticMethodTest.test();
+//        StaticMethodTest.test();
+//        StaticMethodTest.test();
+//        StaticMethodTest.test();
+
+        System.out.println(currentThread());
     }
 
     private static void dataConsumer(String data) throws ExecutionException, InterruptedException {
@@ -47,12 +51,13 @@ public class AsyncTest {
 //        }, pool);
         pool.submit(()->{
             try {
-                System.out.println(Thread.currentThread().getName() +" 数据消费 " + data+ " time="+ Instant.now().toEpochMilli());
+                System.out.println(currentThread().getName() +" 数据消费 " + data+ " time="+ Instant.now().toEpochMilli());
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         });
+
 
 
 
