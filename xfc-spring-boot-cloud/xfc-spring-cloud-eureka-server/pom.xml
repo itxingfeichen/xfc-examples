@@ -43,7 +43,7 @@
 
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-formatter-eureka</artifactId>
             <version>1.2.8.BUILD-SNAPSHOT</version>
         </dependency>-->
 
