@@ -2,11 +2,11 @@ package com.github.xfc.web;
 
 import com.github.xfc.autoconfigure.formatter.Formatter;
 import com.github.xfc.web.model.User;
-import com.github.xfc.web.service.CalculatingService;
-import com.github.xfc.web.service.Java12CalculatingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Map;
 
 /**
  * @author : chenxingfei
@@ -25,13 +25,19 @@ public class SpringBootWebBootstrap {
 //
 //        Java12CalculatingService java12CalculatingService = run.getBean(Java12CalculatingService.class);
 //
-//        // 为了测试spring.profiles.active多个值用法
 //        System.out.println(java12CalculatingService.doSum(1, 2, 3, 4, 5));
 
-        Formatter formatter = run.getBean(Formatter.class);
+        Map<String, Formatter> beansOfType = run.getBeansOfType(Formatter.class);
 
-        System.out.println("formatter execute result = " + formatter.format(new User("zhagnsan", 1)));
+        beansOfType.forEach((beanName,formatter)->{
+
+            System.out.println("formatter execute beanName=" + beanName+
+                    " result = " + formatter.format(new User("zhagnsan", 1)));
+
+        });
+
 
     }
+
 
 }

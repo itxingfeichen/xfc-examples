@@ -14,6 +14,6 @@ public class DefaultFormatter implements Formatter {
      */
     @Override
     public String format(Object object) {
-        return String.valueOf(object);
+        return this.getClass().getName()+" "+ object;
     }
 }

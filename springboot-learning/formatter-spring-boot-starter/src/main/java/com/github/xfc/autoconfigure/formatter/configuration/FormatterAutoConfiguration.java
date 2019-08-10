@@ -25,15 +25,23 @@ public class FormatterAutoConfiguration {
      */
     @Bean
     @ConditionalOnMissingClass(value = "com.fasterxml.jackson.databind.ObjectMapper")
-    @ConditionalOnMissingBean(ObjectMapper.class)
     public Formatter defaultFormatter(){
         return new DefaultFormatter();
     }
 
     @Bean
     @ConditionalOnClass(name = "com.fasterxml.jackson.databind.ObjectMapper")
-    @ConditionalOnBean(name = "com.fasterxml.jackson.databind.ObjectMapper")
-    public Formatter jsonFormatter(ObjectMapper objectMapper){
+    @ConditionalOnMissingBean(type = "com.fasterxml.jackson.databind.ObjectMapper")
+    public Formatter jsonFormatter(){
+        return new JsonFormatter();
+    }
+
+    @Bean
+    @ConditionalOnBean(ObjectMapper.class)
+    public Formatter objectMapperFormatter(ObjectMapper objectMapper){
         return new JsonFormatter(objectMapper);
     }
+
+
+
 }

@@ -30,7 +30,7 @@ public class JsonFormatter implements Formatter {
     @Override
     public String format(Object object) {
         try {
-            return objectMapper.writeValueAsString(object);
+            return this.getClass().getName()+" "+objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             throw new IllegalArgumentException("this argument is illegal " + object);
         }
