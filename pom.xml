@@ -17,6 +17,7 @@
         <module>xfc-performance-learning</module>
         <module>xfc-spring-boot-cloud</module>
         <module>xfc-typical-case</module>
+        <module>xfc-maven-plugin</module>
     </modules>
 
     <properties>
