@@ -18,7 +18,7 @@ public class ConsumerService {
 
     @RabbitListener(queues = "someQueue")
     public void processMessage(Message content, Channel channel) throws IOException {
-        channel.basicAck(content.getMessageProperties().getDeliveryTag(), false);
+//        channel.basicAck(content.getMessageProperties().getDeliveryTag(), false);
         System.out.println(content.toString());
     }
 }

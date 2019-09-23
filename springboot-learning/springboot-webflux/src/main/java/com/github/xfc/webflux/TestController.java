@@ -59,7 +59,7 @@ public class TestController {
         caseInCollectionBatchModel.setTotal(100);
         List<CaseInCollectionModel> list = new ArrayList<>(2);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 500; i++) {
 
             CaseInCollectionModel caseInCollectionModel = new CaseInCollectionModel();
             caseInCollectionModel.setAccountType("ACCOUNT_TYPE"+i);
