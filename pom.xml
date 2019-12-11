@@ -18,6 +18,8 @@
         <module>xfc-spring-boot-cloud</module>
         <module>xfc-typical-case</module>
         <module>xfc-maven-plugin</module>
+        <module>xfc-data-structure</module>
+        <module>xfc-algorithm</module>
     </modules>
 
     <properties>
