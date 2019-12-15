@@ -29,6 +29,14 @@ public interface Stack {
     void push(int value);
 
     /**
+     * 查看栈顶元素
+     * @return
+     */
+    default int peek(){
+        throw new RuntimeException("需要子类实现");
+    }
+
+    /**
      * 出栈
      */
     int pop();

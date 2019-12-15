@@ -6,7 +6,7 @@ package com.xfc.structure.statck;
  * @author jannik
  * @version v1.0.0
  * @date 2019-12-14 09:11
- **/
+ */
 public class ArrayStack implements Stack {
 
     /**
@@ -69,6 +69,7 @@ public class ArrayStack implements Stack {
             throw new RuntimeException("栈为空");
         }
         int value = this.stack[top];
+        this.stack[top] = 0;
         top--;
         return value;
     }
@@ -85,5 +86,13 @@ public class ArrayStack implements Stack {
         }
     }
 
-
+    /**
+     * 查看栈顶元素
+     *
+     * @return
+     */
+    @Override
+    public int peek() {
+        return this.stack[top];
+    }
 }

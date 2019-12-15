@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
+ * 链表模拟栈
  * @author jannik
  * @version v1.0.0
- * @description 链表模拟栈
  * @date 2019-12-14 13:29
- **/
+ */
 public class LinkedStack implements Stack {
 
     /**

@@ -13,6 +13,7 @@ public class LinkedStackTest {
         linkedStack.push(32);
         linkedStack.push(3233);
         linkedStack.push(123);
+        linkedStack.push(123);
         linkedStack.list();
         System.out.println("linkedStack.size() = " + linkedStack.size());
         System.out.println("linkedStack.pop() = " + linkedStack.pop());
