@@ -17,7 +17,6 @@ public class MazeFromStack {
 
         int[][] map = makeMap();
         // 设置小球最初位置
-//        start(1, 1, map);
         start2(1, 1, map);
         showMap(map);
 
