@@ -1,14 +1,12 @@
 package com.xfc.structure.sort;
 
-import java.util.Arrays;
-
 /**
  * 插入排序
  *
  * @author xf
  * @date 2019/12/19 19:51
  */
-public class InsertSort implements Sort {
+public class InsertSort implements ArraySort {
 
     /**
      * 待排序数据
