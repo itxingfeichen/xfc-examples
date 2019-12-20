@@ -28,14 +28,15 @@ public interface ArraySort {
 
     /**
      * 性能测试
+     *
      * @param doSort
      */
-    default void doSortWithPerformance(boolean doSort){
+    default void doSortWithPerformance(boolean doSort) {
         int[] originData = prepareOriginalData(8000);
         long start = Instant.now().toEpochMilli();
-        if(doSort){
+        if (doSort) {
             doSort(originData);
-        }else{
+        } else {
             doSortWithOptimization(originData);
         }
         long end = Instant.now().toEpochMilli();
@@ -61,7 +62,7 @@ public interface ArraySort {
      */
     default int[] prepareOriginalData(int max) {
         if (max == 0) {
-            int[] data = {1, 3, 2, 4,10,8,6,5,7};
+            int[] data = {1, 3, 2, 4, 10, 8, 6, 5, 7, 9};
             printResult(data, "原始数组为");
             return data;
         } else {
