@@ -18,7 +18,7 @@ public class ShellSortTest {
         ShellSort shellSort = new ShellSort();
         int[] ints = shellSort.doSort(data);
 
-        int[] sortType2 = shellSort.doSortType2(data);
+        int[] sortType2 = shellSort.doSortOptimization(data);
         System.out.println(Arrays.toString(sortType2));
 
 //        System.out.println(Arrays.toString(ints));

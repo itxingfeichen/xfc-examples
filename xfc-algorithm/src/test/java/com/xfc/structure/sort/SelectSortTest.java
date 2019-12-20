@@ -12,7 +12,7 @@ public class SelectSortTest {
     @Test
     public void doSort() {
         SelectSort selectSort = new SelectSort();
-        int[] ints = selectSort.doSort(selectSort.prepareOriginalData());
-        selectSort.printResult(ints);
+        int[] ints = selectSort.doSort(selectSort.prepareOriginalData(0));
+        selectSort.printResult(ints,null);
     }
 }

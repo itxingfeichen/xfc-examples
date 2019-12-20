@@ -45,7 +45,7 @@ public class ShellSort implements ArraySort {
      * @return
      */
     @Override
-    public int[] doSortType2(int[] originData) {
+    public int[] doSortOptimization(int[] originData) {
         // copy数组
         int[] data = Arrays.copyOf(originData, originData.length);
         int skip = data.length / 2;
