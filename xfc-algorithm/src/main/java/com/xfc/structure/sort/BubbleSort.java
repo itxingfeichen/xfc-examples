@@ -45,7 +45,7 @@ public class BubbleSort implements ArraySort {
      * @return
      */
     @Override
-    public int[] doSortOptimization(int[] originData) {
+    public int[] doSortWithOptimization(int[] originData) {
         int[] data = Arrays.copyOf(originData, originData.length);
         // 通过flag标记是否交换过，如果没有交换过，则证明排序已经完成
         boolean flag = false;

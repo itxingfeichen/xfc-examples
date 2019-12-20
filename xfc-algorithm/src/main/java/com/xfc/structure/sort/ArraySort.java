@@ -36,7 +36,7 @@ public interface ArraySort {
         if(doSort){
             doSort(originData);
         }else{
-            doSortOptimization(originData);
+            doSortWithOptimization(originData);
         }
         long end = Instant.now().toEpochMilli();
         System.out.printf("%s%dms%n", doSort ? "未优化耗时" : "优化耗时", end - start);
@@ -49,7 +49,7 @@ public interface ArraySort {
      * @param originData
      * @return
      */
-    default int[] doSortOptimization(int[] originData) {
+    default int[] doSortWithOptimization(int[] originData) {
         return originData;
     }
 
