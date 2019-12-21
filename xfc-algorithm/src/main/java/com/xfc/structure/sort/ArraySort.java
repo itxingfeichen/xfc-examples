@@ -15,8 +15,6 @@ import java.util.Random;
  */
 public interface ArraySort {
 
-    Map<String, int[]> map = new HashMap();
-
     /**
      * 待排序数据
      *
@@ -60,25 +58,14 @@ public interface ArraySort {
      *
      * @return
      */
-    default int[] prepareOriginalData(int max) {
-        if (max == 0) {
-            int[] data = {1, 3, 2, 4, 10, 8, 6, 5, 7, 9};
-//            int[] data = {4, 3, 2, 1};
-            printResult(data, "原始数组为");
-            return data;
-        } else {
-            if (map.get("data") != null) {
-                return map.get("data");
-            }
-            int[] data = new int[max];
-            Random random = new Random();
-            for (int i = 0; i < data.length; i++) {
-                data[i] = random.nextInt(max);
-            }
-            map.put("data", data);
-            return data;
-        }
+    default int[] prepareOriginalData(int elements) {
+        Random random = new Random();
 
+        int[] data = new int[elements];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = random.nextInt(elements);
+        }
+        return data;
     }
 
     /**
@@ -95,11 +82,12 @@ public interface ArraySort {
 
     /**
      * 交换方法
+     *
      * @param data
      * @param i
      * @param j
      */
-    default void swap(int[] data,int i,int j){
+    default void swap(int[] data, int i, int j) {
         int temp = data[i];
         data[i] = data[j];
         data[j] = temp;
