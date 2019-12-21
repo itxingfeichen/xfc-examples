@@ -32,7 +32,7 @@ public interface ArraySort {
      * @param doSort
      */
     default void doSortWithPerformance(boolean doSort) {
-        int[] originData = prepareOriginalData(8000);
+        int[] originData = prepareOriginalData(800000);
         long start = Instant.now().toEpochMilli();
         if (doSort) {
             doSort(originData);
@@ -63,6 +63,7 @@ public interface ArraySort {
     default int[] prepareOriginalData(int max) {
         if (max == 0) {
             int[] data = {1, 3, 2, 4, 10, 8, 6, 5, 7, 9};
+//            int[] data = {4, 3, 2, 1};
             printResult(data, "原始数组为");
             return data;
         } else {
@@ -90,5 +91,17 @@ public interface ArraySort {
             message = "排序结果为";
         }
         System.out.println(MessageFormat.format("{0}:{1}", message, Arrays.toString(result)));
+    }
+
+    /**
+     * 交换方法
+     * @param data
+     * @param i
+     * @param j
+     */
+    default void swap(int[] data,int i,int j){
+        int temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
     }
 }
