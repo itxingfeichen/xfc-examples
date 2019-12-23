@@ -14,5 +14,6 @@ public class RadixSortTest {
 
         int[] result = instance.doSort(data);
         instance.printResult(result,null);
+        instance.doSortWithPerformance(true);
     }
 }

@@ -30,7 +30,7 @@ public interface ArraySort {
      * @param doSort
      */
     default void doSortWithPerformance(boolean doSort) {
-        int[] originData = prepareOriginalData(800000);
+        int[] originData = prepareOriginalData(8000000);
         long start = Instant.now().toEpochMilli();
         if (doSort) {
             doSort(originData);
