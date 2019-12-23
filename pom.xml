@@ -20,6 +20,7 @@
         <module>xfc-maven-plugin</module>
         <module>xfc-data-structure</module>
         <module>xfc-algorithm</module>
+        <module>xfc-design-patterns</module>
     </modules>
 
     <properties>
