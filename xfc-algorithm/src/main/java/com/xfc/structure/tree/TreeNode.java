@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2020-01-02
  */
 @Data
-public class TreeNode<V> {
+public class TreeNode<V> implements Comparable<TreeNode<V>> {
 
     private TreeNode<V> left;
 
@@ -17,5 +17,11 @@ public class TreeNode<V> {
 
     public TreeNode(V data) {
         this.data = data;
+    }
+
+    @Override
+    public int compareTo(TreeNode<V> o) {
+
+        return 0;
     }
 }
