@@ -11,10 +11,10 @@ import java.util.Arrays;
 public class HeapSort implements ArraySort {
 
 
-    private static final HeapSort radixSort = new HeapSort();
+    private static final HeapSort heapSort = new HeapSort();
 
     public static HeapSort getInstance() {
-        return radixSort;
+        return heapSort;
     }
 
     private HeapSort() {

@@ -1,5 +1,7 @@
 package com.xfc.structure.tree;
 
+import com.xfc.structure.sort.HeapSort;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,11 +14,21 @@ import java.util.Collections;
  */
 public class HuffmanTree {
 
-    public TreeNode<Integer> createHuffmanTree(int[] data){
+    private static final HuffmanTree huffmanTree = new HuffmanTree();
+
+    public static HuffmanTree getInstance() {
+        return huffmanTree;
+    }
+
+    private HuffmanTree() {
+    }
+
+    public TreeNode<Integer> createHuffmanTree(int[] originData) {
+        int[] data = Arrays.copyOf(originData, originData.length);
         // 将数组转换为list便于操作
-        ArrayList<TreeNode> nodes = new ArrayList<>(data.length);
+        ArrayList<TreeNode<Integer>> nodes = new ArrayList<>(data.length);
         for (int datum : data) {
-            nodes.add(new TreeNode<>(data));
+            nodes.add(new TreeNode<>(datum));
         }
         return doCreate(nodes);
 
@@ -24,12 +36,22 @@ public class HuffmanTree {
 
     /**
      * 哈夫曼树创建
+     *
      * @param nodes
      * @return
      */
-    public TreeNode doCreate(ArrayList<TreeNode> nodes){
-        Collections.sort(nodes);
-
-        return null;
+    private TreeNode<Integer> doCreate(ArrayList<TreeNode<Integer>> nodes) {
+        while (nodes.size() != 1) {
+            Collections.sort(nodes);
+            TreeNode<Integer> nodeLeft = nodes.get(0);
+            TreeNode<Integer> nodeRight = nodes.get(1);
+            TreeNode<Integer> parent = new TreeNode<>(nodeLeft.getData() + nodeRight.getData());
+            parent.setLeft(nodeLeft);
+            parent.setRight(nodeRight);
+            nodes.remove(nodeLeft);
+            nodes.remove(nodeRight);
+            nodes.add(parent);
+        }
+        return nodes.get(0);
     }
 }
