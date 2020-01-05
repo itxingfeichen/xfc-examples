@@ -2,6 +2,7 @@ package com.xfc.structure.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * 哈夫曼树
@@ -21,9 +22,14 @@ public class HuffmanTree {
 
     }
 
+    /**
+     * 哈夫曼树创建
+     * @param nodes
+     * @return
+     */
     public TreeNode doCreate(ArrayList<TreeNode> nodes){
+        Collections.sort(nodes);
 
-//        Arrays.sort(nodes);
         return null;
     }
 }

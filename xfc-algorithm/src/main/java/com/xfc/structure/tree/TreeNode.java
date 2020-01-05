@@ -21,7 +21,11 @@ public class TreeNode<V> implements Comparable<TreeNode<V>> {
 
     @Override
     public int compareTo(TreeNode<V> o) {
-
+        if (o.data instanceof Integer) {
+            int data1 = (int) o.data;
+            int data = (int) this.data;
+            return data - data1;
+        }
         return 0;
     }
 }
