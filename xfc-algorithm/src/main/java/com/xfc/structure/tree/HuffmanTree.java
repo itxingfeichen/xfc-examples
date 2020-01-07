@@ -5,6 +5,7 @@ import com.xfc.structure.sort.HeapSort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * 哈夫曼树
@@ -42,7 +43,7 @@ public class HuffmanTree {
      */
     private TreeNode<Integer> doCreate(ArrayList<TreeNode<Integer>> nodes) {
         while (nodes.size() != 1) {
-            Collections.sort(nodes);
+            Collections.sort(nodes, Comparator.comparingInt(TreeNode::getData));
             TreeNode<Integer> nodeLeft = nodes.get(0);
             TreeNode<Integer> nodeRight = nodes.get(1);
             TreeNode<Integer> parent = new TreeNode<>(nodeLeft.getData() + nodeRight.getData());
