@@ -28,13 +28,13 @@ public class MyTree<V> {
     /**
      * 前序遍历
      */
-    private void preTraversal(TreeNode<V> treeNode) {
+    public void preTraversal(TreeNode<V> treeNode) {
         if (treeNode == null) {
             System.out.println("此树空树");
             return;
         }
         //
-        System.out.println(treeNode.getData());
+        System.out.println(treeNode);
         if (treeNode.getLeft() != null) {
             preTraversal(treeNode.getLeft());
         }
