@@ -74,11 +74,12 @@ public class ExecutorsLearnTest {
     public void getNewScheduleCacheThreadPool() {
 
         ScheduledExecutorService newFixedThreadPool = (ScheduledExecutorService) executorsLearn.getNewScheduleCacheThreadPool();
-        newFixedThreadPool.schedule(new Task(1L, "task1", "aaa"), 1, TimeUnit.SECONDS);
+        newFixedThreadPool.schedule(new Task(1L, "task1", "aaa"), 5, TimeUnit.SECONDS);
         newFixedThreadPool.schedule(new Task(2L, "task2", "bbb"), 1, TimeUnit.SECONDS);
         newFixedThreadPool.schedule(new Task(3L, "task3", "bbb"), 4, TimeUnit.SECONDS);
 //        newFixedThreadPool.schedule(new Task(3L,"task3","bbb"));
-        newFixedThreadPool.scheduleAtFixedRate(new Task(4L, "task4", "bbb"), 1, 1, TimeUnit.SECONDS);
+        // 周期性执行，任务发布1秒后开始，每个4秒钟执行一次
+        newFixedThreadPool.scheduleAtFixedRate(new Task(4L, "task4", "bbb"), 1, 4, TimeUnit.SECONDS);
         try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
