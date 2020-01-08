@@ -7,26 +7,16 @@ import lombok.Data;
  * @date 2020-01-02
  */
 @Data
-public class TreeNode<V> implements Comparable<TreeNode<Integer>> {
+public class TreeNode<V> {
 
     private TreeNode<V> left;
 
     private TreeNode<V> right;
 
-    private Integer data;
+    private V data;
 
-    public TreeNode(Integer data) {
+    public TreeNode(V data) {
         this.data = data;
-    }
-
-    @Override
-    public int compareTo(TreeNode<Integer> o) {
-        if (o.data != null) {
-            int data1 = (int) o.data;
-            int data = (int) this.data;
-            return data - data1;
-        }
-        return 0;
     }
 
     @Override
