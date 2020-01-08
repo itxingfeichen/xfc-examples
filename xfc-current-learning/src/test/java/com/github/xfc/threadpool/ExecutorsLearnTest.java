@@ -87,4 +87,25 @@ public class ExecutorsLearnTest {
         }
         newFixedThreadPool.shutdown();
     }
+
+    @Test
+    public void testThreadOrder(){
+        final ExecutorService service = executorsLearn.getNewSingleThreadExecutor();
+
+        service.submit(()->{
+            System.out.println("service A");
+        });
+        service.submit(()->{
+            System.out.println("service B");
+        });
+        service.submit(()->{
+            System.out.println("service C");
+        });
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        service.shutdown();
+    }
 }
