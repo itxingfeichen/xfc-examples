@@ -41,4 +41,29 @@ public class WaitAndNotifyQueueTest {
 
     }
 
+    /**
+     * 通过Thread.join方法可以控制线程执行顺序
+     * @throws InterruptedException
+     */
+    @Test
+    public void testThread() throws InterruptedException {
+        final Thread thread2 = new Thread(() -> {
+
+            System.out.println("Thread.currentThread().getName()11 = " + Thread.currentThread().getName());
+        });
+        final Thread thread = new Thread(() -> {
+            try {
+                thread2.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Thread.currentThread().getName()22 = " + Thread.currentThread().getName());
+        });
+        thread.start();
+        thread2.start();
+
+        Thread.sleep(5000L);
+
+    }
+
 }
