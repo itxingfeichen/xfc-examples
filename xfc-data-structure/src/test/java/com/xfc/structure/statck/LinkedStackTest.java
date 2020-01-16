@@ -2,6 +2,9 @@ package com.xfc.structure.statck;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class LinkedStackTest {
 
 
@@ -20,6 +23,30 @@ public class LinkedStackTest {
         System.out.println("linkedStack.size() = " + linkedStack.size());
 
 
+    }
+
+    @Test
+    public void testHashMap(){
+
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("1",2);
+        for (int i = 0; i < 30; i++) {
+            new Thread(()->{
+                map.put(Thread.currentThread().getName(), UUID.randomUUID().toString());
+                System.out.println(map);
+            }).start();
+        }
+    }
+
+    public static void main(String[] args) {
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("1",2);
+        for (int i = 0; i < 30; i++) {
+            new Thread(()->{
+                map.put(Thread.currentThread().getName(), UUID.randomUUID().toString());
+                System.out.println(map);
+            }).start();
+        }
     }
 
 }
