@@ -30,6 +30,8 @@ public class LockTest {
 
 //        split("我ABC",3);
 
+        System.out.println("Runtime.getRuntime().availableProcessors() = " + Runtime.getRuntime().availableProcessors());
+
         ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(3);
 
 
