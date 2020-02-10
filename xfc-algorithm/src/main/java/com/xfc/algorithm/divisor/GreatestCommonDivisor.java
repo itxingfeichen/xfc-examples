@@ -69,9 +69,10 @@ public class GreatestCommonDivisor {
 
     /**
      * 更相减损术递归版本
+     * 递归效率低
      *
-     * @param small
-     * @param big
+     * @param a
+     * @param b
      * @return
      */
     public int greatestCommonDivisorRescur(int a, int b) {
@@ -91,7 +92,7 @@ public class GreatestCommonDivisor {
      * @return
      */
     public int greatestCommonDivisorV1(int small, int big) {
-        System.out.println(small+" "+big);
+        System.out.println(small + " " + big);
         if (small > big) {
             throw new IllegalArgumentException("参数错误:" + small + "不能大于" + big);
         }
@@ -100,6 +101,30 @@ public class GreatestCommonDivisor {
             return small;
         }
         return greatestCommonDivisorV1(big % small, small);
+    }
+
+    /**
+     * 移位运算
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public int greatestCommonDivisorV3(int a, int b) {
+        if (a == b) {
+            return a;
+        }
+        if ((a & 1) == 0 && (b & 1) == 0) {
+            return greatestCommonDivisorV3(a >> 1, b >> 1) << 1;
+        } else if ((a & 1) == 0 && (b & 1) != 0) {
+            return greatestCommonDivisorV3(a >> 1, b);
+        } else if ((a & 1) != 0 && (b & 1) == 0) {
+            return greatestCommonDivisorV3(a, b >> 1);
+        } else {
+            int big = a > b ? a : b;
+            int small = a < b ? a : b;
+            return greatestCommonDivisorV3(big - small, small);
+        }
     }
 
 
