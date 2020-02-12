@@ -53,7 +53,7 @@ public class CalculatorFromStack {
      */
     private void parseExpression(String expression) {
         // 处理空格问题
-        char[] chars = expression.replaceAll("_", "").toCharArray();
+        char[] chars = expression.replaceAll(" ", "").toCharArray();
 
         for (char ch : chars) {
             if (isOperationSymbol(ch)) {
