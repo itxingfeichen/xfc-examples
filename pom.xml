@@ -21,7 +21,7 @@
         <module>xfc-data-structure</module>
         <module>xfc-algorithm</module>
         <module>xfc-design-patterns</module>
-        <module>xfc-leetcode</module>
+        <module>xfc-interview</module>
     </modules>
 
     <properties>
