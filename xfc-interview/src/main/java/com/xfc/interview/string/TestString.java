@@ -28,10 +28,13 @@ public class TestString {
         System.out.println(s1.intern() == s2.intern());
         System.out.println("===============");
         String s4 = "java";
-        String s5 = "`ja";
+        String s5 = "ja";
         String s6 = "va";
         System.out.println(s4 == "java");
         System.out.println(s4 == (s5+s6));
         System.out.println(s4 == "ja"+s6);
+
+
     }
+
 }
