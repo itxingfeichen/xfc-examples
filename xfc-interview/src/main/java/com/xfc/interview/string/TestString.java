@@ -40,5 +40,8 @@ public class TestString {
         System.out.println(s4 == (s5+s6));
         // false s4指向常量池，"ja"+s6会创建新对象
         System.out.println(s4 == "ja"+s6);
+
+
     }
+
 }
