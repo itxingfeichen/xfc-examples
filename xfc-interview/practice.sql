@@ -1,6 +1,91 @@
+use practice;
+# 1.查询课程编号为“01”的课程比“02”的课程成绩高的所有学生的学号（重点）
+select a.s_id, s.s_name, a.s_score '01', b.s_score '02'
+from (select * from Score where c_id = '01') as a
+         inner join
+         (select * from Score where c_id = '02') as b on a.s_id = b.s_id
+         inner join Student s on a.s_id = s.s_id
+where a.s_score > b.s_score;
+
+# 2、查询平均成绩大于60分的学生的学号和平均成绩（简单，第二道重点）
+select s_id, avg(s_score) 'core'
+from Score
+group by s_id
+having core > 60;
+
+# 3、查询所有学生的学号、姓名、选课数、总成绩（不重要）
+select stu.s_id                                                              's_id',
+       stu.s_name                                                            's_name',
+       count(score.c_id)                                                     'course_count',
+       sum(case when score.s_score is null then 0 else score.s_score end) as 'total_score'
+from Student stu
+         left join Score score on stu.s_id = score.s_id
+group by stu.s_id, stu.s_name;
+
+# 4、查询姓“猴”的老师的个数（不重要）
+select count(t.t_id) count from Teacher t  where t_name like '张%';
+# 查询同姓"张"老师的个数
+select count(distinct t.t_name) count from Teacher t  where t_name like '张%';
+# 4、查询没学过“张三”老师课的学生的学号、姓名（重点）
+# 思路：找到学过张三老师课的同学，然后not in
+# 方法一：子查询
+select s_id,s_name from Student where s_id not  in(
+# 根据张三老师讲的课程管理成绩表，找到学过张三老师课的学生
+select s_id from Score where c_id = (
+# 找到张三老师讲的课程
+select c_id from Course where t_id = (
+# 找到姓名为张三的老师
+select t_id from Teacher where t_name = '张三')));
+
+# 方法二 join
+select stu.s_id, stu.s_name
+from Student stu
+where s_id not in (
+    select s.s_id
+    from Score s
+             join Course c on s.c_id = c.c_id
+             join Teacher t on c.t_id = t.t_id
+    where t.t_name = '张三');
+
+# 6、查询学过“张三”老师所教的所有课的同学的学号、姓名（重点）
+explain select stu.s_id, stu.s_name
+from Student stu
+         inner join Score s on stu.s_id = s.s_id
+         inner join Course c on s.c_id = c.c_id
+         inner join Teacher t on c.t_id = t.t_id
+where t.t_name = '张三';
+
+# 7、查询学过编号为“01”的课程并且也学过编号为“02”的课程的学生的学号、姓名（重点）
+select s.s_id, s.s_name
+from Student s
+where s.s_id in (
+    select a.s_id
+    from ((select s_id from Score where c_id = '01') a
+             inner join (select s_id from Score where c_id = '02') as b on a.s_id = b.s_id)
+);
+
+# 8、查询课程编号为“02”的总成绩（不重点）
+select sum(s_score) from Score where c_id='02';
+# 扩展
+select sum(s_score) from Score group by c_id;
+# 扩展
+select sum(s_score) from Score group by c_id having c_id=2;
+
+# 10.查询所有学全所有课程成绩小于60分的学生的学号、姓名(重点)
+# 思路：1->根据学生id查询出成绩小于60分的的数量 2->根据学生id查询出当前学生所选课程的数量
+select a.s_id, stu.s_name
+from (
+      (select s.s_id, count(s.c_id) count from Score s where s.s_score < 60 group by s.s_id) as a
+         inner join
+     (select s1.s_id, count(s1.c_id) count from Score s1 group by s1.s_id) as b on a.s_id = b.s_id
+         inner join Student stu on a.s_id = stu.s_id
+    )
+where a.count = b.count;
+
 # 10.查询没有学全所有课的学生的学号、姓名(重点)
 select s.s_id,stu.s_name from Student stu left join Score s on stu.s_id=s.s_id group by s.s_id,stu.s_name
 having count(distinct s.c_id) < (select count(distinct Course.c_id) from Course);
+
 # 11、查询至少有一门课与学号为“01”的学生所学课程相同的学生的学号和姓名（重点）
 # 方法一
 select stu.s_id,stu.s_name from Student stu where s_id in(
@@ -12,6 +97,7 @@ select stu.s_id,stu.s_name from Student stu inner join (
     select distinct Score.s_id from Score where c_id in(
 # 查询01号同学学过的课程
         select c_id from Score where s_id='01') and s_id !='01') as b on stu.s_id  = b.s_id;
+
 # 12.查询和“01”号同学所学课程完全相同的其他同学的学号(重点)
 # 查询01号同学学过的课程
 select s_id from Score where s_id in(
