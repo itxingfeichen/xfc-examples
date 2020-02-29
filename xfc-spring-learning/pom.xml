@@ -15,6 +15,7 @@
         <module>xfc-spring-design-patterns</module>
         <module>xfc-spring-simple-mvc</module>
         <module>xfc-spring-transaction</module>
+        <module>xfc-spring-ioc-simple</module>
     </modules>
 
     <dependencies>
