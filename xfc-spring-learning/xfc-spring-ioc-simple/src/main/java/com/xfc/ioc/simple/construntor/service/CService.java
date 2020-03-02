@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class CService {
 
     public CService() {
-        System.out.println("CServic：我被初始化了");
+//        System.out.println("CServic：我被初始化了");
     }
 }
 

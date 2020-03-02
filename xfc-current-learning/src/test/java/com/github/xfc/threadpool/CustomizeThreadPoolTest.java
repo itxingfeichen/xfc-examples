@@ -34,7 +34,7 @@ public class CustomizeThreadPoolTest {
                 TimeUnit.MICROSECONDS, new ArrayBlockingQueue(3));
 
         for (int i = 0; i < 5; i++) {
-            executorService.submit(new Task(Long.valueOf(i), "task" + 1, "att" + 1));
+            executorService.submit(new Task(Long.valueOf(i), "task" + i, "att" + i));
         }
         // junit主线程结束不会等待子线程，因此sleep等待子线程执行
         try {

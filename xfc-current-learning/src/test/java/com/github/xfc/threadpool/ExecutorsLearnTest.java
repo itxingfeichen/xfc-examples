@@ -17,11 +17,15 @@ public class ExecutorsLearnTest {
     private static ExecutorsLearn executorsLearn = new ExecutorsLearn();
 
     @Test
-    public void getNewFixedThreadPool() {
+    public void getNewFixedThreadPool() throws InterruptedException {
         ExecutorService newFixedThreadPool = executorsLearn.getNewFixedThreadPool(3);
         newFixedThreadPool.execute(new Task(1L, "task1", "aaa"));
+        Thread.sleep(5000L);
         newFixedThreadPool.execute(new Task(2L, "task2", "bbb"));
         newFixedThreadPool.execute(new Task(3L, "task3", "bbb"));
+        newFixedThreadPool.execute(new Task(4L, "task3", "bbb"));
+        newFixedThreadPool.execute(new Task(5L, "task3", "bbb"));
+        newFixedThreadPool.execute(new Task(6L, "task3", "bbb"));
 
         try {
             TimeUnit.SECONDS.sleep(5);

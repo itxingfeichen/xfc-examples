@@ -16,7 +16,7 @@ public class BService {
     private final CService cService;
 
     public BService(AService aService, CService cService) {
-        System.out.println("BService：我被初始化了");
+//        System.out.println("BService：我被初始化了");
         this.aService = aService;
         this.cService = cService;
     }
