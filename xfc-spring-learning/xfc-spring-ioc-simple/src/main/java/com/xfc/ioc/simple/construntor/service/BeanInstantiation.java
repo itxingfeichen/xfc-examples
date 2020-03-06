@@ -2,6 +2,9 @@ package com.xfc.ioc.simple.construntor.service;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
+import org.springframework.lang.Nullable;
+
+import java.util.LinkedHashMap;
 
 /**
  * @author：jannik
@@ -12,11 +15,19 @@ import org.springframework.beans.factory.config.InstantiationAwareBeanPostProces
 
 public class BeanInstantiation extends InstantiationAwareBeanPostProcessorAdapter {
 
+    @Override
+    @Nullable
+    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+
+        System.out.println("postProcessBeforeInstantiation初始化之前调用 "+ beanName);
+        return super.postProcessBeforeInstantiation(beanClass,beanName);
+    }
+
 
 
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-        System.out.println("beanName》》》》》" + beanName);
+        System.out.println("postProcessAfterInstantiation初始化之后调用 " + beanName);
         return true;
     }
 

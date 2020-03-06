@@ -45,15 +45,12 @@ public class LRUCache {
 
     public static void main(String[] args) {
 
-        int count = 8;
-        for (int binCount= 0;; ++binCount) {
+        LRUCache lruCache = new LRUCache(2);
 
-            if(binCount>= count-1){
-                System.out.println(binCount);
-                return;
-            }
+        for (int i = 0; i < 20; i++) {
+            lruCache.put(i+"",i+"");
+
         }
-
 
     }
 }
