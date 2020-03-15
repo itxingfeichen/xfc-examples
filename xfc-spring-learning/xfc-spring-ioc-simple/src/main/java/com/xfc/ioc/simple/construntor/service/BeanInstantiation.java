@@ -13,6 +13,11 @@ import org.springframework.beans.factory.config.InstantiationAwareBeanPostProces
 public class BeanInstantiation extends InstantiationAwareBeanPostProcessorAdapter {
 
 
+    @Override
+    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+        System.out.println("postProcessBeforeInstantiation -》beanName》》》》》" + beanName);
+        return super.postProcessBeforeInstantiation(beanClass, beanName);
+    }
 
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
