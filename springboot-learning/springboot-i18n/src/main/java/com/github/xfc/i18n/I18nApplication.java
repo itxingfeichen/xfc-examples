@@ -1,6 +1,7 @@
 package com.github.xfc.i18n;
 
 import com.github.xfc.i18n.model.I18N;
+import com.github.xfc.i18n.service.I18NService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +25,9 @@ public class I18nApplication {
         Assert.notNull(bean,"is null????");
 
 
-        context.close();
+        I18NService nService = context.getBean(I18NService.class);
+        System.out.println(nService);
+
 
     }
 }

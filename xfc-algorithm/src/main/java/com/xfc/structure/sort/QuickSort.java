@@ -21,13 +21,6 @@ public class QuickSort implements ArraySort {
 
     }
 
-
-    /**
-     * 待排序数据
-     *
-     * @param originData
-     * @return
-     */
     @Override
     public int[] doSort(int[] originData) {
         int[] data = Arrays.copyOf(originData, originData.length);
@@ -37,14 +30,6 @@ public class QuickSort implements ArraySort {
         return quickSort(data, left, right);
     }
 
-    /**
-     * 排序操作
-     *
-     * @param data
-     * @param left
-     * @param right
-     * @return
-     */
     private int[] quickSort(int[] data, int left, int right) {
 
         if (left < right) {
@@ -55,18 +40,9 @@ public class QuickSort implements ArraySort {
         return data;
     }
 
-    /**
-     * 快速排序
-     *
-     * @param data
-     * @param left
-     * @param right
-     * @return
-     */
     private int partition(int[] data, int left, int right) {
         int pivot = left;
         int index = pivot + 1;
-
         for (int i = index; i <= right; i++) {
             if (data[i] < data[pivot]) {
                 // 交换
@@ -78,7 +54,10 @@ public class QuickSort implements ArraySort {
         }
         swap(data, pivot, index - 1);
         return index - 1;
-
-
     }
+//    default void swap(int[] data, int i, int j) {
+//        int temp = data[i];
+//        data[i] = data[j];
+//        data[j] = temp;
+//    }
 }
