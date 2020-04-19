@@ -16,7 +16,9 @@ public class RadixSort implements ArraySort {
         return radixSort;
     }
 
-    private RadixSort(){}
+    private RadixSort() {
+    }
+
     /**
      * 待排序数据
      *
@@ -25,7 +27,6 @@ public class RadixSort implements ArraySort {
      */
     @Override
     public int[] doSort(int[] originData) {
-
 
 
         int[] data = Arrays.copyOf(originData, originData.length);

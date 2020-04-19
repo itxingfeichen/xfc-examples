@@ -29,9 +29,9 @@ public class SpringBootWebBootstrap {
 
         Map<String, Formatter> beansOfType = run.getBeansOfType(Formatter.class);
 
-        beansOfType.forEach((beanName,formatter)->{
+        beansOfType.forEach((beanName, formatter) -> {
 
-            System.out.println("formatter execute beanName=" + beanName+
+            System.out.println("formatter execute beanName=" + beanName +
                     " result = " + formatter.format(new User("zhagnsan", 1)));
 
         });

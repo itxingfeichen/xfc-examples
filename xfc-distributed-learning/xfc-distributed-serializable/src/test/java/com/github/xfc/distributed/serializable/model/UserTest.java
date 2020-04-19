@@ -39,6 +39,7 @@ public class UserTest {
 
     /**
      * 说明：序列化并不保存静态变量的状态
+     *
      * @throws IOException
      * @throws ClassNotFoundException
      */
@@ -59,7 +60,7 @@ public class UserTest {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(new File("user")));
         User user1 = (User) objectInputStream.readObject();
 
-        System.out.println("user1 = " + user1+" age="+user1.age);
+        System.out.println("user1 = " + user1 + " age=" + user1.age);
         // user1 = User(id=1, username=test) age=5
         System.out.println("user == user1 = " + (user == user1));
         System.out.println("user1.hashCode() = " + user1.hashCode());

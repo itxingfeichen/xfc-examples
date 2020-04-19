@@ -4,7 +4,6 @@ import com.xfc.spring.cloud.service.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -23,7 +22,7 @@ public class UserRepository {
     public User save(User user) {
         long id = atomicLong.incrementAndGet();
         user.setId(id);
-        repository.putIfAbsent(id,user);
+        repository.putIfAbsent(id, user);
         return user;
     }
 

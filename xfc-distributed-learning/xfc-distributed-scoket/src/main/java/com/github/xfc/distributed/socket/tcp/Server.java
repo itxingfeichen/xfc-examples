@@ -29,7 +29,7 @@ public class Server {
 //            String s = new String(bytes);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(accept.getInputStream()));
             String s = bufferedReader.readLine();
-            System.out.println("接收到客户端的数据："+s);
+            System.out.println("接收到客户端的数据：" + s);
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();

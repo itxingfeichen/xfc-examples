@@ -14,6 +14,7 @@ public interface Stack {
      * @return
      */
     boolean isFull();
+
     /**
      * 是否栈空
      *
@@ -30,9 +31,10 @@ public interface Stack {
 
     /**
      * 查看栈顶元素
+     *
      * @return
      */
-    default int peek(){
+    default int peek() {
         throw new RuntimeException("需要子类实现");
     }
 
@@ -48,9 +50,10 @@ public interface Stack {
 
     /**
      * 获取元素个数
+     *
      * @return
      */
-    default int size(){
+    default int size() {
         return 0;
     }
 

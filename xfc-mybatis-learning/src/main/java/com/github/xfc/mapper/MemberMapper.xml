@@ -4,6 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.xfc.mapper.MemberMapper">
     <select id="getMember" parameterType="long" resultType="com.github.xfc.base.Member">
-        select  * from t_member where by id=#{id}
-  </select>
+        select * from t_member where by id=#{id}
+    </select>
 </mapper>

@@ -5,7 +5,7 @@ import org.junit.Test;
 public class ArrayStackTest {
 
     @Test
-    public void testStack(){
+    public void testStack() {
         ArrayStack stack = new ArrayStack(3);
 
         stack.push(10);

@@ -77,7 +77,7 @@ public class DisruptorSimpleLearn {
         @Override
         public void onEvent(CustomizeEvent customizeEvent, long l, boolean b) throws Exception {
             customizeEvent.setPrice(new Random().nextInt(10));
-            System.out.println("当前处理案件个数"+atomicLong.incrementAndGet());
+            System.out.println("当前处理案件个数" + atomicLong.incrementAndGet());
             System.out.println("事件消费结果" + customizeEvent);
         }
     }
@@ -117,13 +117,14 @@ public class DisruptorSimpleLearn {
 
     /**
      * 测试disruptor
-     *      /**
-     * 		//BlockingWaitStrategy 是最低效的策略，但其对CPU的消耗最小并且在各种不同部署环境中能提供更加一致的性能表现
-     * 		WaitStrategy BLOCKING_WAIT = new BlockingWaitStrategy();
-     * 		//SleepingWaitStrategy 的性能表现跟BlockingWaitStrategy差不多，对CPU的消耗也类似，但其对生产者线程的影响最小，适合用于异步日志类似的场景
-     * 		WaitStrategy SLEEPING_WAIT = new SleepingWaitStrategy();
-     * 		//YieldingWaitStrategy 的性能是最好的，适合用于低延迟的系统。在要求极高性能且事件处理线数小于CPU逻辑核心数的场景中，推荐使用此策略；例如，CPU开启超线程的特性
-     * 		WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
+     * /**
+     * //BlockingWaitStrategy 是最低效的策略，但其对CPU的消耗最小并且在各种不同部署环境中能提供更加一致的性能表现
+     * WaitStrategy BLOCKING_WAIT = new BlockingWaitStrategy();
+     * //SleepingWaitStrategy 的性能表现跟BlockingWaitStrategy差不多，对CPU的消耗也类似，但其对生产者线程的影响最小，适合用于异步日志类似的场景
+     * WaitStrategy SLEEPING_WAIT = new SleepingWaitStrategy();
+     * //YieldingWaitStrategy 的性能是最好的，适合用于低延迟的系统。在要求极高性能且事件处理线数小于CPU逻辑核心数的场景中，推荐使用此策略；例如，CPU开启超线程的特性
+     * WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
+     *
      * @param args
      */
     public static void main(String[] args) {

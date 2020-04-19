@@ -10,6 +10,7 @@ public interface NormalRule {
 
     /**
      * 做某事
+     *
      * @return
      */
     boolean doSomething(String task);

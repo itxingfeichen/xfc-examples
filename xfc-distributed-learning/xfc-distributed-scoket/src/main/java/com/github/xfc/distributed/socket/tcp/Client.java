@@ -15,11 +15,11 @@ public class Client {
 
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost",8888);
+            Socket socket = new Socket("localhost", 8888);
 
             OutputStream outputStream = socket.getOutputStream();
 
-            PrintWriter printWriter = new PrintWriter(outputStream,true);
+            PrintWriter printWriter = new PrintWriter(outputStream, true);
 
             printWriter.write("服务端你好");
             socket.close();

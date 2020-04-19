@@ -1,7 +1,6 @@
 package com.xfc.distributed.netty.tomcat.http;
 
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.QueryStringDecoder;
 
@@ -20,25 +19,25 @@ public class XfHttpRequest {
 
     public XfHttpRequest(ChannelHandlerContext ctx, HttpRequest msg) {
 
-        this.ctx=ctx;
-        this.request=msg;
+        this.ctx = ctx;
+        this.request = msg;
     }
 
-    public String getUri(){
+    public String getUri() {
 
         return request.getUri();
 
     }
 
 
-    public String getMethod(){
+    public String getMethod() {
 
         return request.getMethod().name();
 
     }
 
 
-    public Map<String, List<String>> getParameters(){
+    public Map<String, List<String>> getParameters() {
 
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.getUri());
 
@@ -47,7 +46,7 @@ public class XfHttpRequest {
     }
 
 
-    public String getParameter(String name){
+    public String getParameter(String name) {
         Map<String, List<String>> parameters = getParameters();
         List<String> strings = parameters.get(name);
         if (strings != null) {
@@ -56,8 +55,6 @@ public class XfHttpRequest {
         return null;
 
     }
-
-
 
 
 }

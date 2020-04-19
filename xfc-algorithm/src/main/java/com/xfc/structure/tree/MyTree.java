@@ -60,6 +60,7 @@ public class MyTree<V> {
             preTraversal(treeNode.getRight());
         }
     }
+
     /**
      * 前序遍历
      */

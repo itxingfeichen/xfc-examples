@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Task implements Comparable,Runnable {
+public class Task implements Comparable, Runnable {
 
     /**
      * 任务id
@@ -42,6 +42,6 @@ public class Task implements Comparable,Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("当前线程"+Thread.currentThread().getName()+" 当前任务id="+this.id+" 当前任务名称="+name);
+        System.out.println("当前线程" + Thread.currentThread().getName() + " 当前任务id=" + this.id + " 当前任务名称=" + name);
     }
 }

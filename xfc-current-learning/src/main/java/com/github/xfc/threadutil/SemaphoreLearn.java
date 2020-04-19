@@ -24,12 +24,12 @@ public class SemaphoreLearn {
             ex.submit(() -> {
                 try {
                     cyclicBarrier.acquire();
-                    System.out.println("工人"+ finalI +"占用一个机器在生产...");
+                    System.out.println("工人" + finalI + "占用一个机器在生产...");
                     Thread.sleep(1000L);
                     integer.incrementAndGet();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     cyclicBarrier.release();
                 }
             });

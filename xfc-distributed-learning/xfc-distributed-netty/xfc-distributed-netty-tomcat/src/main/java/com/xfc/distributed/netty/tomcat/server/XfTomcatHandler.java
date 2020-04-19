@@ -16,12 +16,12 @@ public class XfTomcatHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        if(msg instanceof HttpRequest){
-            HttpRequest request = (HttpRequest)msg;
-            XfHttpRequest xfHttpRequest = new XfHttpRequest(ctx,request);
-            XfHttpResponse xfHttpResponse = new XfHttpResponse(ctx,request);
+        if (msg instanceof HttpRequest) {
+            HttpRequest request = (HttpRequest) msg;
+            XfHttpRequest xfHttpRequest = new XfHttpRequest(ctx, request);
+            XfHttpResponse xfHttpResponse = new XfHttpResponse(ctx, request);
 
-            new CustomServlet().doGet(xfHttpRequest,xfHttpResponse);
+            new CustomServlet().doGet(xfHttpRequest, xfHttpResponse);
 
 
         }

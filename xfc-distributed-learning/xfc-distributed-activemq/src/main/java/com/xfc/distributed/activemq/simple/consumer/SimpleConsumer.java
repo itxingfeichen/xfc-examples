@@ -13,7 +13,7 @@ public class SimpleConsumer {
 
     public static void main(String[] args) throws JMSException {
         // 创建连接工厂
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin","admin","tcp://192.168.22.128:61617");
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin", "admin", "tcp://192.168.22.128:61617");
 
 
         Connection connection = null;
@@ -34,7 +34,7 @@ public class SimpleConsumer {
         MessageConsumer producer = session.createConsumer(queue);
         TextMessage receive = (TextMessage) producer.receive();
         receive.acknowledge();
-        System.out.println("receive.getText() = " + receive.getText()+ "-=====>"+receive.getStringProperty("mykey"));
+        System.out.println("receive.getText() = " + receive.getText() + "-=====>" + receive.getStringProperty("mykey"));
 
         session.commit();
         session.close();

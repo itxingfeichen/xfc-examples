@@ -4,8 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.lang.Nullable;
 
-import java.util.LinkedHashMap;
-
 /**
  * @author：jannik
  * @email: jannik@gmail.com
@@ -19,8 +17,8 @@ public class BeanInstantiation extends InstantiationAwareBeanPostProcessorAdapte
     @Nullable
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
 
-        System.out.println("postProcessBeforeInstantiation初始化之前调用 "+ beanName);
-        return super.postProcessBeforeInstantiation(beanClass,beanName);
+        System.out.println("postProcessBeforeInstantiation初始化之前调用 " + beanName);
+        return super.postProcessBeforeInstantiation(beanClass, beanName);
     }
 
 

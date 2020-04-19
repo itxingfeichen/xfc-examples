@@ -1,15 +1,10 @@
 package com.github.xfc.nio;
 
-import io.netty.buffer.ByteBuf;
-import sun.java2d.pipe.SpanIterator;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.channels.*;
 import java.nio.charset.Charset;
-import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -107,7 +102,7 @@ public class NioServer {
         if (requestData.length() > 0) {
             // 开始广播给其他的客户端
             String s = requestData.toString();
-            boardcast(selector,channel,s);
+            boardcast(selector, channel, s);
         }
     }
 
@@ -117,14 +112,14 @@ public class NioServer {
      * @param selector
      * @param socketChannel 当前请求到服务端的channel
      */
-    private static void boardcast(Selector selector, SocketChannel socketChannel,String sourceData) {
+    private static void boardcast(Selector selector, SocketChannel socketChannel, String sourceData) {
         // 获取所有已经接入的客户端
         Set<SelectionKey> keys = selector.keys();
         if (keys != null && keys.size() > 0) {
-            keys.forEach(action->{
+            keys.forEach(action -> {
                 Channel channel = action.channel();
-                if(channel instanceof SocketChannel && channel!=socketChannel){
-                    SocketChannel socketChannel1 = (SocketChannel)channel;
+                if (channel instanceof SocketChannel && channel != socketChannel) {
+                    SocketChannel socketChannel1 = (SocketChannel) channel;
                     try {
                         // 发送信息到所有的客户端
                         socketChannel1.write(Charset.forName("UTF-8").encode(sourceData));

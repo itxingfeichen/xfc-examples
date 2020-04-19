@@ -34,7 +34,7 @@ public class ConstructorInjectDemo {
 
     @Bean
     @Primary
-    public BeanInstantiation init(){
+    public BeanInstantiation init() {
         return new BeanInstantiation();
     }
 }

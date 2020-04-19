@@ -25,7 +25,7 @@ public class CyclicBarrierLearn {
                 integer.incrementAndGet();
                 try {
                     Thread.sleep(3000L);
-                    System.out.println("线程"+Thread.currentThread().getName()+"写入数据完毕，等待其他线程写入完毕");
+                    System.out.println("线程" + Thread.currentThread().getName() + "写入数据完毕，等待其他线程写入完毕");
                     cyclicBarrier.await();
 
                 } catch (InterruptedException | BrokenBarrierException e) {

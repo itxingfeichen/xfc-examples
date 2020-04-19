@@ -1,11 +1,9 @@
 package com.xfc.performance.jvm.controller;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sun.misc.ProxyGenerator;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 /**
@@ -31,9 +29,9 @@ public class JvmTestController {
 
     private int i = 0;
 
-    public void rescru(){
+    public void rescru() {
         i++;
-        if(i<10){
+        if (i < 10) {
             rescru();
         }
     }

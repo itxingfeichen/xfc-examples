@@ -1,7 +1,6 @@
 package com.github.xfc.i18n.controller;
 
 import java.text.MessageFormat;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ResponseResult<T> {
@@ -24,7 +23,8 @@ public class ResponseResult<T> {
         result.setErrMsg(errMsg);
         return result;
     }
-    public static ResponseResult error(String errCode,String errMsg) {
+
+    public static ResponseResult error(String errCode, String errMsg) {
         ResponseResult result = new ResponseResult();
         result.setErrCode(errCode);
         result.setErrMsg(errMsg);
@@ -35,22 +35,22 @@ public class ResponseResult<T> {
     public static ResponseResult errCode(String errCode) {
         ResponseResult result = new ResponseResult();
         result.setErrCode(errCode);
-        try{
+        try {
             result.setErrMsg(conf.getString(errCode));
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
         result.setSuccess(false);
         return result;
     }
 
-    public static ResponseResult errCode(String errCode,Object[] args) {
+    public static ResponseResult errCode(String errCode, Object[] args) {
         ResponseResult result = new ResponseResult();
         result.setErrCode(errCode);
-        try{
+        try {
             String string = new String(conf.getString(errCode).getBytes("ISO-8859-1"), "UTF8");
-            result.setErrMsg(MessageFormat.format(string,args));
-        } catch (Exception e){
+            result.setErrMsg(MessageFormat.format(string, args));
+        } catch (Exception e) {
 
         }
         result.setSuccess(false);
@@ -63,12 +63,12 @@ public class ResponseResult<T> {
         return result;
     }
 
-	public static ResponseResult err() {
-		ResponseResult<Object> result = new ResponseResult<>();
-		result.setSuccess(false);
-		return result;
-	}
-	
+    public static ResponseResult err() {
+        ResponseResult<Object> result = new ResponseResult<>();
+        result.setSuccess(false);
+        return result;
+    }
+
     public void setSuccess(boolean success) {
         this.success = success;
     }
@@ -100,7 +100,6 @@ public class ResponseResult<T> {
     public boolean isSuccess() {
         return success;
     }
-
 
 
 }

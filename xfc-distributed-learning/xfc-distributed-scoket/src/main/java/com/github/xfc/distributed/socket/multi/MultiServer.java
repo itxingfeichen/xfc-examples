@@ -1,7 +1,9 @@
 package com.github.xfc.distributed.socket.multi;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -18,7 +20,7 @@ public class MultiServer {
             MulticastSocket multicastSocket = new MulticastSocket();
 
             for (int i = 0; i < 10; i++) {
-                byte[] bytes = ("Hello Client"+"i").getBytes();
+                byte[] bytes = ("Hello Client" + "i").getBytes();
                 multicastSocket.send(new DatagramPacket(bytes, bytes.length, inetSocketAddress, 8888));
                 try {
                     TimeUnit.SECONDS.sleep(2);

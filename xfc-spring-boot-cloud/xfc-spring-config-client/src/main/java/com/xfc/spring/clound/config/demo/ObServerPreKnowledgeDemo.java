@@ -30,14 +30,14 @@ public class ObServerPreKnowledgeDemo {
 
     }
 
-    public static class CustomObserverable extends Observable{
+    public static class CustomObserverable extends Observable {
 
         /**
          * Marks this <tt>Observable</tt> object as having been changed; the
          * <tt>hasChanged</tt> method will now return <tt>true</tt>.
          */
         @Override
-        public  void setChanged() {
+        public void setChanged() {
             super.setChanged();
         }
     }

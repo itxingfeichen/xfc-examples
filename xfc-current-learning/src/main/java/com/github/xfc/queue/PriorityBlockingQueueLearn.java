@@ -18,18 +18,20 @@ public class PriorityBlockingQueueLearn {
 
     /**
      * 添加任务
+     *
      * @param task
      * @return
      */
-    public boolean offer(Task task){
+    public boolean offer(Task task) {
         return priority.offer(task);
     }
 
     /**
      * 获取并删除一个元素
+     *
      * @return
      */
-    public Task poll(){
+    public Task poll() {
         return priority.poll();
     }
 }

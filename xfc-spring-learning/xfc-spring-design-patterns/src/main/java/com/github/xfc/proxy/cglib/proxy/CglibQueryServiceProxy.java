@@ -34,16 +34,17 @@ public class CglibQueryServiceProxy implements MethodInterceptor {
 
     /**
      * 代理对象（被代理对象的子类）
-     * @param o 这个对象是cglib 通过反射给我们创建的被代理对象的子类对象
-     * @param method 代理类的方法
-     * @param objects 代理类的参数
+     *
+     * @param o           这个对象是cglib 通过反射给我们创建的被代理对象的子类对象
+     * @param method      代理类的方法
+     * @param objects     代理类的参数
      * @param methodProxy 方法代理
      * @return
      * @throws Throwable
      */
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        System.out.println("执行方法:"+method.getName());
+        System.out.println("执行方法:" + method.getName());
         System.out.println("cglib执行方法之前");
         Object invoke = methodProxy.invokeSuper(o, objects);
         System.out.println("cglib执行方法之后。。。");

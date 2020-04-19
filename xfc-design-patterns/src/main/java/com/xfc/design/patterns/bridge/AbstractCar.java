@@ -13,10 +13,11 @@ public abstract class AbstractCar {
     /**
      * 抽象出车运行
      */
-   public abstract void run();
+    public abstract void run();
 
     /**
      * 设置变速器
+     *
      * @param transmission
      */
     public void setTransmission(Transmission transmission) {

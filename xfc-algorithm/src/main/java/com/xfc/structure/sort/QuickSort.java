@@ -25,7 +25,7 @@ public class QuickSort implements ArraySort {
     public int[] doSort(int[] originData) {
         int[] data = Arrays.copyOf(originData, originData.length);
         int left = 0;
-        int right = data.length-1;
+        int right = data.length - 1;
 
         return quickSort(data, left, right);
     }
@@ -46,7 +46,7 @@ public class QuickSort implements ArraySort {
         for (int i = index; i <= right; i++) {
             if (data[i] < data[pivot]) {
                 // 交换
-                if(i != index){
+                if (i != index) {
                     swap(data, i, index);
                 }
                 index++;

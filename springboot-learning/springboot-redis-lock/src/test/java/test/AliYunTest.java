@@ -36,7 +36,7 @@ public class AliYunTest {
 //        System.out.println(""+a+b+z);
         String a = "";
         for (int i = 0; i < 5; i++) {
-            a+=i;
+            a += i;
         }
 
         System.out.println(a);
@@ -46,8 +46,8 @@ public class AliYunTest {
     private static void test1() {
         int i = 1;
         int j = i++;
-        if((i==(++j))&&((i++)==j))     {
-            i+=j;
+        if ((i == (++j)) && ((i++) == j)) {
+            i += j;
         }
 
         System.out.println("i = " + i);

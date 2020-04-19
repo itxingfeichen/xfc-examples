@@ -12,11 +12,11 @@ public class GreatestCommonDivisorTest {
         // int divisor = greatestCommonDivisor.greatestCommonDivisor(104, 260);
         int divisor = greatestCommonDivisor.greatestCommonDivisor1(100000, 100001);
         long end = System.currentTimeMillis();
-        System.out.println("divisor = " + divisor+"耗时："+(end-start));
+        System.out.println("divisor = " + divisor + "耗时：" + (end - start));
         // 更相减损术
         int divisor1 = greatestCommonDivisor.greatestCommonDivisorRescur(10000, 10001);
         long end1 = System.currentTimeMillis();
-        System.out.println("divisor1 = " + divisor1+"耗时："+(end1-end));
+        System.out.println("divisor1 = " + divisor1 + "耗时：" + (end1 - end));
 
         int divisorV1 = greatestCommonDivisor.greatestCommonDivisorV1(104, 260);
         System.out.println("divisorV1 = " + divisorV1);

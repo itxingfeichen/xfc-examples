@@ -10,6 +10,7 @@ public interface FlyWeight {
 
     /**
      * 享元模式中的方法
+     *
      * @param state
      * @return
      */

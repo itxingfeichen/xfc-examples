@@ -11,7 +11,7 @@ public class BWM extends AbstractCar {
      * 抽象出车运行
      */
     @Override
-   public void run() {
+    public void run() {
         transmission.gear();
         System.out.println("i am bwm");
     }

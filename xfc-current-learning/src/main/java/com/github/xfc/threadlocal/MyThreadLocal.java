@@ -14,6 +14,7 @@ public class MyThreadLocal {
 
     /**
      * 提供set方法
+     *
      * @param obj
      */
     public void setValue(String obj) {
@@ -22,6 +23,7 @@ public class MyThreadLocal {
 
     /**
      * 提供get方法
+     *
      * @return
      */
     public String getValue() {

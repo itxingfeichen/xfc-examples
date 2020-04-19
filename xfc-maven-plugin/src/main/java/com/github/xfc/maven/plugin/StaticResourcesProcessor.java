@@ -52,9 +52,10 @@ public class StaticResourcesProcessor extends AbstractMojo {
 
     /**
      * 处理文件
+     *
      * @param file
      */
-    private void processFile(File file){
+    private void processFile(File file) {
         if (file.isFile()) {
             try {
                 processDocument(file);
@@ -64,7 +65,7 @@ public class StaticResourcesProcessor extends AbstractMojo {
             }
         }
 
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
             File[] files = file.listFiles();
             for (File file1 : files) {
                 processFile(file1);
@@ -74,6 +75,7 @@ public class StaticResourcesProcessor extends AbstractMojo {
 
     /**
      * 处理文档
+     *
      * @param file
      * @throws IOException
      */

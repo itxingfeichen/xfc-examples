@@ -15,21 +15,21 @@ public class MapTest {
         HashMap<Object, Object> map = new HashMap<>(16);
 
 
-        map.put("1","1");
+        map.put("1", "1");
     }
 
-   static int tableSizeFor(int cap) {
+    static int tableSizeFor(int cap) {
         int n = cap - 1;
         n |= n >>> 1;
-       System.out.println(n);
-       n |= n >>> 2;
-       System.out.println(n);
+        System.out.println(n);
+        n |= n >>> 2;
+        System.out.println(n);
         n |= n >>> 4;
-       System.out.println(n);
+        System.out.println(n);
         n |= n >>> 8;
-       System.out.println(n);
+        System.out.println(n);
         n |= n >>> 16;
-       System.out.println(n);
+        System.out.println(n);
         return (n < 0) ? 1 : (n >= Integer.MAX_VALUE) ? Integer.MAX_VALUE : n + 1;
     }
 }

@@ -14,19 +14,20 @@ public class FlyWeightFactory {
     /**
      * 享元池
      */
-    private final static Map<String,FlyWeight> flyWeightFactories = new HashMap<>();
+    private final static Map<String, FlyWeight> flyWeightFactories = new HashMap<>();
 
 
     /**
      * 根据名称获取享元类
+     *
      * @param name
      * @return
      */
-    public static FlyWeight getInstance(String name){
+    public static FlyWeight getInstance(String name) {
         // double check for thread security
-        if(flyWeightFactories.get(name) == null){
-            synchronized (flyWeightFactories){
-                if(flyWeightFactories.get(name) == null) {
+        if (flyWeightFactories.get(name) == null) {
+            synchronized (flyWeightFactories) {
+                if (flyWeightFactories.get(name) == null) {
                     flyWeightFactories.put(name, new ConcreteFlyWeight(name));
                 }
 

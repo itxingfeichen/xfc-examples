@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
     <!--dubbo应用-->
-    <dubbo:application  name="demo-consumer" owner="cxf" >
+    <dubbo:application name="demo-consumer" owner="cxf">
         <dubbo:parameter key="qos.enable" value="true"/>
         <dubbo:parameter key="qos.accept.foreign.ip" value="false"/>
         <dubbo:parameter key="qos.port" value="33333"/>
@@ -13,7 +13,7 @@
     <!--
         直链模式，不配置zk地址即可
     <dubbo:registry address="N/A"/>-->
-    <dubbo:registry protocol="zookeeper" address="192.168.3.129:2181,192.168.3.130:2181,192.168.3.131:2181"/>
+    <dubbo:registry protocol="zookeeper" address="192.168.22.128:2181"/>
 
     <dubbo:protocol name="dubbo" port="20890"/>
     <dubbo:protocol name="hessian" port="1099"/>
@@ -22,9 +22,9 @@
     <!--暴露dubbo接口-->
     <dubbo:service interface="com.xfc.distributed.dubbo.api.IDubboTestService" ref="dubboTest"/>
     <!--多协议实现-->
-    <dubbo:service interface="com.xfc.distributed.dubbo.api.IHessianTestService" ref="dubbohessianTest" protocol="hessian"/>
+    <dubbo:service interface="com.xfc.distributed.dubbo.api.IHessianTestService" ref="dubbohessianTest"
+                   protocol="hessian"/>
 
-    <!--    实例化bean-->
     <bean id="dubboTest" class="com.xfc.distributed.dubbo.service.IDubboTestServiceImpl"/>
 
     <bean id="dubbohessianTest" class="com.xfc.distributed.dubbo.service.IHessianTestServiceImpl"/>

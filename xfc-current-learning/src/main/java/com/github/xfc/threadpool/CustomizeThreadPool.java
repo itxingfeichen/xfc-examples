@@ -1,7 +1,5 @@
 package com.github.xfc.threadpool;
 
-import com.github.xfc.model.Task;
-
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -81,9 +79,9 @@ public class CustomizeThreadPool {
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
 
             FutureTask r1 = (FutureTask) r;
-            System.out.println("当前拒绝的任务为："+r.toString());
+            System.out.println("当前拒绝的任务为：" + r.toString());
             System.out.println("进入自定义拒绝策略");
-            System.out.println("队列剩余个数"+executor.getQueue().remainingCapacity());
+            System.out.println("队列剩余个数" + executor.getQueue().remainingCapacity());
         }
     }
 }

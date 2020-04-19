@@ -11,6 +11,7 @@ public interface Operate {
 
     /**
      * 操作接口
+     *
      * @param param1
      * @param param2
      * @return

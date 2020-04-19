@@ -1,8 +1,6 @@
 package com.github.xfc.webflux.producer;
 
-import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
-import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +19,11 @@ public class ProducerService implements RabbitTemplate.ConfirmCallback {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void testSend(){
+    public void testSend() {
 
         CorrelationData correlationId = new CorrelationData(UUID.randomUUID().toString());
         rabbitTemplate.setConfirmCallback(this);
-        rabbitTemplate.convertAndSend("some_exchange","some_routeKey","test",correlationId);
+        rabbitTemplate.convertAndSend("some_exchange", "some_routeKey", "test", correlationId);
     }
 
     /**
@@ -38,7 +36,7 @@ public class ProducerService implements RabbitTemplate.ConfirmCallback {
      */
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        System.out.println("correlationData = " + correlationData+" ack=" +ack);
+        System.out.println("correlationData = " + correlationData + " ack=" + ack);
         System.out.println("确认回调");
     }
 }

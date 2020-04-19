@@ -16,7 +16,7 @@
         </environment>
     </environments>
     <mappers>
-<!--        <mapper resource="com/github/xfc/mapper/MemberMapper.xml"/>-->
+        <!--        <mapper resource="com/github/xfc/mapper/MemberMapper.xml"/>-->
         <package name="com.github.xfc.mapper"/>
     </mappers>
 </configuration>

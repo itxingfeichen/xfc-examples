@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.xfc.autoconfigure.formatter.DefaultFormatter;
 import com.github.xfc.autoconfigure.formatter.Formatter;
 import com.github.xfc.autoconfigure.formatter.JsonFormatter;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.*;
-import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,32 +16,32 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 // 添加这个注解可以解决FormatterAutoConfiguration比JacksonAutoConfiguration优先初始化的问题
 //@AutoConfigureAfter(value = {JacksonAutoConfiguration.class})
-@ConditionalOnProperty(prefix = "formatter",matchIfMissing = false,name = "enabled")
+@ConditionalOnProperty(prefix = "formatter", matchIfMissing = false, name = "enabled")
 public class FormatterAutoConfiguration {
 
     /**
      * init bean from default formatter
+     *
      * @return
      */
     @Bean
     @ConditionalOnMissingClass(value = "com.fasterxml.jackson.databind.ObjectMapper")
-    public Formatter defaultFormatter(){
+    public Formatter defaultFormatter() {
         return new DefaultFormatter();
     }
 
     @Bean
     @ConditionalOnClass(name = "com.fasterxml.jackson.databind.ObjectMapper")
     @ConditionalOnMissingBean(type = "com.fasterxml.jackson.databind.ObjectMapper")
-    public Formatter jsonFormatter(){
+    public Formatter jsonFormatter() {
         return new JsonFormatter();
     }
 
     @Bean
     @ConditionalOnBean(ObjectMapper.class)
-    public Formatter objectMapperFormatter(ObjectMapper objectMapper){
+    public Formatter objectMapperFormatter(ObjectMapper objectMapper) {
         return new JsonFormatter(objectMapper);
     }
-
 
 
 }

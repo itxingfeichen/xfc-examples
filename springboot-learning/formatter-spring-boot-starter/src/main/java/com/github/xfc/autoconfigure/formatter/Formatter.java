@@ -9,6 +9,7 @@ public interface Formatter {
 
     /**
      * method for format
+     *
      * @param object
      * @return
      */

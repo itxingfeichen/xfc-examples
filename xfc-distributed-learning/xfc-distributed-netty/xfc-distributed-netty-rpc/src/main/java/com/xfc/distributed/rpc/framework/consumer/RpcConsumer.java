@@ -1,8 +1,8 @@
 package com.xfc.distributed.rpc.framework.consumer;
 
 import com.xfc.distributed.rpc.framework.api.IRpcCalcService;
-import com.xfc.distributed.rpc.framework.consumer.proxy.RpcProxy;
 import com.xfc.distributed.rpc.framework.api.IRpcHelloService;
+import com.xfc.distributed.rpc.framework.consumer.proxy.RpcProxy;
 
 public class RpcConsumer {
 
@@ -14,7 +14,7 @@ public class RpcConsumer {
 
         IRpcCalcService iRpcCalcService = RpcProxy.create(IRpcCalcService.class);
 
-        int a = 1,b = 3;
+        int a = 1, b = 3;
         System.out.println("iRpcCalcService.add(a,b) = " + iRpcCalcService.add(a, b));
 
         System.out.println("iRpcCalcService.cub(a,b) = " + iRpcCalcService.cub(a, b));

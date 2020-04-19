@@ -11,12 +11,12 @@ import java.util.Map;
  **/
 public class LRUCache {
 
-    private volatile Map<String,String> lruMap;
+    private volatile Map<String, String> lruMap;
     private int cacheSize;
 
-    public LRUCache(int initSize){
+    public LRUCache(int initSize) {
         this.cacheSize = initSize;
-        this.lruMap = new LinkedHashMap<String,String>(initSize,0.75f,true){
+        this.lruMap = new LinkedHashMap<String, String>(initSize, 0.75f, true) {
             @Override
             protected boolean removeEldestEntry(Map.Entry eldest) {
                 //size()获取map中当前元素数量,和初始设置的值做比较
@@ -26,20 +26,20 @@ public class LRUCache {
         };
     }
 
-    public String get(String inKey){
-        if(inKey.isEmpty() || this.lruMap.isEmpty()){
+    public String get(String inKey) {
+        if (inKey.isEmpty() || this.lruMap.isEmpty()) {
             return null;
         }
-        for(String key : lruMap.keySet()){
-            if(key.equals(inKey)){
+        for (String key : lruMap.keySet()) {
+            if (key.equals(inKey)) {
                 return lruMap.get(key);
             }
         }
         return null;
     }
 
-    public synchronized boolean put(String key,String value){
-        this.lruMap.put(key,value);
+    public synchronized boolean put(String key, String value) {
+        this.lruMap.put(key, value);
         return true;
     }
 
@@ -48,7 +48,7 @@ public class LRUCache {
         LRUCache lruCache = new LRUCache(2);
 
         for (int i = 0; i < 20; i++) {
-            lruCache.put(i+"",i+"");
+            lruCache.put(i + "", i + "");
 
         }
 

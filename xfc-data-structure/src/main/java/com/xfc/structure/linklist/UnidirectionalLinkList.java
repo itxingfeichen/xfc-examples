@@ -23,7 +23,7 @@ public class UnidirectionalLinkList {
     }
 
 
-    public Node getHead(){
+    public Node getHead() {
         return head;
     }
 

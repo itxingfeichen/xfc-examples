@@ -19,25 +19,27 @@ public class ReentrantLockLearn {
 
     /**
      * 尝试获得锁
+     *
      * @return
      */
     public Boolean tryLock(Long timeout, TimeUnit timeUnit) throws InterruptedException {
-       reentrantLock.lock();
-       return false;
+        reentrantLock.lock();
+        return false;
     }
 
     /**
      * 释放锁
      */
-    public void unLock(){
-         reentrantLock.unlock();
+    public void unLock() {
+        reentrantLock.unlock();
     }
 
     /**
      * 获取Condition对象
+     *
      * @return
      */
-    public Condition getCondition(){
+    public Condition getCondition() {
 
         return reentrantLock.newCondition();
     }

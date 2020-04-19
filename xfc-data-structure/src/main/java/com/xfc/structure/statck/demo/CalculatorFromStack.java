@@ -73,7 +73,7 @@ public class CalculatorFromStack {
                 }
             } else {
                 // 数字
-                operationNumber.push(ch-48);
+                operationNumber.push(ch - 48);
 
             }
         }

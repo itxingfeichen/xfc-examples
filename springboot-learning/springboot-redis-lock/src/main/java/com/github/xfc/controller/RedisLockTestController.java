@@ -25,7 +25,7 @@ public class RedisLockTestController {
     private RedisLockRegistry redisLockRegistry;
 
     @GetMapping("/testRedisLock")
-    public void testRedisLock(){
+    public void testRedisLock() {
         // 加锁
         Lock redisLock = redisLockRegistry.obtain("redisLock");
         try {
@@ -34,10 +34,10 @@ public class RedisLockTestController {
                 // 获得锁
                 log.info("开始处理业务");
             }
-            log.info(Thread.currentThread().getName()+"get lock flag is : {}",lock);
+            log.info(Thread.currentThread().getName() + "get lock flag is : {}", lock);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             redisLock.unlock();
         }
 
@@ -47,11 +47,11 @@ public class RedisLockTestController {
      * 新起动两个线程去测试分布式锁
      */
     @GetMapping("/test")
-    public void test(){
+    public void test() {
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        executorService.execute(()->testRedisLock());
+        executorService.execute(() -> testRedisLock());
 
-        executorService.execute(()->testRedisLock());
+        executorService.execute(() -> testRedisLock());
     }
 }

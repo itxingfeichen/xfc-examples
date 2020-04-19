@@ -33,12 +33,12 @@ public class SpringCloudConfigClientApplication {
         System.out.println("app client start");
     }
 
-    @Scheduled(fixedDelay = 3L,initialDelay = 1)
-    public void doRefreshConfig(){
+    @Scheduled(fixedDelay = 3L, initialDelay = 1)
+    public void doRefreshConfig() {
         Set<String> refresh = refresher.refresh();
 //        Set<String> refreshEnvironment = refresher.refreshEnvironment();
-        refresh.forEach(action->{
-            System.out.println("属性变化 = " + action+"  变化结果为="+environment.getProperty(action));
+        refresh.forEach(action -> {
+            System.out.println("属性变化 = " + action + "  变化结果为=" + environment.getProperty(action));
 
         });
 

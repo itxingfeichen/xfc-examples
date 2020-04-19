@@ -1,12 +1,6 @@
 package com.xfc.structure.sum;
 
-import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 /**
  * more threads get a result of sum
@@ -26,17 +20,16 @@ public class MoreThreadSum {
             data[i] = random.nextInt(10);
         }
         for (int i = 0; i < data.length; i++) {
-            sum+=data[i];
+            sum += data[i];
         }
         System.out.println("sum = " + sum);
         sum = 0;
 
 
-
     }
 
-    private static int sum(int n){
-        return (n*(n+1))/2;
+    private static int sum(int n) {
+        return (n * (n + 1)) / 2;
     }
 
 }

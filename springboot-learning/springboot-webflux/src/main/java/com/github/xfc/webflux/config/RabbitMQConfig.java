@@ -17,12 +17,12 @@ public class RabbitMQConfig {
 
 
     @Bean
-    public Queue queue(){
+    public Queue queue() {
         return new Queue("someQueue");
     }
 
     @Bean
-    public Exchange defaultExchange(){
+    public Exchange defaultExchange() {
         return new DirectExchange("some_exchange");
     }
 

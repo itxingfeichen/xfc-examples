@@ -17,10 +17,11 @@ public class Java12CalculatingService {
 
     /**
      * 计算
+     *
      * @param values
      * @return
      */
-    public Integer doSum(Integer... values){
+    public Integer doSum(Integer... values) {
         System.out.println("java12");
         return Stream.of(values).reduce(0, Integer::sum);
     }

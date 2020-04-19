@@ -17,6 +17,7 @@ public class CyclicBarrierLearn {
 
     /**
      * 等待
+     *
      * @return
      * @throws BrokenBarrierException
      * @throws InterruptedException

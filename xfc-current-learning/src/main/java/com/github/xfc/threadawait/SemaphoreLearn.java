@@ -67,6 +67,7 @@ public class SemaphoreLearn {
             this.taskName = taskName;
             this.semaphore = semaphore;
         }
+
         @Override
         public void run() {
             try {

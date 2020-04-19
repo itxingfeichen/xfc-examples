@@ -2,7 +2,10 @@ package com.xfc.spring.cloud.service.controller;
 
 import com.xfc.spring.cloud.service.api.UserService;
 import com.xfc.spring.cloud.service.model.User;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
@@ -24,14 +27,14 @@ public class UserApiController {
 
 
     @PostMapping("/save")
-    public User save(@RequestBody User user){
+    public User save(@RequestBody User user) {
         return userService.save(user);
 
     }
 
 
     @GetMapping("/findAll")
-    public Collection<User> findAll(){
+    public Collection<User> findAll() {
         return userService.findAll();
     }
 }

@@ -20,7 +20,7 @@ public class JDKQueryProxyTest {
         IJDKQueryService proxy = (IJDKQueryService) jdkQueryProxy.getProxy();
 
         User user = proxy.findUser(1L);
-        System.out.println("hashcode"+user.hashCode());
+        System.out.println("hashcode" + user.hashCode());
         Assert.assertNotNull(user);
     }
 }

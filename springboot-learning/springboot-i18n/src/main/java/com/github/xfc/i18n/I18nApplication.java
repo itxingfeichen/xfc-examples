@@ -22,7 +22,7 @@ public class I18nApplication {
         ConfigurableApplicationContext context = SpringApplication.run(I18nApplication.class);
 
         I18N bean = context.getBean(I18N.class);
-        Assert.notNull(bean,"is null????");
+        Assert.notNull(bean, "is null????");
 
 
         I18NService nService = context.getBean(I18NService.class);

@@ -16,6 +16,7 @@ public class SeqSearch implements ArraySearch {
 
     private SeqSearch() {
     }
+
     /**
      * 查找接口
      *

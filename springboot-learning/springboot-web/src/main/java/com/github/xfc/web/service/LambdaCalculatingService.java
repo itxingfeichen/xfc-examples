@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  */
 @Service
 @Profile("java8")
-public class LambdaCalculatingService implements CalculatingService{
+public class LambdaCalculatingService implements CalculatingService {
 
 
     /**

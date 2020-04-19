@@ -17,12 +17,12 @@ public class DefaultBeanDefinitionRegistryPostProcessor implements BeanDefinitio
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 
-        System.out.println("postProcessBeanDefinitionRegistry->"+registry);
+        System.out.println("postProcessBeanDefinitionRegistry->" + registry);
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("postProcessBeanFactory->"+beanFactory);
+        System.out.println("postProcessBeanFactory->" + beanFactory);
 
 
     }

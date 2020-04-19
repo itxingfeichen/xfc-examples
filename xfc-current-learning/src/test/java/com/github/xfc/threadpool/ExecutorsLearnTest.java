@@ -64,7 +64,7 @@ public class ExecutorsLearnTest {
 
         for (int i = 0; i < 10; i++) {
             TimeUnit.SECONDS.sleep(1);
-            newFixedThreadPool.execute(new Task(Long.valueOf(i+""), "task" + i, "aaa" + i));
+            newFixedThreadPool.execute(new Task(Long.valueOf(i + ""), "task" + i, "aaa" + i));
         }
         try {
             TimeUnit.SECONDS.sleep(5);
@@ -93,16 +93,16 @@ public class ExecutorsLearnTest {
     }
 
     @Test
-    public void testThreadOrder(){
+    public void testThreadOrder() {
         final ExecutorService service = executorsLearn.getNewSingleThreadExecutor();
 
-        service.submit(()->{
+        service.submit(() -> {
             System.out.println("service A");
         });
-        service.submit(()->{
+        service.submit(() -> {
             System.out.println("service B");
         });
-        service.submit(()->{
+        service.submit(() -> {
             System.out.println("service C");
         });
         try {

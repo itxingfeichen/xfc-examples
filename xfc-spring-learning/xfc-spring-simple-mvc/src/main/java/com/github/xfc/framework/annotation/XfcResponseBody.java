@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @description: controller注解
  */
 @Documented
-@Target({ElementType.METHOD,ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 public @interface XfcResponseBody {
 
 

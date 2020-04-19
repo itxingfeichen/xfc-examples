@@ -51,7 +51,7 @@
                     <suffixs>
                         <suffix>html</suffix>
                     </suffixs>
-<!--                    <version>1.2.6</version>    &lt;!&ndash; 此处注释掉 每次的版本号将采用年月日时分秒 &ndash;&gt;-->
+                    <!--                    <version>1.2.6</version>    &lt;!&ndash; 此处注释掉 每次的版本号将采用年月日时分秒 &ndash;&gt;-->
                 </configuration>
             </plugin>
         </plugins>

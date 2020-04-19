@@ -14,11 +14,11 @@ public class SignletonTest {
 
 
     @Test
-    public void getInstance(){
+    public void getInstance() {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         // 测试3个线程并打印hashcode
         for (int i = 0; i < 3; i++) {
-            executorService.execute(()-> System.out.println("hashcode="+ Singleton.getInstance().hashCode()));
+            executorService.execute(() -> System.out.println("hashcode=" + Singleton.getInstance().hashCode()));
         }
 
     }

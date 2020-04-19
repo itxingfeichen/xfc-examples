@@ -33,7 +33,7 @@ public class PrimGraph {
     /**
      * 打印图
      */
-    public void showGraph(){
+    public void showGraph() {
         for (int[] lineData : this.weight) {
             System.out.println(Arrays.toString(lineData));
         }

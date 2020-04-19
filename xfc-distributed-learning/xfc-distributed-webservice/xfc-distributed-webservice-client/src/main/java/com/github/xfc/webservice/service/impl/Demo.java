@@ -10,7 +10,7 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        IWebServiceImplService iWebServiceImplService =new IWebServiceImplService();
+        IWebServiceImplService iWebServiceImplService = new IWebServiceImplService();
 
         IWebServiceImpl iWebServiceImplPort = iWebServiceImplService.getIWebServiceImplPort();
         System.out.println(iWebServiceImplPort.sayHelloWebService("chenxingfei"));

@@ -1,12 +1,10 @@
 package com.github.xfc.threadawait;
 
-import com.github.xfc.model.Task;
-import org.junit.Test;
-
 import java.util.Random;
-import java.util.concurrent.*;
-
-import static org.junit.Assert.*;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author : chenxingfei
@@ -17,6 +15,7 @@ public class CyclicBarrierLearnTest {
 
     /**
      * 测试栏栅任务（必须所有任务都完成才能一起释放）是一种线程之间的阻塞
+     *
      * @param args
      */
     public static void main(String[] args) {

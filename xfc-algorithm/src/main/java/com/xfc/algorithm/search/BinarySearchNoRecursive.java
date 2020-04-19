@@ -19,7 +19,7 @@ public class BinarySearchNoRecursive {
     public int binarySearch(int[] data, int target) {
         int left = 0;
         int right = data.length - 1;
-        while (left <=right) {
+        while (left <= right) {
             int middle = (left + right) / 2;
             if (data[middle] == target) {
                 return middle;

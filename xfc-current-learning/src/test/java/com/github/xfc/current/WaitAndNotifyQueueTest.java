@@ -43,6 +43,7 @@ public class WaitAndNotifyQueueTest {
 
     /**
      * 通过Thread.join方法可以控制线程执行顺序
+     *
      * @throws InterruptedException
      */
     @Test

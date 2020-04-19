@@ -48,24 +48,25 @@ public class AliYunTest1 {
     private static void test1() {
         int i = 1;
         int j = i++;
-        if((i==(++j))&&((i++)==j))     {
-            i+=j;
+        if ((i == (++j)) && ((i++) == j)) {
+            i += j;
         }
 
         System.out.println("i = " + i);
     }
 
-    private static void test2(){
+    private static void test2() {
 
 
         int i = 9;
 
-        switch (i){
+        switch (i) {
 
             default:
                 System.out.println("default");
             case 0:
-                System.out.println("0");break;
+                System.out.println("0");
+                break;
             case 1:
                 System.out.println("case1");
             case 2:

@@ -39,7 +39,7 @@ public class RegistryHandler extends ChannelInboundHandlerAdapter {
         if (o != null) {
 
             try {
-                Method method = o.getClass().getDeclaredMethod(invokerMsg.getMethodName(),invokerMsg.getParamsList());
+                Method method = o.getClass().getDeclaredMethod(invokerMsg.getMethodName(), invokerMsg.getParamsList());
                 invoke = method.invoke(o, invokerMsg.getParams());
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();

@@ -15,6 +15,7 @@ public class RedisLockConfiguration {
 
     /**
      * 初始化redisLockRegistry类
+     *
      * @param redisConnectionFactory
      * @return
      */

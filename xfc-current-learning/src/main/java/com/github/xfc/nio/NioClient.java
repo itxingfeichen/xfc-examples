@@ -2,8 +2,6 @@ package com.github.xfc.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
@@ -32,7 +30,7 @@ public class NioClient {
         while (scanner.hasNextLine()) {
             final String nextLine = scanner.nextLine();
             if (nextLine != null && nextLine.length() > 0) {
-                socketChannel.write(Charset.forName("UTF-8").encode(nickname+" : "+nextLine));
+                socketChannel.write(Charset.forName("UTF-8").encode(nickname + " : " + nextLine));
             }
         }
     }

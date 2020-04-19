@@ -3,8 +3,6 @@ package com.xfc.structure.linklist;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class UnidirectionalLinkListTest {
 
 
@@ -21,7 +19,7 @@ public class UnidirectionalLinkListTest {
 
         UnidirectionalLinkList.Node node = unidirectionalLinkList.getHead();
 
-        while ((node = node.getNext())!=null){
+        while ((node = node.getNext()) != null) {
             System.out.println(node);
         }
 

@@ -17,18 +17,20 @@ public class ConcurrentLinkedQueueLearn {
 
     /**
      * 向队列中新增元素
+     *
      * @param obj
      */
-    public Boolean offerOrAdd(String obj){
+    public Boolean offerOrAdd(String obj) {
 //        concurrentLinkedQueue.forEach(System.out::println);
         return concurrentLinkedQueue.add(obj);
     }
 
     /**
      * 从队列中获取一个元素并从队列中删除该元素
+     *
      * @return
      */
-    public String poll(){
+    public String poll() {
         return concurrentLinkedQueue.poll();
     }
 

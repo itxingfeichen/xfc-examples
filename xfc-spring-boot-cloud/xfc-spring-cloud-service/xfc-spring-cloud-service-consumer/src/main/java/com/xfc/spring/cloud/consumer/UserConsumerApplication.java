@@ -1,6 +1,5 @@
 package com.xfc.spring.cloud.consumer;
 
-import com.xfc.spring.cloud.service.model.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -23,7 +22,7 @@ public class UserConsumerApplication {
 
     @Bean
     @LoadBalanced
-    public RestTemplate initRestTemplate(){
+    public RestTemplate initRestTemplate() {
         return new RestTemplate();
     }
 }

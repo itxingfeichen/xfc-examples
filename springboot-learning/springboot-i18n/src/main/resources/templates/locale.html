@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset = "UTF-8"/>
+    <meta charset="UTF-8"/>
     <title>SpringBoot国际化</title>
 </head>
 <body>
@@ -14,10 +14,10 @@
     <option th:value="${product}" th:each="product : ${products}" th:text="#{'select-'+${product}}"></option>
 </select>
 
-<div th:if="${t == 'aaa' || t=='bbb'}" >多条件表达式测试</div>
-<div th:if="${t == 'aaa' || t=='bbn'}" >多条件表达式测试</div>
-<div th:if="${t == 'aaa' or x=='ccc'}" >多条件表达式测试---Or</div>
-<div th:if="${x} == 'ccc'" >多条件表达式测试---？</div>
+<div th:if="${t == 'aaa' || t=='bbb'}">多条件表达式测试</div>
+<div th:if="${t == 'aaa' || t=='bbn'}">多条件表达式测试</div>
+<div th:if="${t == 'aaa' or x=='ccc'}">多条件表达式测试---Or</div>
+<div th:if="${x} == 'ccc'">多条件表达式测试---？</div>
 
 </body>
 </html>

@@ -26,28 +26,28 @@ public class ReentrantLockReadWritLearn {
     /**
      * 增加读锁
      */
-    public void readLock(){
+    public void readLock() {
         readLock.lock();
     }
 
     /**
      * 释放读锁
      */
-    public void unReadLock(){
+    public void unReadLock() {
         readLock.unlock();
     }
 
     /**
      * 增加写锁
      */
-    public void writeLock(){
+    public void writeLock() {
         writeLock.lock();
     }
 
     /**
      * 释放写锁
      */
-    public void unWriteLock(){
+    public void unWriteLock() {
         writeLock.unlock();
     }
 

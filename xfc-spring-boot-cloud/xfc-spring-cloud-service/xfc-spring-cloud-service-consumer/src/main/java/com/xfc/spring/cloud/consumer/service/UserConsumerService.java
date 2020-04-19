@@ -1,6 +1,5 @@
 package com.xfc.spring.cloud.consumer.service;
 
-import com.xfc.spring.cloud.service.api.UserService;
 import com.xfc.spring.cloud.service.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class UserConsumerService {
     }
 
     public Collection<User> findAll() {
-        return restTemplate.getForObject(SERVER_PROVIDER_URL+"/findAll",Collection.class);
+        return restTemplate.getForObject(SERVER_PROVIDER_URL + "/findAll", Collection.class);
 
     }
 

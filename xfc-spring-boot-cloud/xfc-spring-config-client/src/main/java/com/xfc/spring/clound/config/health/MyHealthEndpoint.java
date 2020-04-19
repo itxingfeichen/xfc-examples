@@ -20,6 +20,6 @@ public class MyHealthEndpoint extends AbstractHealthIndicator {
      */
     @Override
     protected void doHealthCheck(Health.Builder builder) throws Exception {
-        builder.withDetail("dbStatus","DOWN");
+        builder.withDetail("dbStatus", "DOWN");
     }
 }

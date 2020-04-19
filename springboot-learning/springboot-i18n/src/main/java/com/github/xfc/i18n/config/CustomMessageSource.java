@@ -5,13 +5,13 @@ import com.github.xfc.i18n.service.I18NService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.context.MessageSourceProperties;
 import org.springframework.context.support.AbstractResourceBasedMessageSource;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.text.MessageFormat;
-import java.time.Duration;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -42,15 +42,15 @@ public class CustomMessageSource extends AbstractResourceBasedMessageSource {
         List<I18N> i18NS = i18NService.list();
         i18NS.forEach(action -> {
             String actionLocale = action.getLocale();
-            if(actionLocale!=null && actionLocale.contains("_")){
+            if (actionLocale != null && actionLocale.contains("_")) {
                 String[] codeAndCountry = actionLocale.split("_");
                 Locale locale = new Locale(codeAndCountry[0], codeAndCountry[1]);
-                if(cacheI8nData.containsKey(locale)){
-                    cacheI8nData.get(locale).put(action.getI18nKey(),action.getI18nValue());
-                }else{
-                    Map<String,Object> map = new HashMap<>();
-                    map.put(action.getI18nKey(),action.getI18nValue());
-                    cacheI8nData.put(locale,map);
+                if (cacheI8nData.containsKey(locale)) {
+                    cacheI8nData.get(locale).put(action.getI18nKey(), action.getI18nValue());
+                } else {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put(action.getI18nKey(), action.getI18nValue());
+                    cacheI8nData.put(locale, map);
                 }
             }
         });

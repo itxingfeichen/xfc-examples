@@ -32,7 +32,7 @@ public class HorseCheeseboard {
         // 棋盘二维数组
         int[][] cheeseBoard = new int[row][column];
 //        horseCheeseboard(cheeseBoard, visited, new Point(0, 0), 1);
-        traversalChessboard(cheeseBoard,0,0,1);
+        traversalChessboard(cheeseBoard, 0, 0, 1);
         for (int[] rows : cheeseBoard) {
             System.out.println(Arrays.toString(rows));
         }
@@ -158,7 +158,7 @@ public class HorseCheeseboard {
         //row = 4 X = 8 column = 4 = 4 * 8 + 4 = 36
         visited[row * X + column] = true; //标记该位置已经访问 //获取当前位置可以走的下一个位置的集合
 //        ArrayList<Point> ps = next(new Point(column, row));
-        List<Point> ps = getNextPoint(new Point(column, row),6,6);
+        List<Point> ps = getNextPoint(new Point(column, row), 6, 6);
         //对 ps 进行排序,排序的规则就是对 ps 的所有的 Point 对象的下一步的位置的数目，进行非递减排序 sort(ps);
         //遍历 ps
         while (!ps.isEmpty()) {

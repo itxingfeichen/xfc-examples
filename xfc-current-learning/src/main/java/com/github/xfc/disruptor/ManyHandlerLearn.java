@@ -3,12 +3,10 @@ package com.github.xfc.disruptor;
 import com.github.xfc.disruptor.hanlder.*;
 import com.github.xfc.disruptor.publisher.CaseEventPublisher;
 import com.github.xfc.model.CaseEvent;
-import com.lmax.disruptor.BusySpinWaitStrategy;
 import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
-import java.time.Year;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -57,7 +55,7 @@ public class ManyHandlerLearn {
 //        disruptor.after(addOrderNo4CaseHandler).handleEventsWith(addModelScore4CaseHandler);
 
 
-        disruptor.after(addOrderNo4CaseHandler,addTask4CaseHandler).handleEventsWith(new PrintCaseHandler());
+        disruptor.after(addOrderNo4CaseHandler, addTask4CaseHandler).handleEventsWith(new PrintCaseHandler());
 
         // 启动disruptor
         disruptor.start();
@@ -66,7 +64,7 @@ public class ManyHandlerLearn {
         ExecutorService executorService = Executors.newFixedThreadPool(1);
         CountDownLatch countDown = new CountDownLatch(100);
         for (int i = 0; i < 100; i++) {
-            CaseEventPublisher caseEventPublisher = new CaseEventPublisher(disruptor, countDown,atomicLong);
+            CaseEventPublisher caseEventPublisher = new CaseEventPublisher(disruptor, countDown, atomicLong);
             executorService.submit(caseEventPublisher);
         }
         try {

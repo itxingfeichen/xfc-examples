@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * @description: controller注解
  */
 @Documented
-@Target({ElementType.METHOD,ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface XfcRequestMapping {
 

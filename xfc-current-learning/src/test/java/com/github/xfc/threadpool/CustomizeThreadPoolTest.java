@@ -3,8 +3,10 @@ package com.github.xfc.threadpool;
 import com.github.xfc.model.Task;
 import org.junit.Test;
 
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author : chenxingfei
@@ -61,7 +63,7 @@ public class CustomizeThreadPoolTest {
 
         // 定义一个核心池大小为一个线程，最大线程数为2个，阻塞队列为3个元素，并且线程数大于最大线程数后的空闲线程销毁时间为1秒
         ExecutorService executorService = customizeThreadPool.newCustomizeThreadPoolWithThreadFactory(2, 100, 1000L,
-                TimeUnit.MICROSECONDS, new LinkedBlockingDeque(),CustomizeThreadPool.newCustomizeThreadFactory());
+                TimeUnit.MICROSECONDS, new LinkedBlockingDeque(), CustomizeThreadPool.newCustomizeThreadFactory());
 
         for (int i = 0; i < 20; i++) {
             executorService.submit(new Task(Long.valueOf(i), "task" + 1, "att" + 1));

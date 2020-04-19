@@ -110,7 +110,7 @@ public class ReversePolishCalculatorFromStack {
                 } else {
                     // 如果是操作符号
                     while (!symbolStack.isEmpty() && isPriorityOperateSymbol(express.charAt(0)) <= isPriorityOperateSymbol((char) symbolStack.peek())) {
-                        numberStack.add((char)symbolStack.pop()+"");
+                        numberStack.add((char) symbolStack.pop() + "");
                     }
                     symbolStack.push(express.charAt(0));
 

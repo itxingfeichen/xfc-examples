@@ -23,9 +23,10 @@ public class InnerSingleton {
 
     /**
      * 获取实例对象
+     *
      * @return
      */
-    public Singleton getInstance(){
+    public Singleton getInstance() {
         return Singleton.single;
     }
 

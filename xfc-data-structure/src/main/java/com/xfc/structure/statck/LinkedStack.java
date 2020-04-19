@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * 链表模拟栈
+ *
  * @author jannik
  * @version v1.0.0
  * @date 2019-12-14 13:29
@@ -88,8 +89,8 @@ public class LinkedStack implements Stack {
     @Override
     public void list() {
         Node temp = head;
-        while (temp.next != null){
-            System.out.println("节点["+temp.next+"]");
+        while (temp.next != null) {
+            System.out.println("节点[" + temp.next + "]");
             temp = temp.next;
         }
     }

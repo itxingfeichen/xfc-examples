@@ -13,7 +13,7 @@ public class UserA implements NormalRule {
      */
     @Override
     public boolean doSomething(String task) {
-        System.out.println("已完成 "+task+" 事儿");
+        System.out.println("已完成 " + task + " 事儿");
         return true;
     }
 }

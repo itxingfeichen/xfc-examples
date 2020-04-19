@@ -12,7 +12,7 @@ public class XfcModelAndView {
 
     private Object view;
 
-    private Map<String,Object> model = new HashMap<String, Object>();
+    private Map<String, Object> model = new HashMap<String, Object>();
 
 
     public XfcModelAndView(Object view) {

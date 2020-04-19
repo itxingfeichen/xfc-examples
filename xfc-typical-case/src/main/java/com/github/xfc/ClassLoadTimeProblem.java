@@ -20,9 +20,9 @@ public class ClassLoadTimeProblem {
 
     /**
      * 这个变量属于ClassLoadTimeProblem的非static成员变量，但是这个变量依赖了BOOLEAN变量BOOLEAN
-     *
+     * <p>
      * 根据java的类加载顺序，在初始化classLoadTimeProblem变量时就会调用构造器。此时变量BOOLEAN并没有初始化，因此test也不会被初始化。
-     *
+     * <p>
      * 调用完构造器后才初始化BOOLEAN，此时test变量已经错过了加载时机，从而初始化失败
      */
     private final Boolean test = BOOLEAN;
@@ -33,6 +33,7 @@ public class ClassLoadTimeProblem {
 
     /**
      * 执行main打印结果是？
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -49,29 +50,12 @@ public class ClassLoadTimeProblem {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * 本题执行结果
  * Exception in thread "main" java.lang.NullPointerException
- * 	at com.github.xfc.ClassLoadTimeProblem.main(ClassLoadTimeProblem.java:28)
- *
- * 	修改方法：将private static final Boolean BOOLEAN = true;移动到单例对象初始化之前即可，这样就能保证在单例对象初始化是调用构造器前初始化test变量
+ * at com.github.xfc.ClassLoadTimeProblem.main(ClassLoadTimeProblem.java:28)
+ * <p>
+ * 修改方法：将private static final Boolean BOOLEAN = true;移动到单例对象初始化之前即可，这样就能保证在单例对象初始化是调用构造器前初始化test变量
  */
 
 

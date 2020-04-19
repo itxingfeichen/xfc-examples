@@ -8,8 +8,7 @@ package com.github.xfc.web.test;
 public class StaticMethodTest {
 
 
-
-    public static void test(){
+    public static void test() {
         System.out.println("method test");
     }
 

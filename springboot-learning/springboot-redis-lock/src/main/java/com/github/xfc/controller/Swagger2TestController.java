@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/swagger")
-@Api(value = "Swagger2测试接口",tags = "测试接口")
+@Api(value = "Swagger2测试接口", tags = "测试接口")
 public class Swagger2TestController {
 
 
-    @ApiOperation(value="获取用户详细信息", notes="根据用户的id来获取用户详细信息")
-    @ApiImplicitParam(name = "id", value = "用户ID", required = true,paramType = "query", dataType = "Integer")
-    @GetMapping(value="/findById")
-    public User findById(@RequestParam(value = "id")int id){
-        return new User("张三","12345");
+    @ApiOperation(value = "获取用户详细信息", notes = "根据用户的id来获取用户详细信息")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, paramType = "query", dataType = "Integer")
+    @GetMapping(value = "/findById")
+    public User findById(@RequestParam(value = "id") int id) {
+        return new User("张三", "12345");
     }
 }

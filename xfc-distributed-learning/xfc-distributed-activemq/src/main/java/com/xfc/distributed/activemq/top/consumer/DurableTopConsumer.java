@@ -13,7 +13,7 @@ public class DurableTopConsumer {
 
     public static void main(String[] args) throws JMSException {
         // 创建连接工厂
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin","admin","tcp://192.168.22.128:61617");
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin", "admin", "tcp://192.168.22.128:61617");
 
 
         Connection connection = null;

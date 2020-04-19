@@ -16,6 +16,7 @@ public class CuratorFrameworkUtil {
 
     /**
      * 构建Curator实例子
+     *
      * @return
      * @throws InterruptedException
      */

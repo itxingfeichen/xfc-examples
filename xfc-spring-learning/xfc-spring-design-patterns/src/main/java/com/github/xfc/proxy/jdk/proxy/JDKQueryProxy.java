@@ -32,7 +32,7 @@ public class JDKQueryProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("执行方法之前");
         Object invoke = method.invoke(object, args);
-        System.out.println("hashcode"+invoke.hashCode());
+        System.out.println("hashcode" + invoke.hashCode());
         System.out.println("执行方法之后。。。");
         return invoke;
     }

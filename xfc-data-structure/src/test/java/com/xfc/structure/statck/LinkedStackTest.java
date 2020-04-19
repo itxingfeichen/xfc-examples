@@ -16,7 +16,7 @@ public class LinkedStackTest {
 
 
     @Test
-    public void testLinkedStack(){
+    public void testLinkedStack() {
         LinkedStack linkedStack = new LinkedStack(3);
         System.out.println("linkedStack.isEmpty() = " + linkedStack.isEmpty());
         System.out.println("linkedStack.isFull() = " + linkedStack.isFull());
@@ -33,12 +33,12 @@ public class LinkedStackTest {
     }
 
     @Test
-    public void testHashMap(){
+    public void testHashMap() {
 
         HashMap<Object, Object> map = new HashMap<>();
-        map.put("1",2);
+        map.put("1", 2);
         for (int i = 0; i < 30; i++) {
-            new Thread(()->{
+            new Thread(() -> {
                 map.put(Thread.currentThread().getName(), UUID.randomUUID().toString());
                 System.out.println(map);
             }).start();
@@ -59,12 +59,12 @@ public class LinkedStackTest {
         calendar.add(Calendar.SECOND, 5);
         long timeInMillis = calendar.getTimeInMillis();
         DelayQueue<Task> delayQueue = new DelayQueue<>();
-        delayQueue.add(new Task("123",timeInMillis));
-        delayQueue.add(new Task("12",timeInMillis));
-        delayQueue.add(new Task("13",timeInMillis));
-        delayQueue.add(new Task("1",timeInMillis));
+        delayQueue.add(new Task("123", timeInMillis));
+        delayQueue.add(new Task("12", timeInMillis));
+        delayQueue.add(new Task("13", timeInMillis));
+        delayQueue.add(new Task("1", timeInMillis));
 
-        while (true){
+        while (true) {
             try {
                 Task take = delayQueue.take();
                 System.out.println("take = " + take);
@@ -78,7 +78,7 @@ public class LinkedStackTest {
 
     @Data
     @AllArgsConstructor
-    public static class Task implements Delayed{
+    public static class Task implements Delayed {
 
         private String taskName;
 

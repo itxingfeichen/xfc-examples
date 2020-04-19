@@ -32,9 +32,9 @@ public class AmqProducerServiceImpl implements AmqProducerService {
     @Override
     public void sendMessage(String msg) {
         // 发送点对点消息
-        jmsTemplate.convertAndSend(destinationQueue,msg);
+        jmsTemplate.convertAndSend(destinationQueue, msg);
         // 发送广播
-        jmsTemplate.convertAndSend(destinationTopic,"topic:"+msg);
+        jmsTemplate.convertAndSend(destinationTopic, "topic:" + msg);
 
     }
 }

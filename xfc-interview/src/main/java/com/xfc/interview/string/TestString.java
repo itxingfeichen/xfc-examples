@@ -37,9 +37,9 @@ public class TestString {
         // true s4,"java"均指向常量池的地址并且为同一个对象
         System.out.println(s4 == "java");
         // false s4指向常量池，s5+s6会创建新对象 java8和其他版本的加号操作不太一样，java8使用的是append，之前是使用的new String
-        System.out.println(s4 == (s5+s6));
+        System.out.println(s4 == (s5 + s6));
         // false s4指向常量池，"ja"+s6会创建新对象
-        System.out.println(s4 == "ja"+s6);
+        System.out.println(s4 == "ja" + s6);
 
 
     }

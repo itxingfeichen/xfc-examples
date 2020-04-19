@@ -24,6 +24,6 @@ public class CustomServlet implements XfServlet {
     @Override
     public void doPost(XfHttpRequest request, XfHttpResponse response) {
 
-        doGet(request,response);
+        doGet(request, response);
     }
 }

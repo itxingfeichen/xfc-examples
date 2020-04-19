@@ -20,9 +20,9 @@ public class AliYunTest2 {
         System.out.println(a.indexOf('t'));
     }
 
-    public int amethod(){
+    public int amethod() {
 
-        int i=0;
+        int i = 0;
         i++;
         return i;
     }

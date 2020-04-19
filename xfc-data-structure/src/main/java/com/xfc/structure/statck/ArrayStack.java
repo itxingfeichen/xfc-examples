@@ -78,7 +78,7 @@ public class ArrayStack implements Stack {
      * 遍历
      */
     public void list() {
-        if(isEmpty()){
+        if (isEmpty()) {
             throw new RuntimeException("栈为空");
         }
         for (int i = top; i != -1; i--) {

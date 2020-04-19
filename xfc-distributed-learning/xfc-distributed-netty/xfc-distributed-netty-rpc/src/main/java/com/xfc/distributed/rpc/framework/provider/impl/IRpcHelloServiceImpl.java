@@ -10,6 +10,6 @@ import com.xfc.distributed.rpc.framework.api.IRpcHelloService;
 public class IRpcHelloServiceImpl implements IRpcHelloService {
     @Override
     public String rpcTest(String name) {
-        return "hello"+" "+ name;
+        return "hello" + " " + name;
     }
 }

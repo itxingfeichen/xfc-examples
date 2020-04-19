@@ -18,7 +18,7 @@ public class ClientController {
     private String myName;
 
     @GetMapping("/myName")
-    public String index(){
+    public String index() {
         return myName;
     }
 }

@@ -20,7 +20,7 @@ public class MultiClient {
         multicastSocket.joinGroup(inetSocketAddress);
 
         byte[] bytes = new byte[1024];
-        while (true){
+        while (true) {
             DatagramPacket p = new DatagramPacket(bytes, bytes.length);
             multicastSocket.receive(p);
             System.out.println(p.getData());

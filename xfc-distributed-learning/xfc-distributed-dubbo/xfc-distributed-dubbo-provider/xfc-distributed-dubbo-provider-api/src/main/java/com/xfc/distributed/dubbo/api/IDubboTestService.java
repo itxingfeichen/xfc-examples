@@ -11,6 +11,7 @@ import com.xfc.distributed.dubbo.common.ResponseDto;
 public interface IDubboTestService {
     /**
      * dubbo测试
+     *
      * @param requestDto
      * @return
      */

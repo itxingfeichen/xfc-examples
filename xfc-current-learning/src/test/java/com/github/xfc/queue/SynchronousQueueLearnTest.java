@@ -1,12 +1,8 @@
 package com.github.xfc.queue;
 
-import org.junit.Test;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.*;
 
 /**
  * @author : chenxingfei
@@ -15,20 +11,20 @@ import static org.junit.Assert.*;
  */
 public class SynchronousQueueLearnTest {
 
-//    @Test
+    //    @Test
     public static void put() {
         SynchronousQueueLearn synchronousQueueLearn = new SynchronousQueueLearn();
 
         // 声明一个含有两个线程的线程池
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-        executorService.execute(()->{
+        executorService.execute(() -> {
             synchronousQueueLearn.put("put a ele");
 
             System.out.println("test  cas end....");
         });
 
-        executorService.execute(()->{
+        executorService.execute(() -> {
             synchronousQueueLearn.put("put other ele");
 
             System.out.println("test  cas end....");
@@ -41,7 +37,7 @@ public class SynchronousQueueLearnTest {
             e.printStackTrace();
         }
 
-        executorService.execute(()->{
+        executorService.execute(() -> {
             System.out.println(synchronousQueueLearn.take());
 
             System.out.println(" take  test  cas end....");

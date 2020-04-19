@@ -15,13 +15,13 @@ public class GCOverheadLimitOOM {
 
         List<String> list = new ArrayList<>();
 
-        int i =0;
+        int i = 0;
         try {
-            while (true){
+            while (true) {
                 list.add(String.valueOf(i++));
             }
         } catch (Throwable e) {
-            System.out.println("i == = ==============="+i);
+            System.out.println("i == = ===============" + i);
             e.printStackTrace();
             throw e;
         }

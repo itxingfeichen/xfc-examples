@@ -14,7 +14,7 @@ public class HamTest {
 
         boolean b = random.nextBoolean();
 
-        Number result = (b|| !b)?new Integer(3):new Float(1);
+        Number result = (b || !b) ? new Integer(3) : new Float(1);
 
 
         // 这里的执行结果是？ 3.0

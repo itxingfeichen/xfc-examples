@@ -18,7 +18,9 @@ public class IDubboTestServiceImpl implements IDubboTestService {
      */
     @Override
     public ResponseDto helloDubbo(RequestDto requestDto) {
+
         System.out.println("请求参数 = " + requestDto);
+        int i = 1/0;
         ResponseDto responseDto = new ResponseDto();
         responseDto.setErrorCode(0L);
         responseDto.setErrorMsg("no error ");

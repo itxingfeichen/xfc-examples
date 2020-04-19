@@ -1,11 +1,7 @@
 package com.github.xfc.distributed.zookeeper.curator;
 
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.api.CuratorEvent;
-import org.apache.curator.framework.api.CuratorListener;
-import org.apache.curator.framework.recipes.cache.NodeCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
-import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
 import org.apache.zookeeper.CreateMode;
 
 import java.util.concurrent.TimeUnit;
@@ -46,8 +42,6 @@ public class CuratorFrameworkEventDemo {
         Thread.sleep(5000L);*/
 
 
-
-
         PathChildrenCache childrenCache = new PathChildrenCache(instance, "/inbackground", true);
 
         childrenCache.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT);
@@ -55,25 +49,25 @@ public class CuratorFrameworkEventDemo {
         childrenCache.getListenable().addListener((x, y) -> {
             switch (y.getType()) {
                 case CHILD_ADDED:
-                    System.out.println("CHILD_ADDED  "+x.getData().toString());
+                    System.out.println("CHILD_ADDED  " + x.getData().toString());
                     break;
                 case INITIALIZED:
-                    System.out.println("INITIALIZED  "+x.getData().toString());
+                    System.out.println("INITIALIZED  " + x.getData().toString());
                     break;
                 case CHILD_REMOVED:
-                    System.out.println("CHILD_REMOVED  "+x.getData().toString());
+                    System.out.println("CHILD_REMOVED  " + x.getData().toString());
                     break;
                 case CHILD_UPDATED:
-                    System.out.println("CHILD_UPDATED  "+x.getData().toString());
+                    System.out.println("CHILD_UPDATED  " + x.getData().toString());
                     break;
                 case CONNECTION_LOST:
-                    System.out.println("CONNECTION_LOST  "+x.getData().toString());
+                    System.out.println("CONNECTION_LOST  " + x.getData().toString());
                     break;
                 case CONNECTION_RECONNECTED:
-                    System.out.println("CONNECTION_RECONNECTED  "+x.getData().toString());
+                    System.out.println("CONNECTION_RECONNECTED  " + x.getData().toString());
                     break;
                 case CONNECTION_SUSPENDED:
-                    System.out.println("CONNECTION_SUSPENDED  "+x.getData().toString());
+                    System.out.println("CONNECTION_SUSPENDED  " + x.getData().toString());
                     break;
                 default:
                     break;
@@ -81,10 +75,10 @@ public class CuratorFrameworkEventDemo {
 
         });
 
-        instance.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/event","123".getBytes());
+        instance.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/event", "123".getBytes());
         TimeUnit.SECONDS.sleep(1);
 
-        instance.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/event/event11","123".getBytes());
+        instance.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/event/event11", "123".getBytes());
         TimeUnit.SECONDS.sleep(1);
 
         instance.delete().deletingChildrenIfNeeded().forPath("/event/event11");

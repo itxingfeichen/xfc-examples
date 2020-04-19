@@ -1,13 +1,7 @@
 package com.github.xfc.distributed.zookeeper.curator;
 
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.api.BackgroundCallback;
-import org.apache.curator.framework.api.CuratorEvent;
 import org.apache.zookeeper.CreateMode;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author : chenxingfei
@@ -27,8 +21,8 @@ public class CuratorFrameworkTransactionDemo {
                 .and().setData().forPath("/xxx","333".getBytes()).and().commit();*/
 
         // 事务失败演示，结果分析，事务成功，inbackground1节点数据修改,与预期一致
-        instance.inTransaction().create().withMode(CreateMode.PERSISTENT).forPath("/transaction","123".getBytes())
-                .and().setData().forPath("/inbackground","333".getBytes()).and().commit();
+        instance.inTransaction().create().withMode(CreateMode.PERSISTENT).forPath("/transaction", "123".getBytes())
+                .and().setData().forPath("/inbackground", "333".getBytes()).and().commit();
 
     }
 }

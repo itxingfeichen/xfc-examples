@@ -15,21 +15,22 @@ public class ArrayBlockingQueueLearn {
     private static final ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(5);
 
 
-
     /**
      * 新增元素
+     *
      * @param obj
      * @return
      */
-    public Boolean add(String obj){
+    public Boolean add(String obj) {
         return arrayBlockingQueue.offer(obj);
     }
 
     /**
      * 获取元素
+     *
      * @return
      */
-    public String poll(){
+    public String poll() {
 
         return arrayBlockingQueue.poll();
     }

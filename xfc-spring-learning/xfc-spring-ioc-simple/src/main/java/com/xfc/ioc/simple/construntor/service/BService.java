@@ -21,7 +21,7 @@ public class BService {
         this.cService = cService;
     }
 
-    public String helloB(){
+    public String helloB() {
         return "hello B";
     }
 }

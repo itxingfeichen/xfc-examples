@@ -15,7 +15,7 @@ public class TestSleep {
 
                     try {
 
-                        System.out.println(Thread.currentThread().getName()+ "   ~~不会阻塞么？");
+                        System.out.println(Thread.currentThread().getName() + "   ~~不会阻塞么？");
                         TimeUnit.SECONDS.sleep(1);
 
                     } catch (InterruptedException e) {
@@ -29,7 +29,6 @@ public class TestSleep {
             }
 
         }
-
 
 
         for (int i = 0; i < 10; i++) {

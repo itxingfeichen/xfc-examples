@@ -66,7 +66,7 @@
         <property name="messageListener" ref="destinationTopicListener"/>
     </bean>
 
-<!--    <bean id="destinationQueueListener" class="com.xfc.distributed.activemq.spring.service.ConsumerQueueListener"></bean>-->
-<!--    <bean id="destinationTopicListener" class="com.xfc.distributed.activemq.spring.container.ConsumerTopicListener"></bean>-->
+    <!--    <bean id="destinationQueueListener" class="com.xfc.distributed.activemq.spring.service.ConsumerQueueListener"></bean>-->
+    <!--    <bean id="destinationTopicListener" class="com.xfc.distributed.activemq.spring.container.ConsumerTopicListener"></bean>-->
 
 </beans>

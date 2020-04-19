@@ -2,8 +2,6 @@ package com.xfc.structure.sort;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class BubbleSortTest {
 
     @Test
@@ -13,8 +11,8 @@ public class BubbleSortTest {
         int[] originData = instance.prepareOriginalData(0);
         int[] result = instance.doSort(originData);
         int[] optimization = instance.doSortWithOptimization(originData);
-        instance.printResult(result,null);
-        instance.printResult(optimization,"优化版本排序结果为");
+        instance.printResult(result, null);
+        instance.printResult(optimization, "优化版本排序结果为");
     }
 
     @Test

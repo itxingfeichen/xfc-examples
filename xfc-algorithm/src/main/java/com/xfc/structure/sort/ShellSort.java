@@ -54,10 +54,10 @@ public class ShellSort implements ArraySort {
                 int temp = data[i];
                 int j = i - skip;
                 while (j >= 0 && data[j] > temp) {
-                    data[j+skip] = data[j];
+                    data[j + skip] = data[j];
                     j -= skip;
                 }
-                data[j+skip] = temp;
+                data[j + skip] = temp;
             }
             // 循环结束重新计算步长
             skip = skip / 2;

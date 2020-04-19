@@ -59,7 +59,7 @@ public class HandlerAdapter {
         try {
             Object invoke = method.invoke(handler.getObject(), paramsArr);
             Class<?> returnType = method.getReturnType();
-            if (invoke!= null && invoke.getClass() == XfcModelAndView.class) {
+            if (invoke != null && invoke.getClass() == XfcModelAndView.class) {
                 return (XfcModelAndView) invoke;
             } else if (returnType == String.class) {
                 resp.getWriter().write(invoke.toString());

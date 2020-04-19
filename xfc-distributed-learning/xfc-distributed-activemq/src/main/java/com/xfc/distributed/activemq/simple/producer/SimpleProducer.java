@@ -14,7 +14,7 @@ public class SimpleProducer {
     public static void main(String[] args) throws JMSException {
 
         // 创建连接工厂
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin","admin","tcp://192.168.22.128:61617");
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory("admin", "admin", "tcp://192.168.22.128:61617");
 
         Connection connection = activeMQConnectionFactory.createConnection();
 
@@ -32,7 +32,7 @@ public class SimpleProducer {
         MessageProducer producer = session.createProducer(queue);
         // 构造消息体
         TextMessage textMessage = session.createTextMessage();
-        textMessage.setStringProperty("myKey","myValue");
+        textMessage.setStringProperty("myKey", "myValue");
         textMessage.setText("hello activemq");
 
         // 发送消息

@@ -2,11 +2,8 @@ package com.github.xfc.queue;
 
 import org.junit.Test;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import static org.junit.Assert.*;
 
 /**
  * @author : chenxingfei
@@ -26,7 +23,7 @@ public class ArrayBlockingQueueLearnTest {
             executorService.execute(() -> arrayBlockingQueue.add(Integer.toString(finalI)));
         }
         String poll = arrayBlockingQueue.poll();
-        while (poll!=null){
+        while (poll != null) {
             System.out.println(poll);
             poll = arrayBlockingQueue.poll();
         }

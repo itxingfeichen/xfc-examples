@@ -12,7 +12,7 @@ import javax.xml.ws.Endpoint;
 public class WebServiceServer {
 
     public static void main(String[] args) {
-        Endpoint.publish("http://localhost:8888/webservice/test",new IWebServiceImpl());
+        Endpoint.publish("http://localhost:8888/webservice/test", new IWebServiceImpl());
         System.out.println("\"服务端启动\" = " + "服务端启动");
     }
 }

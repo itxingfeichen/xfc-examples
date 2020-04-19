@@ -10,6 +10,7 @@ public class HandlerChainTest {
 
     /**
      * 责任链模式代码测试
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class HandlerChainTest {
 
         defaultHandlerChain.addHandler(new PrintBHandlerChain());
 
-        RequestSource requestSource =  new RequestSource();
+        RequestSource requestSource = new RequestSource();
         defaultHandlerChain.doChain(requestSource);
 
         System.out.println("requestSource = " + requestSource);

@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "user")
 public class User {
 
-    @ApiModelProperty(value = "主键id",hidden = true)
+    @ApiModelProperty(value = "主键id", hidden = true)
     int id;
 
     @ApiModelProperty(value = "用户名称")
@@ -51,10 +51,11 @@ public class User {
     }
 
     public User(int id, String userName, String userPassword) {
-        this.id=id;
+        this.id = id;
         this.userName = userName;
         this.userPassword = userPassword;
     }
+
     public User(String userName, String userPassword) {
         this.userName = userName;
         this.userPassword = userPassword;

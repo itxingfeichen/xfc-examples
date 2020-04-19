@@ -20,7 +20,7 @@ public class RmiServer {
 
         RmiService rmiService = new RmiServiceImpl();
         LocateRegistry.createRegistry(8888);
-        Naming.bind("rmi://localhost:8888/test/rmi",rmiService);
+        Naming.bind("rmi://localhost:8888/test/rmi", rmiService);
 
         System.out.println("服务端启动");
     }

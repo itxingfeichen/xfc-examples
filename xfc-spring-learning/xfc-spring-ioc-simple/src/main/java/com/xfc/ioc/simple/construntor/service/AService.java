@@ -15,12 +15,10 @@ import javax.annotation.PostConstruct;
  * @date 2020-02-29
  */
 @Service
-public class AService implements InitializingBean, DisposableBean, BeanNameAware, BeanFactoryAware,BeanClassLoaderAware, ApplicationContextAware
-
-{
+public class AService implements InitializingBean, DisposableBean, BeanNameAware, BeanFactoryAware, BeanClassLoaderAware, ApplicationContextAware {
 
     @PostConstruct
-    public void init(){
+    public void init() {
         System.out.println("PostConstruct ...");
     }
 
@@ -28,7 +26,7 @@ public class AService implements InitializingBean, DisposableBean, BeanNameAware
         System.out.println("AService：我被初始化了");
     }
 
-    public String helloA(){
+    public String helloA() {
         return "hello A";
     }
 
@@ -45,7 +43,7 @@ public class AService implements InitializingBean, DisposableBean, BeanNameAware
 
     @Override
     public void setBeanName(String s) {
-        System.out.println("BeanNameAware"+s);
+        System.out.println("BeanNameAware" + s);
     }
 
     @Override

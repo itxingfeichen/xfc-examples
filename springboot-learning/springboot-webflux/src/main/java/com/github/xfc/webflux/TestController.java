@@ -1,8 +1,8 @@
 package com.github.xfc.webflux;
 
 import com.github.xfc.webflux.model.CaseInCollectionBatchModel;
-import com.github.xfc.webflux.producer.ProducerService;
 import com.github.xfc.webflux.model.CaseInCollectionModel;
+import com.github.xfc.webflux.producer.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.security.Timestamp;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * @author : chenxingfei
@@ -35,7 +32,7 @@ public class TestController {
     private ProducerService producerService;
 
     @RequestMapping(value = "test")
-    public String test(){
+    public String test() {
 
         producerService.testSend();
 
@@ -62,14 +59,14 @@ public class TestController {
         for (int i = 0; i < 500; i++) {
 
             CaseInCollectionModel caseInCollectionModel = new CaseInCollectionModel();
-            caseInCollectionModel.setAccountType("ACCOUNT_TYPE"+i);
-            caseInCollectionModel.setProduct("PRODUCT"+i);
+            caseInCollectionModel.setAccountType("ACCOUNT_TYPE" + i);
+            caseInCollectionModel.setProduct("PRODUCT" + i);
 
             caseInCollectionModel.setAppId("appId1");
-            caseInCollectionModel.setBusinessId("businessId"+i);
+            caseInCollectionModel.setBusinessId("businessId" + i);
             caseInCollectionModel.setApprovedDate(new Date());
             caseInCollectionModel.setApprovedPeriod(i);
-            caseInCollectionModel.setOrderNo("orderNo"+i);
+            caseInCollectionModel.setOrderNo("orderNo" + i);
             caseInCollectionModel.setApprovedPrincipal(BigDecimal.valueOf(100).add(BigDecimal.valueOf(i)));
             caseInCollectionModel.setCurrentTerm(i);
             caseInCollectionModel.setDueDate(new Date());
@@ -81,7 +78,7 @@ public class TestController {
 
     @RequestMapping("buildData")
     @ResponseBody
-    public CaseInCollectionBatchModel buildData(@RequestBody CaseInCollectionBatchModel caseInCollectionBatchModel){
+    public CaseInCollectionBatchModel buildData(@RequestBody CaseInCollectionBatchModel caseInCollectionBatchModel) {
 
         return caseInCollectionBatchModel;
     }

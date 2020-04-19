@@ -11,7 +11,7 @@ public class LRUCacheTest {
 
 
         for (int i = 0; i < 6; i++) {
-            lruCache.put("00"+i,"用户信息"+i);
+            lruCache.put("00" + i, "用户信息" + i);
         }
 
         String value = lruCache.get("000");

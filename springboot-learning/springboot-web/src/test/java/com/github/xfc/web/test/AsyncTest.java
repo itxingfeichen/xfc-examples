@@ -1,7 +1,5 @@
 package com.github.xfc.web.test;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.time.Instant;
 import java.util.concurrent.*;
 
@@ -15,12 +13,12 @@ import static java.lang.Thread.currentThread;
 //@
 public class AsyncTest {
 
-//    private static LinkedBlockingQueue queue = new LinkedBlockingQueue<Runnable>();
+    //    private static LinkedBlockingQueue queue = new LinkedBlockingQueue<Runnable>();
     private static LinkedBlockingQueue queue = new LinkedBlockingQueue<Runnable>(2);
-//    private static final ExecutorService pool = Executors.newFixedThreadPool(2);
+    //    private static final ExecutorService pool = Executors.newFixedThreadPool(2);
     private static final ExecutorService pool = new ThreadPoolExecutor(2, 2,
-        0L, TimeUnit.MILLISECONDS,
-        queue);
+            0L, TimeUnit.MILLISECONDS,
+            queue);
 
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -49,16 +47,14 @@ public class AsyncTest {
 //                e.printStackTrace();
 //            }
 //        }, pool);
-        pool.submit(()->{
+        pool.submit(() -> {
             try {
-                System.out.println(currentThread().getName() +" 数据消费 " + data+ " time="+ Instant.now().toEpochMilli());
+                System.out.println(currentThread().getName() + " 数据消费 " + data + " time=" + Instant.now().toEpochMilli());
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         });
-
-
 
 
 //        voidCompletableFuture.get();

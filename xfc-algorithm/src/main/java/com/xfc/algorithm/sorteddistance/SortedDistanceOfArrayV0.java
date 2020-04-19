@@ -37,7 +37,7 @@ public class SortedDistanceOfArrayV0 {
         int[] newArray = new int[data.length + min];
         for (int i = 0; i < data.length; i++) {
 
-            newArray[data[i]-min] = 1;
+            newArray[data[i] - min] = 1;
         }
 
         System.out.println(Arrays.toString(newArray));

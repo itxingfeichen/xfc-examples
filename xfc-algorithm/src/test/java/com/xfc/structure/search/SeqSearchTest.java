@@ -14,6 +14,6 @@ public class SeqSearchTest {
     public void search() {
         SeqSearch instance = SeqSearch.getInstance();
         int search = instance.search(instance.prepareData(), 123);
-        Assert.assertEquals(search,7);
+        Assert.assertEquals(search, 7);
     }
 }

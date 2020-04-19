@@ -3,7 +3,6 @@ package com.github.xfc.distributed.zookeeper.curator;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.BackgroundCallback;
 import org.apache.curator.framework.api.CuratorEvent;
-import org.apache.zookeeper.CreateMode;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,9 +45,9 @@ public class CuratorFrameworkAsyncDemo {
         instance.delete().inBackground(new BackgroundCallback() {
             @Override
             public void processResult(CuratorFramework curatorFramework, CuratorEvent curatorEvent) throws Exception {
-                System.out.println(Thread.currentThread().getName()+" :"+curatorEvent.getType());
+                System.out.println(Thread.currentThread().getName() + " :" + curatorEvent.getType());
             }
-        },executor).forPath("/inbackground1");
+        }, executor).forPath("/inbackground1");
         TimeUnit.SECONDS.sleep(5);
         executor.shutdown();
 

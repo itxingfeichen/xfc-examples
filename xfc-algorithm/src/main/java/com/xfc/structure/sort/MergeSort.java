@@ -21,7 +21,7 @@ public class MergeSort implements ArraySort {
     @Override
     public int[] doSortWithOptimization(int[] originData) {
         int[] data = Arrays.copyOf(originData, originData.length);
-        return sort(data, 0, originData.length-1);
+        return sort(data, 0, originData.length - 1);
 
     }
 

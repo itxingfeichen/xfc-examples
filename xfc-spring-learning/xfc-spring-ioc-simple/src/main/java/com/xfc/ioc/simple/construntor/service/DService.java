@@ -20,7 +20,7 @@ public class DService {
         System.out.println("@@@@@@@@@@@DService construct");
     }
 
-    public void test(){
+    public void test() {
         System.out.println("FactoryBean 创建的Bean竟然不经历SpringBean的声明周期");
     }
 

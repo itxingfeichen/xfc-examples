@@ -2,7 +2,6 @@ package com.github.xfc.distributed.zookeeper.zkclient;
 
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
-import org.apache.zookeeper.CreateMode;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -34,13 +33,12 @@ public class ZkClientDemo {
 //        getChild();
 
 
-
     }
 
     /**
      * zkClient监听器
      */
-    private static void subscribeDataChanges(){
+    private static void subscribeDataChanges() {
         zkClient.subscribeDataChanges("/101etc/test101", new IZkDataListener() {
             /**
              * 数据改变监听

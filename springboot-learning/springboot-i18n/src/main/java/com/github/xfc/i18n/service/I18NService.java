@@ -26,9 +26,10 @@ public class I18NService extends ServiceImpl<I18NMapper, I18N> {
     /**
      * 创建事务 {@link TransactionAspectSupport#invokeWithinTransaction(java.lang.reflect.Method, java.lang.Class, org.springframework.transaction.interceptor.TransactionAspectSupport.InvocationCallback)}
      * 隔离界别判断{@link TransactionAspectSupport#invokeWithinTransaction(java.lang.reflect.Method, java.lang.Class, org.springframework.transaction.interceptor.TransactionAspectSupport.InvocationCallback)}
+     *
      * @param i18N
      */
-    @Transactional(rollbackFor = Exception.class,propagation = Propagation.NESTED)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
     public void updateByIdForTrans(I18N i18N) {
         i18N.setI18nValue("trans-test-value");
         boolean id = updateById(i18N);
