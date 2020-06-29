@@ -25,6 +25,7 @@
         <module>springboot-web</module>
         <module>formatter-spring-boot-starter</module>
         <module>springboot-redis</module>
+        <module>springboot-shardingsphere</module>
     </modules>
 
     <properties>
