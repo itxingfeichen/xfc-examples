@@ -22,6 +22,7 @@ import sharding.mapper.InteractQuestionMapper;
 import sharding.model.InteractQuestion;
 import sharding.model.InteractQuestionAnswer;
 import sharding.service.InteractQuestionAnswerService;
+import sharding.utils.WorkerIdUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,9 @@ public class InteractQuestionAnswerTest implements ApplicationContextAware {
         YamlTableRuleConfiguration question = tables.get("interact_question");
         YamlKeyGeneratorConfiguration keyGenerator = question.getKeyGenerator();
         Properties props = keyGenerator.getProps();
-        props.setProperty("worker.id","224");
+
+        Long workerId = WorkerIdUtil.initWorkerId();
+        props.setProperty("worker.id",workerId+"");
     }
 
     @Test
