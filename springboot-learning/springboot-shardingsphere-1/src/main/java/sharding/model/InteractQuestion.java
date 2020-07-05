@@ -1,5 +1,7 @@
 package sharding.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
@@ -16,6 +18,7 @@ public class InteractQuestion extends Model<InteractQuestion> {
     /**
      * 主键
      */
+    @TableId(type = IdType.AUTO)
     private Long id;
     /**
      * 课程id

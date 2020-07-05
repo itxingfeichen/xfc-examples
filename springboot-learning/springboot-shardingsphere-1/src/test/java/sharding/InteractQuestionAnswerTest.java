@@ -49,7 +49,7 @@ public class InteractQuestionAnswerTest {
 
     @Test
     public void addQuestion() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             InteractQuestion question = new InteractQuestion();
             question.setCourseName("courseName" + i);
             question.setCourseId(Long.valueOf(i + ""));
