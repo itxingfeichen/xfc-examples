@@ -5,11 +5,18 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Lists;
 import net.minidev.json.JSONArray;
+import org.apache.shardingsphere.core.yaml.config.sharding.YamlKeyGeneratorConfiguration;
+import org.apache.shardingsphere.core.yaml.config.sharding.YamlShardingRuleConfiguration;
+import org.apache.shardingsphere.core.yaml.config.sharding.YamlTableRuleConfiguration;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.junit4.SpringRunner;
 import sharding.mapper.InteractQuestionMapper;
 import sharding.model.InteractQuestion;
@@ -18,6 +25,8 @@ import sharding.service.InteractQuestionAnswerService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * 测试类
@@ -28,12 +37,23 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ShardingBootstrap.class)
-public class InteractQuestionAnswerTest {
+public class InteractQuestionAnswerTest implements ApplicationContextAware {
 
     @Autowired
     private InteractQuestionAnswerService service;
     @Autowired
     private InteractQuestionMapper questionMapper;
+    private ApplicationContext applicationContext;
+
+    @Before
+    public void test(){
+        YamlShardingRuleConfiguration ruleConfiguration = applicationContext.getBean(YamlShardingRuleConfiguration.class);
+        Map<String, YamlTableRuleConfiguration> tables = ruleConfiguration.getTables();
+        YamlTableRuleConfiguration question = tables.get("interact_question");
+        YamlKeyGeneratorConfiguration keyGenerator = question.getKeyGenerator();
+        Properties props = keyGenerator.getProps();
+        props.setProperty("worker.id","224");
+    }
 
     @Test
     public void addQuestionAnswer() {
@@ -76,4 +96,8 @@ public class InteractQuestionAnswerTest {
 
 
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }

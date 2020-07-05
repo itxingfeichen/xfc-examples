@@ -1,8 +1,13 @@
 package sharding;
 
+import org.apache.shardingsphere.core.yaml.config.sharding.YamlShardingRuleConfiguration;
+import org.apache.shardingsphere.core.yaml.config.sharding.YamlTableRuleConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Map;
 
 /**
  * 分表测试启动类
@@ -16,6 +21,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ShardingBootstrap {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShardingBootstrap.class);
+        ConfigurableApplicationContext run = SpringApplication.run(ShardingBootstrap.class);
+        YamlShardingRuleConfiguration ruleConfiguration = run.getBean(YamlShardingRuleConfiguration.class);
+        Map<String, YamlTableRuleConfiguration> tables = ruleConfiguration.getTables();
+        System.out.println("tables = " + tables);
     }
+
+    // 监听spring容器启动完成事件
 }
