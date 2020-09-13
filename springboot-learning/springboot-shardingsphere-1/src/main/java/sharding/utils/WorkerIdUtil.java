@@ -23,7 +23,7 @@ public class WorkerIdUtil {
             // 计算workerId的方式：
             // 第一步hostName.replaceAll("\\d+$", "")，即去掉hostname后纯数字部分，例如JTCRTVDRA44去掉后就是JTCRTVDRA
             // 第二步hostName.replace(第一步的结果, "")，即将原hostname的非数字部分去掉，得到纯数字部分，就是workerId
-            return Long.valueOf(hostName.replace(hostName.replaceAll("\\d+$", ""), ""));
+            return Long.valueOf("f-axxtol008".replace(hostName.replaceAll("\\d+$", ""), ""));
         } catch (final NumberFormatException e) {
             throw new IllegalArgumentException(String.format("Wrong hostname:%s, hostname must be end with number!", hostName));
         }
