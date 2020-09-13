@@ -20,6 +20,22 @@ public class CustomizeThreadPoolTest {
      */
     private static final CustomizeThreadPool customizeThreadPool = new CustomizeThreadPool();
 
+//    public static void main(String[] args) {
+//        // 定义一个核心池大小为一个线程，最大线程数为2个，阻塞队列为3个元素，并且线程数大于最大线程数后的空闲线程销毁时间为1秒
+//        ExecutorService executorService = customizeThreadPool.newCustomizeThreadPool(1, 2, 1000L,
+//                TimeUnit.MICROSECONDS, new ArrayBlockingQueue(3));
+//
+//        for (int i = 0; i < 5; i++) {
+//            executorService.submit(new Task(Long.valueOf(i), "task" + i, "att" + i));
+//        }
+//        // junit主线程结束不会等待子线程，因此sleep等待子线程执行
+//        try {
+//            TimeUnit.SECONDS.sleep(10);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     /**
      * 执行说明：
      * 当前任务id=0 当前任务名称=task1 核心线程池1个执行

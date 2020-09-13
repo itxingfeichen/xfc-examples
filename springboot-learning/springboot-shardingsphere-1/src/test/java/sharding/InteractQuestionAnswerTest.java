@@ -94,6 +94,8 @@ public class InteractQuestionAnswerTest implements ApplicationContextAware {
 
         Assert.assertNotNull("数据为空",questionAnswer1);
         System.out.println(questionAnswer1.toString());
+        boolean save = service.save(questionAnswer1);
+
 
     }
 

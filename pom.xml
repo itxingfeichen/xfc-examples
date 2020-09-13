@@ -28,6 +28,7 @@
     <properties>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.4</lombok.version>
+        <hutool.version>5.4.0</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -42,6 +43,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
