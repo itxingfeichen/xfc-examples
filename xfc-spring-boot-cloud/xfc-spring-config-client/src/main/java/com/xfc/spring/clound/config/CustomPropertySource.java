@@ -1,6 +1,5 @@
 package com.xfc.spring.clound.config;
 
-import org.springframework.cloud.bootstrap.config.PropertySourceLocator;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -18,13 +17,7 @@ import java.util.Map;
  */
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CustomPropertySource implements PropertySourceLocator {
+public class CustomPropertySource {
 
-    @Override
-    public PropertySource<?> locate(Environment environment) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("server.port", 9090);
-        MapPropertySource mapPropertySource = new MapPropertySource("my-properties-source", map);
-        return mapPropertySource;
-    }
+
 }

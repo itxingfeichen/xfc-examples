@@ -27,6 +27,7 @@
         <module>springboot-redis</module>
         <module>springboot-shardingsphere</module>
         <module>springboot-shardingsphere-1</module>
+        <module>springboot-kafka</module>
     </modules>
 
     <properties>

@@ -1,6 +1,5 @@
 package com.xfc.ioc.simple.construntor;
 
-import com.xfc.ioc.simple.construntor.service.BeanInstantiation;
 import com.xfc.ioc.simple.construntor.service.DService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +22,7 @@ public class ConstructorInjectDemo {
         context.register(ConstructorInjectDemo.class);
         context.scan("com.xfc.ioc.simple.construntor");
 
-        context.registerBean(BeanInstantiation.class);
+//        context.registerBean(BeanInstantiation.class);
         context.refresh();
 
         DService bean = context.getBean(DService.class);
@@ -32,9 +31,4 @@ public class ConstructorInjectDemo {
 
     }
 
-    @Bean
-    @Primary
-    public BeanInstantiation init() {
-        return new BeanInstantiation();
-    }
 }

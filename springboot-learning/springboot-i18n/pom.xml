@@ -43,7 +43,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>com.github.xfc</groupId>
                 <artifactId>xfc-maven-pluging</artifactId>
                 <version>1.0-SNAPSHOT</version>
@@ -51,9 +51,9 @@
                     <suffixs>
                         <suffix>html</suffix>
                     </suffixs>
-                    <!--                    <version>1.2.6</version>    &lt;!&ndash; 此处注释掉 每次的版本号将采用年月日时分秒 &ndash;&gt;-->
+                    &lt;!&ndash;                    <version>1.2.6</version>    &lt;!&ndash; 此处注释掉 每次的版本号将采用年月日时分秒 &ndash;&gt;&ndash;&gt;
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>

@@ -11,8 +11,9 @@ import java.util.List;
  **/
 public class GCOverheadLimitOOM {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
+        Thread.sleep(5000L);
         List<String> list = new ArrayList<>();
 
         int i = 0;
