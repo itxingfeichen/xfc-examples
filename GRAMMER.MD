@@ -148,7 +148,7 @@ Markdown将文本转换为 HTML。
 
 ## KaTeX数学公式
 
-您可以使用渲染LaTeX数学表达式 [KaTeX](https://khan.github.io/KaTeX/):
+您可以使用绘制LaTeX数学表达式 [KaTeX](https://khan.github.io/KaTeX/):
 
 Gamma公式展示 $\Gamma(n) = (n-1)!\quad\forall
 n\in\mathbb N$ 是通过欧拉积分
@@ -176,7 +176,7 @@ gantt
 
 ## UML 图表
 
-可以使用UML图表进行渲染。 [Mermaid](https://mermaidjs.github.io/). 例如下面产生的一个序列图：:
+可以使用UML图表进行绘制。 [Mermaid](https://mermaidjs.github.io/). 例如下面产生的一个序列图：:
 
 ```mermaid
 sequenceDiagram
