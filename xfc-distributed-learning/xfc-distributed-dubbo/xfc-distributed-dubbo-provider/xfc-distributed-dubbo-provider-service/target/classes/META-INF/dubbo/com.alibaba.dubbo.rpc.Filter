@@ -1,0 +1,1 @@
+exceptionFilter=com.xfc.distributed.dubbo.aop.ExceptionFilter

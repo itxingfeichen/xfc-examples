@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      ##  配置中心地址
+      uri: http://localhost:8090
+      ##  监听的配置名称 如，application-dev.yml 此处应该配置application
+      name: my-dev
+      ##  监听的文件环境 如，application-dev.yml 此处应该配置dev
+      profile: default
+      ##  监听的分之
+      label: master
+  application:
+    name: config-client

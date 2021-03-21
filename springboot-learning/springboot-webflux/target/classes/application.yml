@@ -1,0 +1,19 @@
+spring:
+  rabbitmq:
+    addresses: 192.168.3.128
+    port: 5671
+    username: admin
+    password: admin
+    virtual-host: /
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+      type: direct
+    publisher-confdirms: true
+server:
+  port: 9999
+config:
+  flag:
+    rabbitmq: true

@@ -1,0 +1,11 @@
+server:
+  port: 1231
+  config:
+    center: 1230
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:${server.config.center}/eureka
+spring:
+  application:
+    name: eruake-consumer1

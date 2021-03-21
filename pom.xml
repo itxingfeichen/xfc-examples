@@ -23,6 +23,7 @@
         <module>xfc-design-patterns</module>
         <module>xfc-interview</module>
         <module>xfc-source</module>
+        <module>xfc-netty-learning</module>
     </modules>
 
     <properties>

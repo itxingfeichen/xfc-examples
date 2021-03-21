@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: i18n-test
+  thymeleaf:
+    cache: false
+  messages:
+    cache-duration: 1
+    use-code-as-default-message: true
+    always-use-message-format: false
+  profiles:
+    active: dev
