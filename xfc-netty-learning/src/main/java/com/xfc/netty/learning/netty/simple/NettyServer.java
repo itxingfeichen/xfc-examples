@@ -1,11 +1,13 @@
 package com.xfc.netty.learning.netty.simple;
 
+import com.xfc.netty.learning.netty.simple.handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
  * netty服务端
@@ -28,10 +30,10 @@ public class NettyServer {
                 // 让链接保持活跃状态
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
 
-                .childHandler(new ChannelInitializer<NioServerSocketChannel>() {
+                .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
-                    protected void initChannel(NioServerSocketChannel nioServerSocketChannel) throws Exception {
-                        nioServerSocketChannel.pipeline().addLast(null);
+                    protected void initChannel(NioSocketChannel nioServerSocketChannel) throws Exception {
+                        nioServerSocketChannel.pipeline().addLast(new NettyServerHandler());
                     }
                 })
                 // 绑定端口并启动服务器
