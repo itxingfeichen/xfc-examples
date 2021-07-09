@@ -49,7 +49,7 @@
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
-                        <!--<configuration>
+                        <configuration>
                             <encoding>UTF-8</encoding>
                             <outputDirectory>${basedir}/target/classes</outputDirectory>
                             <resources>
@@ -61,7 +61,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
-                        </configuration>-->
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

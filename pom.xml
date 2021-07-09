@@ -17,7 +17,7 @@
         <module>xfc-performance-learning</module>
         <module>xfc-spring-boot-cloud</module>
         <module>xfc-typical-case</module>
-        <module>xfc-maven-pluging</module>
+        <module>xfc-maven-plugin</module>
         <module>xfc-data-structure</module>
         <module>xfc-algorithm</module>
         <module>xfc-design-patterns</module>

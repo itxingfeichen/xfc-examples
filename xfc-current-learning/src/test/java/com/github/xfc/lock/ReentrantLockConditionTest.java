@@ -1,12 +1,9 @@
 package com.github.xfc.lock;
 
-import org.omg.CORBA.TIMEOUT;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author : chenxingfei
