@@ -7,8 +7,8 @@ spring:
         git:
           uri: https://github.com/itxingfeichen/xfc-spring-cloud-config-repo
           #          uri: /Users/chenxingfei/WorkSpace/xfc-spring-cloud-config-repo
-          username: xingfeichen@163.com
-          password: xf1123581321
+          username: xxx@163.com
+          password: xxx
   application:
     name: config-server
 management:
