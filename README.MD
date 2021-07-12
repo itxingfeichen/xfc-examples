@@ -1,5 +1,6 @@
 
 ###  笔记目录
+* [x] [Java基础](./xfc-interview/readme.md)
 * [x] [设计模式](./xfc-design-patterns/README.MD)
 * [x] [并发基础](./xfc-current-learning/README.MD)
 * [x] [并发框架Disruptor](disruptor.md)
@@ -19,10 +20,9 @@
 * [x] [分布式中间件](./xfc-distributed-learning/distributed.md)
 * [x] [数据结构](./xfc-data-structure/readme.md)
 * [ ] [算法](./xfc-algorithm/readme.md)
-* [x] [基础面试题](./xfc-interview/readme.md)
 * [x] [Markdown语法](./GRAMMER.MD)
 
-`ps：未选中的代表笔记待补充`
+`ps：未选中的代表笔记待补充，部分文档不是很完善，后面努力持续学习，持续完善`
 
 **==============不想做架构师的程序员不是好码农==============**
 

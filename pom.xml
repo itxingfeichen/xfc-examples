@@ -24,6 +24,7 @@
         <module>xfc-interview</module>
         <module>xfc-source</module>
         <module>xfc-netty-learning</module>
+        <module>xfc-jdk-learning</module>
     </modules>
 
     <properties>
