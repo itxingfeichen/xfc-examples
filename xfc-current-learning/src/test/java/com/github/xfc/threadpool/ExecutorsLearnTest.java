@@ -18,21 +18,30 @@ public class ExecutorsLearnTest {
 
     @Test
     public void getNewFixedThreadPool() throws InterruptedException {
-        ExecutorService newFixedThreadPool = executorsLearn.getNewFixedThreadPool(3);
-        newFixedThreadPool.execute(new Task(1L, "task1", "aaa"));
-        Thread.sleep(5000L);
-        newFixedThreadPool.execute(new Task(2L, "task2", "bbb"));
-        newFixedThreadPool.execute(new Task(3L, "task3", "bbb"));
-        newFixedThreadPool.execute(new Task(4L, "task3", "bbb"));
-        newFixedThreadPool.execute(new Task(5L, "task3", "bbb"));
-        newFixedThreadPool.execute(new Task(6L, "task3", "bbb"));
+        new Thread(()->{
+            ExecutorService newFixedThreadPool = executorsLearn.getNewFixedThreadPool(3);
+            newFixedThreadPool.execute(new Task(1L, "task1", "aaa"));
+            newFixedThreadPool.execute(new Task(2L, "task2", "bbb"));
+            newFixedThreadPool.execute(new Task(3L, "task3", "bbb"));
+            newFixedThreadPool.execute(new Task(4L, "task3", "bbb"));
+            newFixedThreadPool.execute(new Task(5L, "task3", "bbb"));
+            newFixedThreadPool.execute(new Task(6L, "task3", "bbb"));
+
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            newFixedThreadPool.shutdown();
+        },"Thread AAA").start();
+
 
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(15);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        newFixedThreadPool.shutdown();
+
     }
 
     @Test

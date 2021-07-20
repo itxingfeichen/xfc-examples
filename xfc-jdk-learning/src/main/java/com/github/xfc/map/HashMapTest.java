@@ -198,6 +198,25 @@ public class HashMapTest {
         return result;
     }
 
+    @Test
+    public void testPutIfAbsentBug() {
+        final HashMap<String, Boolean> hashMap = new HashMap<>(2);
+        String key = "行一";
+        if(hashMap.putIfAbsent(key,true)){
+            // 业务逻辑
+        }
+    }
+
+    @Test
+    public void testPutIfAbsentBugIfExisted() {
+        final HashMap<String, Boolean> hashMap = new HashMap<>(2);
+        String key = "行一";
+        hashMap.put(key,true);
+        if(hashMap.putIfAbsent(key,true)){
+            // 业务逻辑
+        }
+    }
+
     static final int tableSizeFor(int cap) {
         int n = cap - 1;
         n |= n >>> 1;
