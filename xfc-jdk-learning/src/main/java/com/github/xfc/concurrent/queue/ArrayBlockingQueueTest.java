@@ -18,13 +18,6 @@ import java.util.concurrent.atomic.AtomicReference;
 @DisplayName("ArrayBlockingQueue测试")
 public class ArrayBlockingQueueTest {
 
-    private Integer a;
-
-    public ArrayBlockingQueueTest() {
-        a = 10000000;
-    }
-
-
     /**
      * 源码中关于构造对象时候的注释 Lock only for visibility, not mutual exclusion
      * 测试失败，忽略
@@ -48,38 +41,5 @@ public class ArrayBlockingQueueTest {
         }, "Thread B").start();
     }
 
-    @Test
-    @DisplayName("测试本地变量和实例变量")
-    public void testLocalVariableAndInstanceVariable() {
-        testInstanceVariable();
-        testLocalVariable();
-    }
 
-    /**
-     * 测试实例变量
-     */
-    private void testInstanceVariable() {
-        final long start = System.currentTimeMillis();
-        int count = 0;
-        for (int i = 0; i < a; i++) {
-            count++;
-        }
-        System.out.printf("实例变量测试耗时 %d,count=%d\n", System.currentTimeMillis() - start, count);
-
-    }
-
-    /**
-     * 测试本地变量
-     */
-    private void testLocalVariable() {
-        final long start = System.currentTimeMillis();
-        // 赋值为本地变量
-        Integer a = this.a;
-        int count = 0;
-        for (int i = 0; i < a; i++) {
-            count++;
-        }
-        System.out.printf("本地变量测试耗时 %d,count=%d\n", System.currentTimeMillis() - start, count);
-
-    }
 }
