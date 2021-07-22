@@ -19,8 +19,14 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.21.Final</version>
+            <version>4.1.66.Final</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>io.netty</groupId>-->
+<!--            <artifactId>netty-codec-mqtt</artifactId>-->
+<!--            <version>4.1.66.Final</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>

@@ -1,6 +1,7 @@
 package com.xfc.netty.learning.netty.simple;
 
 import com.xfc.netty.learning.netty.simple.handler.NettyServerHandler;
+import com.xfc.netty.learning.netty.simple.heartbeat.AcceptorIdleStateTrigger;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -8,6 +9,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * netty服务端
@@ -33,7 +39,12 @@ public class NettyServer {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel nioServerSocketChannel) throws Exception {
-                        nioServerSocketChannel.pipeline().addLast(new NettyServerHandler());
+                        nioServerSocketChannel.pipeline()
+                                .addLast(new IdleStateHandler(5, 0, 0, TimeUnit.SECONDS))
+                                .addLast(new AcceptorIdleStateTrigger())
+                                .addLast("decoder", new StringDecoder())
+                                .addLast("encoder", new StringEncoder())
+                                .addLast(new NettyServerHandler());
                     }
                 })
                 // 绑定端口并启动服务器

@@ -1,12 +1,20 @@
 package com.xfc.netty.learning.netty.simple;
 
 import com.xfc.netty.learning.netty.simple.handler.NettyClientHandler;
+import com.xfc.netty.learning.netty.simple.heartbeat.ConnectorIdleStateTrigger;
+import com.xfc.netty.learning.netty.simple.heartbeat.HeartBeatClientHandler;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 客户端
@@ -17,22 +25,27 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class NettyClient {
 
     public static void main(String[] args) {
-        NioEventLoopGroup group = new NioEventLoopGroup();
-        Bootstrap bootstrap = new Bootstrap();
-        // 设置线程组
-        ChannelFuture channelFuture = null;
+        EventLoopGroup group = new NioEventLoopGroup();
         try {
-            channelFuture = bootstrap.group(group)
-                    // 设置客户端通道的实现累
+            Bootstrap b = new Bootstrap();
+            b.group(group)
                     .channel(NioSocketChannel.class)
+                    .option(ChannelOption.TCP_NODELAY, true)
+                    .handler(new LoggingHandler(LogLevel.INFO))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new NettyClientHandler());
+                        public void initChannel(SocketChannel ch) throws Exception {
+                            ChannelPipeline p = ch.pipeline();
+                            p.addLast(new IdleStateHandler(0, 4, 0, TimeUnit.SECONDS));
+                            p.addLast(new ConnectorIdleStateTrigger());
+                            p.addLast("decoder", new StringDecoder());
+                            p.addLast("encoder", new StringEncoder());
+                            p.addLast(new NettyClientHandler());
                         }
-                    }).connect("127.0.0.1", 6668).sync();
-            System.out.println("客户端准备好了");
-            channelFuture.channel().closeFuture().sync();
+                    });
+
+            ChannelFuture future = b.connect("127.0.0.1", 6668).sync();
+            future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
