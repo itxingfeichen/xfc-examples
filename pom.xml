@@ -27,8 +27,6 @@
         <module>xfc-jdk-learning</module>
         <module>xfc-tools</module>
         <module>xfc-redis</module>
-        <module>xfc</module>
-        <module>xfc-redis-pubsub</module>
     </modules>
 
     <properties>
