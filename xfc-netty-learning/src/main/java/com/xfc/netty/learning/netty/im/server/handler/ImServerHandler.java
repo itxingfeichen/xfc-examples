@@ -34,9 +34,15 @@ public class ImServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        channels.remove(ctx.channel());
+        ctx.channel().close();
         final String currentClient = ctx.channel().remoteAddress().toString();
         System.out.println(currentClient + " 断开连接");
-        ctx.channel().close();
+        // 通知其他客户端，当前客户端下线
+        String message = currentClient + " 下线了";
+        System.out.println(message);
+        final ByteBuf byteBuf = Unpooled.copiedBuffer(message.getBytes(StandardCharsets.UTF_8));
+        channels.writeAndFlush(byteBuf);
     }
 
     @Override

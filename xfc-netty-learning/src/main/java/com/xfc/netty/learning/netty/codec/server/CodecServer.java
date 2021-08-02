@@ -1,6 +1,6 @@
-package com.xfc.netty.learning.netty.im.server;
+package com.xfc.netty.learning.netty.codec.server;
 
-import com.xfc.netty.learning.netty.im.server.handler.ImServerHandler;
+import com.xfc.netty.learning.netty.codec.server.handler.CodecServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -9,16 +9,17 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
 /**
- * 服务端启动类
+ * 编解码测试服务类
  *
  * @author xf.chen
- * @date 2021/7/31 9:50 上午
+ * @date 2021/8/1 21:45
  * @since 1.0.0
  */
-public class ImServer {
+public class CodecServer {
 
     public static void main(String[] args) {
 
@@ -38,7 +39,10 @@ public class ImServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new ImServerHandler());
+                            socketChannel.pipeline()
+                                    .addLast("encoder", new StringEncoder())
+                                    .addLast("decoder", new StringDecoder())
+                                    .addLast(new CodecServerHandler());
                         }
                     })
                     // option() 用于接受传入连接的 NioServerSocketChannel。 childOption() 用于父 ServerChannel 接受的 Channels，在本例中为 NioSocketChannel。

@@ -28,6 +28,7 @@
         <module>xfc-tools</module>
         <module>xfc-redis</module>
         <module>xfc-experience</module>
+        <module>xfc-jdk-spi</module>
     </modules>
 
     <properties>
