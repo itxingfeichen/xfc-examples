@@ -1,10 +1,8 @@
-package com.xfc.netty.learning.netty.codec.client;
+package com.xfc.netty.learning.netty.imcodec.client;
 
-import com.xfc.netty.learning.netty.codec.client.handler.CodecClientHandler;
-import com.xfc.netty.learning.netty.codec.client.handler.ObjectCodecClientHandler;
-import com.xfc.netty.learning.netty.codec.model.User;
 import com.xfc.netty.learning.netty.codec.mycodec.MyStringDecoder;
 import com.xfc.netty.learning.netty.codec.mycodec.MyStringEncoder;
+import com.xfc.netty.learning.netty.imcodec.client.handler.ImClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -14,23 +12,18 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
- * 编解码测试客户端
+ * 客户端
  *
  * @author xf.chen
- * @date 2021/8/1 21:46
+ * @date 2021/7/31 9:51 上午
  * @since 1.0.0
  */
-public class CodecClient {
+public class ImClient {
 
 
     public static void main(String[] args) {
@@ -44,17 +37,9 @@ public class CodecClient {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline()
-                                    // 使用自定义的字符串编解码器
-                                    //.addLast("encoder", new MyStringEncoder())
-                                    //.addLast("decoder", new MyStringDecoder())
-                                    // 使用Netty自带的字符串编解码器
-                                    //.addLast("encoder", new StringEncoder())
-                                    //.addLast("decoder", new StringDecoder())
-                                    // 使用Netty自带的对象编解码器
-                                    .addLast("encoder", new ObjectEncoder())
-                                    .addLast("decoder", new ObjectDecoder(ClassResolvers.cacheDisabled(this.getClass().getClassLoader())))
-                                    //.addLast(new CodecClientHandler());
-                                    .addLast(new ObjectCodecClientHandler());
+                                    .addLast(new MyStringEncoder())
+                                    .addLast(new MyStringDecoder())
+                                    .addLast(new ImClientHandler());
                         }
                     }).connect("127.0.0.1", 8088).sync();
 

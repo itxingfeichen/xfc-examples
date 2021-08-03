@@ -33,7 +33,7 @@ public final class MqttHeartBeatClient {
     }
 
     private static final String HOST = System.getProperty("host", "127.0.0.1");
-    private static final int PORT = Integer.parseInt(System.getProperty("port", "1883"));
+    private static final int PORT = Integer.parseInt(System.getProperty("port", "8888"));
     private static final String CLIENT_ID = System.getProperty("clientId", "guestClient");
     private static final String USER_NAME = System.getProperty("userName", "guest");
     private static final String PASSWORD = System.getProperty("password", "guest");

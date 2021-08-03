@@ -27,6 +27,11 @@
 <!--            <artifactId>netty-codec-mqtt</artifactId>-->
 <!--            <version>4.1.66.Final</version>-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

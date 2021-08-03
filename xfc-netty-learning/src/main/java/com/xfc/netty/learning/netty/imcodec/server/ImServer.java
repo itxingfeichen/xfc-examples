@@ -1,8 +1,8 @@
-package com.xfc.netty.learning.netty.codec.server;
+package com.xfc.netty.learning.netty.imcodec.server;
 
-import com.xfc.netty.learning.netty.codec.model.User;
-import com.xfc.netty.learning.netty.codec.server.handler.CodecServerHandler;
-import com.xfc.netty.learning.netty.codec.server.handler.ObjectCodecServerHandler;
+import com.xfc.netty.learning.netty.codec.mycodec.MyStringDecoder;
+import com.xfc.netty.learning.netty.codec.mycodec.MyStringEncoder;
+import com.xfc.netty.learning.netty.imcodec.server.handler.ImServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -11,20 +11,15 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 
 /**
- * 编解码测试服务类
+ * 服务端启动类
  *
  * @author xf.chen
- * @date 2021/8/1 21:45
+ * @date 2021/7/31 9:50 上午
  * @since 1.0.0
  */
-public class CodecServer {
+public class ImServer {
 
     public static void main(String[] args) {
 
@@ -45,17 +40,9 @@ public class CodecServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline()
-                                    // 使用自定义的字符串编解码器
-                                    //.addLast("encoder", new MyStringEncoder())
-                                    //.addLast("decoder", new MyStringDecoder())
-                                    // 使用Netty自带的字符串编解码器
-                                    //.addLast("encoder", new StringEncoder())
-                                    //.addLast("decoder", new StringDecoder())
-                                    .addLast("encoder", new ObjectEncoder())
-                                    .addLast("decoder", new ObjectDecoder(ClassResolvers.cacheDisabled(this.getClass().getClassLoader())))
-                                    // .addLast(new CodecServerHandler());
-                                     .addLast(new ObjectCodecServerHandler());
-
+                                    .addLast(new MyStringEncoder())
+                                    .addLast(new MyStringDecoder())
+                                    .addLast(new ImServerHandler());
                         }
                     })
                     // option() 用于接受传入连接的 NioServerSocketChannel。 childOption() 用于父 ServerChannel 接受的 Channels，在本例中为 NioSocketChannel。
