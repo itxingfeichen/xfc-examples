@@ -56,7 +56,6 @@ public class HeartbeatNettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("客户端已连接");
-        // 连接成功向服务端写一个消息"你好"，注意Netty底层数据交互都是通过ByteBuf，这个对象后面会重点学习
         final ByteBuf byteBuf = Unpooled.copiedBuffer("你好".getBytes(StandardCharsets.UTF_8));
         ctx.writeAndFlush(byteBuf);
     }
