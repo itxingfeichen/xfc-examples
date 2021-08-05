@@ -27,6 +27,7 @@ public class ImClientHandler extends ChannelInboundHandlerAdapter {
         // byte[] bytes = new byte[byteBuf.readableBytes()];
         // byteBuf.readBytes(bytes);
         System.out.println(msg);
+
     }
 
 
