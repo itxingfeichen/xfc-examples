@@ -43,6 +43,7 @@ public class HeartbeatNettyClientHandler extends ChannelInboundHandlerAdapter {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent event = (IdleStateEvent) evt;
             if (event.state() == IdleState.WRITER_IDLE) {
+                // 写空闲时发送心跳信息
                 final ByteBuf byteBuf = Unpooled.copiedBuffer("ping".getBytes(StandardCharsets.UTF_8));
 
                 ctx.writeAndFlush(byteBuf);

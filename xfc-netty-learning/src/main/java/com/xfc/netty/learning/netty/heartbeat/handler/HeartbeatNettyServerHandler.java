@@ -51,13 +51,13 @@ public class HeartbeatNettyServerHandler extends ChannelInboundHandlerAdapter { 
         if (evt instanceof IdleStateEvent) {
             switch (((IdleStateEvent) evt).state()) {
                 case READER_IDLE:
-                    System.out.println("读超时");
+                    System.out.println("读空闲");
                     break;
                 case WRITER_IDLE:
-                    System.out.println("写超时");
+                    System.out.println("写空闲");
                     break;
                 case ALL_IDLE:
-                    System.out.println("全部超时");
+                    System.out.println("全部空闲");
                     break;
                 default:
                     break;
