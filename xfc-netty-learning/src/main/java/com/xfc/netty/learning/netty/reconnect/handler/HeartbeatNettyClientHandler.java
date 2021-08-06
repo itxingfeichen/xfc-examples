@@ -1,14 +1,20 @@
-package com.xfc.netty.learning.netty.heartbeat.handler;
+package com.xfc.netty.learning.netty.reconnect.handler;
 
+import com.xfc.netty.learning.netty.reconnect.HeartbeatNettyClient;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelPipeline;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import static io.netty.handler.codec.mqtt.MqttMessageBuilders.connect;
 
 /**
  * Netty客户端
@@ -18,6 +24,11 @@ import java.util.Date;
  * @since 1.0.0
  */
 public class HeartbeatNettyClientHandler extends ChannelInboundHandlerAdapter {
+    private HeartbeatNettyClient heartbeatNettyClient;
+    public HeartbeatNettyClientHandler(HeartbeatNettyClient heartbeatNettyClient) {
+        this.heartbeatNettyClient = heartbeatNettyClient;
+    }
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         // Netty底层都通过ByteBuf进行数据交互，因此这里课强制转换为ByteBuf
@@ -36,9 +47,30 @@ public class HeartbeatNettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
+
+
         ctx.close();
     }
 
+    /**
+     * Calls {@link ChannelHandlerContext#fireChannelInactive()} to forward
+     * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
+     * <p>
+     * Sub-classes may override this method to change behavior.
+     *
+     * @param ctx
+     */
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        //
+        ctx.channel().eventLoop().schedule(() -> {
+            System.err.println("开始重连。。。");
+            heartbeatNettyClient.connect();
+        }, 3, TimeUnit.SECONDS);
+        super.channelInactive(ctx);
+    }
+
+    @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent event = (IdleStateEvent) evt;
