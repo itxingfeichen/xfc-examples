@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author : chenxingfei
  * @date: 2019-04-02  22:01
@@ -42,6 +44,6 @@ public class Task implements Comparable, Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("当前线程" + Thread.currentThread().getName() + " 当前任务id=" + this.id + " 当前任务名称=" + name);
+        System.out.println((new Date())+"当前线程" + Thread.currentThread().getName() + " 当前任务id=" + this.id + " 当前任务名称=" + name);
     }
 }

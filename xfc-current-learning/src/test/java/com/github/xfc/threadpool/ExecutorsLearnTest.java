@@ -3,9 +3,7 @@ package com.github.xfc.threadpool;
 import com.github.xfc.model.Task;
 import org.junit.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author : chenxingfei
@@ -18,23 +16,29 @@ public class ExecutorsLearnTest {
 
     @Test
     public void getNewFixedThreadPool() throws InterruptedException {
-        new Thread(()->{
-            ExecutorService newFixedThreadPool = executorsLearn.getNewFixedThreadPool(3);
-            newFixedThreadPool.execute(new Task(1L, "task1", "aaa"));
-            newFixedThreadPool.execute(new Task(2L, "task2", "bbb"));
-            newFixedThreadPool.execute(new Task(3L, "task3", "bbb"));
-            newFixedThreadPool.execute(new Task(4L, "task3", "bbb"));
-            newFixedThreadPool.execute(new Task(5L, "task3", "bbb"));
-            newFixedThreadPool.execute(new Task(6L, "task3", "bbb"));
+        ExecutorService newFixedThreadPool = executorsLearn.getNewFixedThreadPool(3);
+        newFixedThreadPool.execute(new Task(1L, "task1", "aaa"));
+        newFixedThreadPool.execute(new Task(2L, "task2", "bbb"));
+        newFixedThreadPool.execute(new Task(3L, "task3", "bbb"));
+        newFixedThreadPool.execute(new Task(4L, "task4", "bbb"));
+        newFixedThreadPool.execute(new Task(5L, "task5", "bbb"));
+        newFixedThreadPool.execute(new Task(6L, "task6", "bbb"));
 
-            try {
-                TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            newFixedThreadPool.shutdown();
-        },"Thread AAA").start();
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//            newFixedThreadPool.shutdown();
 
+        final ThreadPoolExecutor newFixedThreadPool1 = (ThreadPoolExecutor) newFixedThreadPool;
+        // 动态修改核心线程数
+        newFixedThreadPool1.setCorePoolSize(5);
+
+        for (int i = 0; i < 10; i++) {
+            newFixedThreadPool1.execute(new Task((long) i, "1taska" + i, "aaa"));
+
+        }
 
         try {
             TimeUnit.SECONDS.sleep(15);
@@ -86,19 +90,21 @@ public class ExecutorsLearnTest {
     @Test
     public void getNewScheduleCacheThreadPool() {
 
-        ScheduledExecutorService newFixedThreadPool = (ScheduledExecutorService) executorsLearn.getNewScheduleCacheThreadPool();
-        newFixedThreadPool.schedule(new Task(1L, "task1", "aaa"), 5, TimeUnit.SECONDS);
-        newFixedThreadPool.schedule(new Task(2L, "task2", "bbb"), 1, TimeUnit.SECONDS);
-        newFixedThreadPool.schedule(new Task(3L, "task3", "bbb"), 4, TimeUnit.SECONDS);
+        ScheduledExecutorService newFixedThreadPool = Executors.newScheduledThreadPool(8);
+        for (int i = 0; i < 1000; i++) {
+            newFixedThreadPool.schedule(new Task((long) i, "task" + i, "aaa"), 5, TimeUnit.SECONDS);
+        }
+
 //        newFixedThreadPool.schedule(new Task(3L,"task3","bbb"));
         // 周期性执行，任务发布1秒后开始，每个4秒钟执行一次
-        newFixedThreadPool.scheduleAtFixedRate(new Task(4L, "task4", "bbb"), 1, 4, TimeUnit.SECONDS);
+//        newFixedThreadPool.scheduleAtFixedRate(new Task(4L, "task4", "bbb"), 1, 4, TimeUnit.SECONDS);
         try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         newFixedThreadPool.shutdown();
+
     }
 
     @Test

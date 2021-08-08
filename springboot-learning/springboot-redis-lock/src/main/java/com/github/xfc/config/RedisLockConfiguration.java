@@ -3,6 +3,7 @@ package com.github.xfc.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.integration.redis.util.RedisLockRegistry;
 
 /**
@@ -25,5 +26,11 @@ public class RedisLockConfiguration {
 
         redisLockRegistry.expireUnusedOlderThan(1000L);
         return redisLockRegistry;
+    }
+
+    @Bean
+    public RedisTemplate initRedis(RedisConnectionFactory redisConnectionFactory) {
+
+        return new RedisTemplate<>();
     }
 }
