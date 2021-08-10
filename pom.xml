@@ -29,6 +29,7 @@
         <module>xfc-redis</module>
         <module>xfc-experience</module>
         <module>xfc-jdk-spi</module>
+        <module>xfc-akka</module>
     </modules>
 
     <properties>
