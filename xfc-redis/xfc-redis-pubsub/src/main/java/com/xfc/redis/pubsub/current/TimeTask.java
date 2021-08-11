@@ -1,10 +1,15 @@
 package com.xfc.redis.pubsub.current;
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
@@ -25,9 +30,10 @@ import java.util.concurrent.atomic.AtomicLong;
  * @since 1.0.0
  */
 @Component
-public class TimeTask implements InitializingBean {
+public class TimeTask implements InitializingBean, DisposableBean {
 
     private static final String KEY = "testBatch";
+
 
     private final RedisTemplate<String, Object> redisTemplate;
 
@@ -35,51 +41,72 @@ public class TimeTask implements InitializingBean {
 
     private static ConcurrentLinkedQueue<String> taskQueues = new ConcurrentLinkedQueue<>();
 
+    @Value("#{${rts.store.batch.save.strategy:{9:1,3:10,1:5}}}")
+    private Map<Integer, Integer> strategy;
+
     public TimeTask(RedisTemplate<String, Object> redisTemplate) {
+
         this.redisTemplate = redisTemplate;
     }
 
     public void start() {
-        executorService.scheduleWithFixedDelay(() -> {
-            Long size = redisTemplate.opsForSet().size(KEY);
-            if (size >= 1) {
-                final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
-                System.out.println("size >= 1");
-                for (Object o : objectList) {
-                    System.out.print(o+" ");
-                }
-                System.out.println();
 
+        strategy.forEach((seconds, count) -> executorService.scheduleWithFixedDelay(() -> {
+            System.out.println(seconds + "：" + count + "->thread:" + Thread.currentThread().getId() + " " + new Date());
+            final Long size = redisTemplate.opsForSet().size(KEY);
+            if (size == null || size < count) {
+                return;
             }
-        }, 0, 9, TimeUnit.SECONDS);
-        executorService.scheduleWithFixedDelay(() -> {
-            Long size = redisTemplate.opsForSet().size(KEY);
-            if (size >= 5) {
-                final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
-                System.out.println("size >= 5");
-                for (Object o : objectList) {
-                    System.out.print(o+" ");
-                }
-                System.out.println();
-
+            final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
+            if (CollectionUtils.isEmpty(objectList)) {
+                return;
             }
-
-        }, 0, 3, TimeUnit.SECONDS);
-
-        executorService.scheduleWithFixedDelay(() -> {
-            Long size = redisTemplate.opsForSet().size(KEY);
-            if (size >= 10) {
-                final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
-                System.out.println("size >= 10");
-                for (Object o : objectList) {
-                    System.out.print(o+" ");
-                }
-                System.out.println();
-
-
+            // 开始批量保存
+            for (Object o : objectList) {
+                System.out.print(o + " ");
             }
-
-        }, 0, 2, TimeUnit.SECONDS);
+            System.out.println();
+        }, 0, seconds, TimeUnit.SECONDS));
+//        executorService.scheduleWithFixedDelay(() -> {
+//            Long size = redisTemplate.opsForSet().size(KEY);
+//            if (size >= 1) {
+//                final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
+//                System.out.println("size >= 1");
+//                for (Object o : objectList) {
+//                    System.out.print(o+" ");
+//                }
+//                System.out.println();
+//
+//            }
+//        }, 0, 1, TimeUnit.SECONDS);
+//        executorService.scheduleWithFixedDelay(() -> {
+//            Long size = redisTemplate.opsForSet().size(KEY);
+//            if (size >= 1) {
+//                final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
+//                System.out.println("size >= 5");
+//                for (Object o : objectList) {
+//                    System.out.print(o+" ");
+//                }
+//                System.out.println();
+//
+//            }
+//
+//        }, 0, 1, TimeUnit.SECONDS);
+//
+//        executorService.scheduleWithFixedDelay(() -> {
+//            Long size = redisTemplate.opsForSet().size(KEY);
+//            if (size >= 1) {
+//                final List<Object> objectList = redisTemplate.opsForSet().pop(KEY, size);
+//                System.out.println("size >= 10");
+//                for (Object o : objectList) {
+//                    System.out.print(o+" ");
+//                }
+//                System.out.println();
+//
+//
+//            }
+//
+//        }, 0, 1, TimeUnit.SECONDS);
 
     }
 
@@ -100,5 +127,10 @@ public class TimeTask implements InitializingBean {
                 }
             }
         }).start();
+    }
+
+    @Override
+    public void destroy() throws Exception {
+
     }
 }
