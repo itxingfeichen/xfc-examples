@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.junit.Test;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
@@ -45,7 +44,7 @@ public class LinkedStackTest {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        HashMap<Object, Object> map = new HashMap<>();
 //        map.put("1",2);
 //        for (int i = 0; i < 30; i++) {
@@ -54,20 +53,21 @@ public class LinkedStackTest {
 //                System.out.println(map);
 //            }).start();
 //        }
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(System.currentTimeMillis()));
-        calendar.add(Calendar.SECOND, 5);
-        long timeInMillis = calendar.getTimeInMillis();
+
         DelayQueue<Task> delayQueue = new DelayQueue<>();
-        delayQueue.add(new Task("123", timeInMillis));
-        delayQueue.add(new Task("12", timeInMillis));
-        delayQueue.add(new Task("13", timeInMillis));
-        delayQueue.add(new Task("1", timeInMillis));
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            new Thread(() -> {
+                delayQueue.add(new Task("task" + finalI, System.currentTimeMillis() + finalI * 1000));
+            }).start();
+
+        }
+
 
         while (true) {
             try {
                 Task take = delayQueue.take();
-                System.out.println("take = " + take);
+                System.out.println(new Date() + "take = " + take);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

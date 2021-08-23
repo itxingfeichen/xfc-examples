@@ -1,5 +1,6 @@
 package com.xfc.netty.learning.netty.base;
 
+import com.xfc.netty.learning.netty.base.handler.NettyBoosServerHandler;
 import com.xfc.netty.learning.netty.base.handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -35,12 +36,13 @@ public class NettyServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             //ServerBootstrap 是一个设置服务器的辅助类。您可以直接使用 Channel 设置服务器。
-            // 但是，请注意，这是一个乏味的过程，在大多数情况下您不需要这样做。
+            // 但是，请注意e，这是一个乏味的过程，在大多数情况下您不需要这样做。
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     // 我们指定使用 NioServerSocketChannel 类，该类用于实例化一个新的 Channel 以接受传入的连接。
                     // 此处指定的处理程序将始终由新接受的 Channel 评估。
                     .channel(NioServerSocketChannel.class)
+                    .handler(new NettyBoosServerHandler())
                     //ChannelInitializer 是一个特殊的处理程序，旨在帮助用户配置新的 Channel。很可能您希望通过添加一些处理程序（例如 DiscardServerHandler）来配置新 Channel 的 ChannelPipeline 来实现您的网络应用程序。随着应用程序变得复杂，您可能会向管道添加更多处理程序，并最终将此匿名类提取到顶级类中。
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override

@@ -13,6 +13,7 @@ public class SpiTest {
 
     public static void main(String[] args) {
         final ServiceLoader<StoreProcessor> serviceLoader = ServiceLoader.load(StoreProcessor.class);
+
         for (StoreProcessor storeProcessor : serviceLoader) {
             storeProcessor.store();
         }

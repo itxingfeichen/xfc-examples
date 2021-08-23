@@ -43,4 +43,30 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter { // (1)
         cause.printStackTrace();
         ctx.close();
     }
+
+    /**
+     * Calls {@link ChannelHandlerContext#fireChannelInactive()} to forward
+     * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
+     * <p>
+     * Sub-classes may override this method to change behavior.
+     *
+     * @param ctx
+     */
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        super.channelInactive(ctx);
+    }
+
+    /**
+     * Calls {@link ChannelHandlerContext#fireChannelActive()} to forward
+     * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
+     * <p>
+     * Sub-classes may override this method to change behavior.
+     *
+     * @param ctx
+     */
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
+    }
 }

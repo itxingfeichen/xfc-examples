@@ -48,4 +48,27 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         final ByteBuf byteBuf = Unpooled.copiedBuffer("你好".getBytes(StandardCharsets.UTF_8));
         ctx.writeAndFlush(byteBuf);
     }
+
+    /**
+     * Calls {@link ChannelHandlerContext#fireChannelRegistered()} to forward
+     * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
+     * <p>
+     * Sub-classes may override this method to change behavior.
+     *
+     * @param ctx
+     */
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channelRegistered被调用");
+    }
+
+    /**
+     * Do nothing by default, sub-classes may override this method.
+     *
+     * @param ctx
+     */
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("handlerAdded被调用");
+    }
 }

@@ -30,6 +30,7 @@
         <module>xfc-experience</module>
         <module>xfc-jdk-spi</module>
         <module>xfc-akka</module>
+        <module>xfc-kafka</module>
     </modules>
 
     <properties>
