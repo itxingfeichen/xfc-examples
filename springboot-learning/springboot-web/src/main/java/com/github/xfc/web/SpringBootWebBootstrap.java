@@ -1,5 +1,7 @@
 package com.github.xfc.web;
 
+import com.github.xfc.web.config.MyBean;
+import com.github.xfc.web.config.MyServerProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,6 +18,8 @@ public class SpringBootWebBootstrap {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(SpringBootWebBootstrap.class);
+        final MyServerProperties bean = run.getBean(MyServerProperties.class);
+        System.out.println(bean.getPort());
 //
 //        CalculatingService bean = run.getBean(CalculatingService.class);
 //
@@ -67,6 +71,8 @@ public class SpringBootWebBootstrap {
 
 
     }
+
+
 
 
 }

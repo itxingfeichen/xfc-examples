@@ -1,4 +1,4 @@
-package com.xfc.akka;
+package com.xfc.akka.remote;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
