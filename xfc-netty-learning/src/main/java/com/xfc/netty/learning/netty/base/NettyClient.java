@@ -9,6 +9,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.internal.InternalThreadLocalMap;
+
+import java.util.Map;
 
 /**
  * netty服务端
@@ -35,7 +38,12 @@ public class NettyClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new NettyClientHandler());
+                    final InternalThreadLocalMap internalThreadLocalMap = InternalThreadLocalMap.get();
+                    final Map<Class<?>, Boolean> classBooleanMap = internalThreadLocalMap.handlerSharableCache();
+                    final NettyClientHandler nettyClientHandler = new NettyClientHandler();
+                    classBooleanMap.put(NettyClientHandler.class,true);
+                    ch.pipeline().addLast("nettyClientHandler",nettyClientHandler);
+                    ch.pipeline().addLast(nettyClientHandler);
                 }
             });
 

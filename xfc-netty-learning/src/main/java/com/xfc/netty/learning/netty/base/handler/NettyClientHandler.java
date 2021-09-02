@@ -2,6 +2,7 @@ package com.xfc.netty.learning.netty.base.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -23,7 +24,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         try {
             long currentTimeMillis = (m.readUnsignedInt() - 2208988800L) * 1000L;
             System.out.println("收到服务端消息" + new Date(currentTimeMillis));
-            ctx.close();
+//            ctx.close();
         } finally {
             m.release();
         }
