@@ -1,0 +1,7 @@
+com/aixuexi/sharding/mapper/InteractQuestionMapper.class
+com/aixuexi/sharding/mapper/InteractQuestionAnswerMapper.class
+com/aixuexi/sharding/ShardingBootstrap.class
+com/aixuexi/sharding/model/InteractQuestion.class
+com/aixuexi/sharding/model/InteractQuestionAnswer.class
+com/aixuexi/sharding/service/InteractQuestionAnswerService.class
+com/aixuexi/sharding/service/InteractQuestionAnswerServiceImpl.class

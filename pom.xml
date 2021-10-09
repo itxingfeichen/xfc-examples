@@ -31,6 +31,7 @@
         <module>xfc-jdk-spi</module>
         <module>xfc-akka</module>
         <module>xfc-kafka</module>
+        <module>xfc-spring-cloud-alibaba</module>
     </modules>
 
     <properties>

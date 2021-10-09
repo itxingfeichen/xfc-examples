@@ -1,0 +1,7 @@
+com/xfc/interview/oom/GCOverheadLimitOOM.class
+com/xfc/interview/string/StringReference.class
+com/xfc/interview/oom/DirectBufferMemoryOOM.class
+com/xfc/interview/oom/JavaHeapSpaceOOM.class
+com/xfc/interview/string/MapTest.class
+com/xfc/interview/string/TestString.class
+com/xfc/interview/string/WeakHashMapTest.class

@@ -1,5 +1,7 @@
 package com.xfc.spi.test;
 
+import com.xfc.spi.test.classloader.Test;
+
 import java.util.ServiceLoader;
 
 /**
@@ -14,6 +16,7 @@ public class SpiTest {
     public static void main(String[] args) {
         final ServiceLoader<StoreProcessor> serviceLoader = ServiceLoader.load(StoreProcessor.class);
 
+//        Test.test();
         for (StoreProcessor storeProcessor : serviceLoader) {
             storeProcessor.store();
         }

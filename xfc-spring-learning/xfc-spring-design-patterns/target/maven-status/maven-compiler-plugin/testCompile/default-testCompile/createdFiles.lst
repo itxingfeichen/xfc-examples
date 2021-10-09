@@ -1,0 +1,8 @@
+com/github/xfc/proxy/jdk/proxy/JDKQueryProxyTest.class
+com/github/xfc/proxy/cglib/proxy/CglibQueryServiceProxyTest.class
+com/github/xfc/prototype/deep/ClonePrototypeDeepTest.class
+com/github/xfc/factory/abstrac/AbstractCarFactoryTest.class
+com/github/xfc/delegation/NormalRuleTest.class
+com/github/xfc/factory/simple/SimpleFactoryTest.class
+com/github/xfc/factory/method/MethodFactoryTest.class
+com/github/xfc/prototype/simple/ClonePrototypeTest.class

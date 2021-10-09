@@ -1,5 +1,8 @@
 package com.github.xfc.threadpool;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -84,4 +87,26 @@ public class CustomizeThreadPool {
             System.out.println("队列剩余个数" + executor.getQueue().remainingCapacity());
         }
     }
+
+
+    public static void main(String[] args) {
+        final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        scheduledExecutorService.scheduleAtFixedRate(() -> {
+            try {
+                System.out.println(Thread.currentThread().getName() + "周期任务 "+ new Date());
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
+        }, 1, 1, TimeUnit.SECONDS);
+
+
+        scheduledExecutorService.scheduleAtFixedRate(() -> {
+            try {
+                System.out.println(Thread.currentThread().getName() + "周期任务1 " + new Date());
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
+        }, 2, 3, TimeUnit.SECONDS);
+    }
+
 }

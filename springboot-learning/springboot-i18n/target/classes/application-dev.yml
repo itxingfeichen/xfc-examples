@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.22.128:3306/i18n
+    url: jdbc:mysql://192.168.1.128:3306/i18n
     driver-class-name: com.mysql.cj.jdbc.Driver
 #mybatis
 mybatis-plus:

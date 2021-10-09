@@ -1,5 +1,6 @@
 package com.github.xfc.web.config;
 
+import com.github.xfc.web.annotation.MyAnnotation1;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,8 +13,15 @@ import org.springframework.context.annotation.Configuration;
 public class MyBean {
 
     @Bean(value = "myServerProperties")
+    @MyAnnotation1
     public MyServerProperties myServerProperties(){
         return new MyServerProperties();
     }
+
+    @Bean(value = "myServerProperties1")
+    public MyServerProperties myServerProperties2(){
+        return new MyServerProperties();
+    }
+
 
 }

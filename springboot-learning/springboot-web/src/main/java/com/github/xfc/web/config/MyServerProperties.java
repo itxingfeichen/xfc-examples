@@ -11,6 +11,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "myserver", ignoreUnknownFields = true)
 public class MyServerProperties {
 
+    public MyServerProperties() {
+        System.out.println("初始化了？");
+    }
+
     private Integer port;
 
 

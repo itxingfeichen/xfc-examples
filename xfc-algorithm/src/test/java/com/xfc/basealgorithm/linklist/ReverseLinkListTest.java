@@ -8,9 +8,11 @@ public class ReverseLinkListTest extends TestCase {
 
     public void testReverseList() {
 
-        final ListNode listNode = new ListNode(4);
-        listNode.next = new ListNode(1);
-
+        final ListNode listNode = new ListNode(1);
+        final ListNode next = new ListNode(2);
+        final ListNode next3 = new ListNode(3);
+        listNode.next = next;
+        next.next = next3;
         final ReverseLinkList reverseLinkList = new ReverseLinkList();
         final ListNode reversedLindList = reverseLinkList.reverseList(listNode);
 

@@ -43,7 +43,7 @@ public class SemaphoreLearn {
      */
     private static void testFair() {
         // 初始化信号量允许的个数
-        Semaphore semaphore = new Semaphore(10, true);
+        Semaphore semaphore = new Semaphore(1, true);
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 10; i++) {
             executorService.submit(new SemaphoreLearn.InnerTask("task" + i, semaphore));

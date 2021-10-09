@@ -1,0 +1,15 @@
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/model/User.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/mapper/I18NMapper.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/service/I18NService2.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/model/I18N.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/controller/ViewController.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/config/OverrideMessageResource.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/controller/ResponseResult.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/config/MessageSourceConfiguration.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/service/I18NService.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/transaction/TransactionController.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/mapper/UserMapper.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/interceptor/Internationalization.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/config/CustomMessageSource.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/config/MyObjectFactoryBean.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-i18n/src/main/java/com/github/xfc/i18n/I18nApplication.java

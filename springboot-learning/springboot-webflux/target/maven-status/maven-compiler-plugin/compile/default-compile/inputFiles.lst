@@ -1,0 +1,7 @@
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/model/CaseInCollectionModel.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/model/CaseInCollectionBatchModel.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/consumer/ConsumerService.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/WebFluxBootstrap.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/config/RabbitMQConfig.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/producer/ProducerService.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-webflux/src/main/java/com/github/xfc/webflux/TestController.java

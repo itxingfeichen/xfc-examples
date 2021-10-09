@@ -1,0 +1,4 @@
+com/xfc/spring/cloud/service/controller/UserApiController.class
+com/xfc/spring/cloud/service/repository/UserRepository.class
+com/xfc/spring/cloud/service/UserCenterApplication.class
+com/xfc/spring/cloud/service/provider/UserServiceImpl.class

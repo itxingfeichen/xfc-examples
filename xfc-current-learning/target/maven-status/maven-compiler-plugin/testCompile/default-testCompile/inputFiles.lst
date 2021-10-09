@@ -1,0 +1,15 @@
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/queue/PriorityBlockingQueueLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/queue/ConcurrentLinkedQueueLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/lock/ReentrantLockConditionTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/threadlocal/MyThreadLocalTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/lock/ReentrantLockManyConditionTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/threadpool/ExecutorsLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/queue/SynchronousQueueLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/threadpool/CustomizeThreadPoolTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/signleton/SignletonTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/lock/ReentrantLockLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/threadawait/CyclicBarrierWithRunnableTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/lock/ReentrantLockReadWritLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/threadawait/CyclicBarrierLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/queue/ArrayBlockingQueueLearnTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-current-learning/src/test/java/com/github/xfc/current/WaitAndNotifyQueueTest.java

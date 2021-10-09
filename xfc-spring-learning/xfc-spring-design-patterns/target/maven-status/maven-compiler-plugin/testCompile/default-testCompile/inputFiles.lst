@@ -1,0 +1,8 @@
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/prototype/simple/ClonePrototypeTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/factory/simple/SimpleFactoryTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/factory/abstrac/AbstractCarFactoryTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/proxy/cglib/proxy/CglibQueryServiceProxyTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/factory/method/MethodFactoryTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/proxy/jdk/proxy/JDKQueryProxyTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/prototype/deep/ClonePrototypeDeepTest.java
+/Users/xingfei/IdeaProjects/xfc-examples/xfc-spring-learning/xfc-spring-design-patterns/src/test/java/com/github/xfc/delegation/NormalRuleTest.java

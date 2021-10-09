@@ -13,7 +13,12 @@ public class CyclicBarrierLearn {
     /**
      * 初始化
      */
-    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
+    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(4, new Runnable() {
+        @Override
+        public void run() {
+            System.out.println("跳闸。。。。。。。。" + Thread.currentThread().getName());
+        }
+    });
 
     /**
      * 等待

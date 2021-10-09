@@ -1,0 +1,7 @@
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/service/InteractQuestionAnswerService.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/model/InteractQuestionAnswer.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/mapper/InteractQuestionAnswerMapper.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/model/InteractQuestion.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/ShardingBootstrap.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/mapper/InteractQuestionMapper.java
+/Users/xingfei/IdeaProjects/xfc-examples/springboot-learning/springboot-shardingsphere/src/main/java/com/aixuexi/sharding/service/InteractQuestionAnswerServiceImpl.java

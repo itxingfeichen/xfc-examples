@@ -16,7 +16,7 @@ public class ThreadPoolMonitorTask {
         final ExecutorService threadPool = Executors.newFixedThreadPool(5);
 
         for (int i = 0; i < 20; i++) {
-            threadPool.submit(() -> {
+            threadPool.execute(() -> {
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {

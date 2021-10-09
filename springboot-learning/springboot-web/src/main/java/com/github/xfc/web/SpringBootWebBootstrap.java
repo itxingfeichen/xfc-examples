@@ -1,7 +1,7 @@
 package com.github.xfc.web;
 
-import com.github.xfc.web.config.MyBean;
-import com.github.xfc.web.config.MyServerProperties;
+import com.github.xfc.web.model.APIDemo;
+import com.github.xfc.web.registrar.MyApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,10 +16,17 @@ import org.yeauty.annotation.EnableWebSocket;
 @SpringBootApplication
 public class SpringBootWebBootstrap {
 
+
+
     public static void main(String[] args) {
+//        final MyApplicationContext annotationConfigApplicationContext = new MyApplicationContext(SpringBootWebBootstrap.class);
+//        // 扩展自定义bean工厂后置处理器
+//        final APIDemo bean = annotationConfigApplicationContext.getBean(APIDemo.class);
+//        bean.test();
         ConfigurableApplicationContext run = SpringApplication.run(SpringBootWebBootstrap.class);
-        final MyServerProperties bean = run.getBean(MyServerProperties.class);
-        System.out.println(bean.getPort());
+//        System.out.println(run.getEnvironment().getProperty("pid"));
+//        final MyServerProperties bean = run.getBean(MyServerProperties.class);
+//        System.out.println(bean.getPort());
 //
 //        CalculatingService bean = run.getBean(CalculatingService.class);
 //

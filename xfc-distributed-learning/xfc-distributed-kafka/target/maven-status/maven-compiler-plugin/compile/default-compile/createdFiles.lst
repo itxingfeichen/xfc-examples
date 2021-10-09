@@ -1,0 +1,6 @@
+com/xfc/distributed/kafka/consumer/Consumer1.class
+com/xfc/distributed/kafka/producer/KafkaDemoProducer.class
+com/xfc/distributed/kafka/producer/DemoCallBack.class
+com/xfc/distributed/kafka/producer/CustomPartition.class
+com/xfc/distributed/kafka/producer/KafkaProperties.class
+com/xfc/distributed/kafka/consumer/Consumer.class

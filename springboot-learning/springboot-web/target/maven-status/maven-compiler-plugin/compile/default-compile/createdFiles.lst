@@ -1,0 +1,11 @@
+com/github/xfc/web/model/User.class
+com/github/xfc/web/service/IteratingCalculatingService.class
+com/github/xfc/web/SpringBootWebBootstrap.class
+config/MyWebSocket.class
+com/github/xfc/web/controller/FormatterTestController.class
+com/github/xfc/web/duijupipei.class
+config/MyWebSocket$1.class
+com/github/xfc/web/service/CalculatingService.class
+com/github/xfc/web/controller/TestController.class
+com/github/xfc/web/service/LambdaCalculatingService.class
+com/github/xfc/web/service/Java12CalculatingService.class

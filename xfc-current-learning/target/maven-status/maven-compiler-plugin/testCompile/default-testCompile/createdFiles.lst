@@ -1,0 +1,15 @@
+com/github/xfc/queue/ConcurrentLinkedQueueLearnTest.class
+com/github/xfc/signleton/SignletonTest.class
+com/github/xfc/threadlocal/MyThreadLocalTest.class
+com/github/xfc/lock/ReentrantLockManyConditionTest.class
+com/github/xfc/threadawait/CyclicBarrierLearnTest.class
+com/github/xfc/lock/ReentrantLockConditionTest.class
+com/github/xfc/lock/ReentrantLockLearnTest.class
+com/github/xfc/threadpool/CustomizeThreadPoolTest.class
+com/github/xfc/threadpool/ExecutorsLearnTest.class
+com/github/xfc/queue/ArrayBlockingQueueLearnTest.class
+com/github/xfc/lock/ReentrantLockReadWritLearnTest.class
+com/github/xfc/current/WaitAndNotifyQueueTest.class
+com/github/xfc/queue/SynchronousQueueLearnTest.class
+com/github/xfc/queue/PriorityBlockingQueueLearnTest.class
+com/github/xfc/threadawait/CyclicBarrierWithRunnableTest.class

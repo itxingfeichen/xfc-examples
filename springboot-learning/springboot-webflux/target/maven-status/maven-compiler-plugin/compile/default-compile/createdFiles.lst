@@ -1,0 +1,7 @@
+com/github/xfc/webflux/model/CaseInCollectionBatchModel.class
+com/github/xfc/webflux/WebFluxBootstrap.class
+com/github/xfc/webflux/TestController.class
+com/github/xfc/webflux/consumer/ConsumerService.class
+com/github/xfc/webflux/config/RabbitMQConfig.class
+com/github/xfc/webflux/model/CaseInCollectionModel.class
+com/github/xfc/webflux/producer/ProducerService.class

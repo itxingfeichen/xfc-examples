@@ -1,0 +1,4 @@
+com/github/xfc/autoconfigure/formatter/Formatter.class
+com/github/xfc/autoconfigure/formatter/JsonFormatter.class
+com/github/xfc/autoconfigure/formatter/configuration/FormatterAutoConfiguration.class
+com/github/xfc/autoconfigure/formatter/DefaultFormatter.class

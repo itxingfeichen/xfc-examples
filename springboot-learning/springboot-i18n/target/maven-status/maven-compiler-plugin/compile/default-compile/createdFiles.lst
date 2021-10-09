@@ -1,0 +1,13 @@
+com/github/xfc/i18n/controller/ViewController.class
+com/github/xfc/i18n/service/I18NService.class
+com/github/xfc/i18n/service/I18NService2.class
+com/github/xfc/i18n/model/I18N.class
+com/github/xfc/i18n/I18nApplication.class
+com/github/xfc/i18n/model/User.class
+com/github/xfc/i18n/config/CustomMessageSource.class
+com/github/xfc/i18n/config/MessageSourceConfiguration.class
+com/github/xfc/i18n/mapper/I18NMapper.class
+com/github/xfc/i18n/interceptor/Internationalization.class
+com/github/xfc/i18n/mapper/UserMapper.class
+com/github/xfc/i18n/transaction/TransactionController.class
+com/github/xfc/i18n/controller/ResponseResult.class

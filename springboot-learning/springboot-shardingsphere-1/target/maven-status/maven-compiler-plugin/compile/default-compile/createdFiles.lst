@@ -1,0 +1,9 @@
+sharding/utils/WorkerIdUtil.class
+sharding/ShardingBootstrap.class
+sharding/mapper/InteractQuestionMapper.class
+sharding/service/InteractQuestionAnswerService.class
+sharding/model/InteractQuestion.class
+sharding/service/InteractQuestionAnswerServiceImpl.class
+sharding/mapper/InteractQuestionAnswerMapper.class
+sharding/model/InteractQuestionAnswer.class
+sharding/config/UidGeneratorShardingKeyGenerator.class

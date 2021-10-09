@@ -2,6 +2,8 @@ package com.xfc.basealgorithm.linklist;
 
 import com.xfc.basealgorithm.base.ListNode;
 
+import java.util.ArrayList;
+
 /**
  * 回文
  * 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
@@ -31,9 +33,44 @@ import com.xfc.basealgorithm.base.ListNode;
  */
 public class Palindrome {
 
-    public boolean isPalindrome(ListNode head) {
+    private ListNode frontPointer;
 
-        return false;
+    public boolean isPalindrome(ListNode head) {
+        frontPointer = head;
+        return recursivelyCheck(head);
+    }
+
+    private boolean recursivelyCheck(ListNode currentNode) {
+        if (currentNode != null) {
+            if (!recursivelyCheck(currentNode.next)) {
+                return false;
+            }
+            if (currentNode.val != frontPointer.val) {
+                return false;
+            }
+            frontPointer = frontPointer.next;
+        }
+        return true;
+    }
+
+
+    private boolean array(ListNode head) {
+        // 转换为数组
+        ListNode tmp = head;
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        while (tmp != null) {
+            arrayList.add(tmp.val);
+            tmp = tmp.next;
+        }
+        int p1 = 0, p2 = arrayList.size() - 1;
+        while (p1 < p2) {
+            if (!arrayList.get(p1).equals(arrayList.get(p2))) {
+                return false;
+            }
+            p1++;
+            p2--;
+        }
+        return true;
     }
 
 

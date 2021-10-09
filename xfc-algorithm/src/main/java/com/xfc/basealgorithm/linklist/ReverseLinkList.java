@@ -35,7 +35,7 @@ public class ReverseLinkList {
 
     public ListNode reverseList(ListNode head) {
 
-        return forEach(head);
+        return reverse(head);
     }
 
     /**
@@ -71,6 +71,21 @@ public class ReverseLinkList {
             current = next;
         }
         return pre;
+    }
+
+    private ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = null;
+        ListNode tmp;
+        while (head != null) {
+            tmp = head;
+            head = head.next;
+            tmp.next = newHead;
+            newHead = tmp;
+        }
+        return newHead;
     }
 
 

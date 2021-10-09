@@ -1,0 +1,2 @@
+com.xfc.spi.test.impl.MysqlStoreProcessor
+com.xfc.spi.test.impl.RedisStoreProcessor
